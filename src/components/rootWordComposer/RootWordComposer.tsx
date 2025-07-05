@@ -8,6 +8,7 @@ import {
   addRootWordToClass,
   RootWord,
   getDatabaseStats,
+  updateClassPriority,
 } from "../../utils/hybridDatabase";
 import "./RootWordComposer.css";
 
@@ -68,6 +69,7 @@ export const RootWordComposer: React.FC = () => {
   const [newWordClass, setNewWordClass] = useState("");
   const [isCreatingNewClass, setIsCreatingNewClass] = useState(false);
   const [meaning, setMeaning] = useState("");
+  const [priority, setPriority] = useState(0);
   const [selectedPattern, setSelectedPattern] = useState<"CCV" | "CVV" | null>(
     null
   );
@@ -258,7 +260,12 @@ export const RootWordComposer: React.FC = () => {
 
     try {
       // Add to project database with immediate localStorage persistence
-      addRootWordToClass(finalWordClass, rootWord);
+      addRootWordToClass(finalWordClass, rootWord, priority);
+
+      // Update class priority if it's different from current
+      if (priority > 0) {
+        updateClassPriority(finalWordClass, priority);
+      }
 
       // Get updated stats
       const stats = getDatabaseStats();
@@ -271,6 +278,7 @@ export const RootWordComposer: React.FC = () => {
   • IPA phonétique: /${currentIPA}/
   • Signification: ${meaning}
   • Classe: ${finalWordClass}
+  • Priorité de classe: ${priority}
 
 📊 BASE DE DONNÉES HYBRIDE :
   • Total classes: ${stats.totalClasses}
@@ -293,6 +301,7 @@ export const RootWordComposer: React.FC = () => {
       setWordClass("");
       setNewWordClass("");
       setMeaning("");
+      setPriority(0);
       setIsCreatingNewClass(false);
     } catch (error) {
       console.error("Erreur lors de la sauvegarde:", error);
@@ -357,29 +366,26 @@ export const RootWordComposer: React.FC = () => {
         )}
       </div>
 
-      <div className="composer-form">
-        <div className="input-group">
-          <label>Mot en cours :</label>
-          <div className="word-display">
-            <span className="ipa-display" title="IPA Form (phonétique)">
-              /{getIPAString()}/
-            </span>
-            <div
-              className="word-display-text"
-              style={{ fontFamily: "ScribeWork" }}
-              title="Font Form (ScribeWork.otf avec M/B pour voyelles)"
-            >
-              {"<"}
-              {getCurrentWord() || "..."}
-              {">"}
-            </div>
-          </div>
-          <div className="word-controls">
-            <button onClick={handleBackspace}>← Effacer</button>
-            <button onClick={handleClear}>Vider</button>
-          </div>
+      <div className="root-word-display">
+        <label>Mot en cours :</label>
+        <span className="ipa-display" title="IPA Form (phonétique)">
+          /{getIPAString()}/
+        </span>
+        <div
+          className="root-word-display-text scribe-font"
+          title="Font Form (ScribeWork.otf avec M/B pour voyelles)"
+        >
+          {"<"}
+          {getCurrentWord() || "..."}
+          {">"}
         </div>
+        <div className="word-controls">
+          <button onClick={handleBackspace}>← Effacer</button>
+          <button onClick={handleClear}>Vider</button>
+        </div>
+      </div>
 
+      <div className="composer-form">
         <div className="input-group">
           <label>Classe :</label>
           <div className="class-selector">
@@ -401,29 +407,46 @@ export const RootWordComposer: React.FC = () => {
                 Nouvelle classe
               </button>
             </div>
-
-            {!isCreatingNewClass ? (
-              <select
-                value={wordClass}
-                onChange={(e) => setWordClass(e.target.value)}
-                className="class-dropdown"
-              >
-                <option value="">Sélectionnez une classe...</option>
-                {getAllWordClasses().map((cls) => (
-                  <option key={cls} value={cls}>
-                    {cls}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <input
-                type="text"
-                value={newWordClass}
-                onChange={(e) => setNewWordClass(e.target.value)}
-                placeholder="Nom de la nouvelle classe..."
-                className="new-class-input"
-              />
-            )}
+            <div>
+              {!isCreatingNewClass ? (
+                <select
+                  value={wordClass}
+                  onChange={(e) => setWordClass(e.target.value)}
+                  className="class-dropdown"
+                >
+                  <option value="">Sélectionnez une classe...</option>
+                  {getAllWordClasses().map((cls) => (
+                    <option key={cls} value={cls}>
+                      {cls}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    value={newWordClass}
+                    onChange={(e) => setNewWordClass(e.target.value)}
+                    placeholder="Nom de la nouvelle classe..."
+                    className="new-class-input"
+                  />
+                  <div className="input-group">
+                    <label>Priorité de classe :</label>
+                    <input
+                      type="range"
+                      value={priority}
+                      onChange={(e) =>
+                        setPriority(parseInt(e.target.value) || 0)
+                      }
+                      placeholder="Priorité de classe (0 = défaut, plus haut = plus prioritaire)"
+                      min="0"
+                      max="10"
+                    />
+                    <div className="priority-value">{priority}</div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
 

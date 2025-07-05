@@ -1,14 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   getAllRootWords,
   getDatabaseStats,
   searchRootWords,
-  downloadDatabase,
-  importDatabase,
   restoreFromBackup,
   clearAllData,
 } from "../../utils/hybridDatabase";
-import "./DatabaseViewer.css";
+
 import "./HybridStyles.css";
 
 export const HybridDatabaseViewer: React.FC = () => {
@@ -17,7 +15,6 @@ export const HybridDatabaseViewer: React.FC = () => {
     { className: string; rootWord: any }[]
   >([]);
   const [showSearch, setShowSearch] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -28,33 +25,6 @@ export const HybridDatabaseViewer: React.FC = () => {
     } else {
       setSearchResults([]);
       setShowSearch(false);
-    }
-  };
-
-  const handleExport = () => {
-    downloadDatabase();
-  };
-
-  const handleImportClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileSelect = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      try {
-        await importDatabase(file);
-        // Refresh the data by reloading the component state
-        window.location.reload();
-      } catch (error) {
-        // Error is already handled in importDatabase function
-      }
-    }
-    // Reset file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
     }
   };
 
@@ -71,37 +41,17 @@ export const HybridDatabaseViewer: React.FC = () => {
   };
 
   const stats = getDatabaseStats();
+  console.log("🔍 Stats:", stats);
   const allRootWords = getAllRootWords();
 
   return (
     <div className="database-viewer-container">
       <h2>📚 Base de Données Hybride des Root Words</h2>
 
-      {/* Import/Export Controls */}
+      {/* Database Management Controls */}
       <div className="hybrid-controls-section">
-        <h3>🔄 Gestion des Données</h3>
+        <h3>🔧 Gestion de la Base</h3>
         <div className="controls-grid">
-          <button
-            className="control-button export-btn"
-            onClick={handleExport}
-            disabled={stats.totalRootWords === 0}
-            title={
-              stats.totalRootWords === 0
-                ? "Aucune donnée à exporter"
-                : "Télécharger la base de données"
-            }
-          >
-            📥 Exporter JSON
-          </button>
-
-          <button
-            className="control-button import-btn"
-            onClick={handleImportClick}
-            title="Importer une base de données depuis un fichier JSON"
-          >
-            📤 Importer JSON
-          </button>
-
           <button
             className="control-button restore-btn"
             onClick={handleRestore}
@@ -118,15 +68,6 @@ export const HybridDatabaseViewer: React.FC = () => {
             🗑️ Tout Effacer
           </button>
         </div>
-
-        {/* Hidden file input */}
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".json"
-          onChange={handleFileSelect}
-          style={{ display: "none" }}
-        />
       </div>
 
       {/* System Info */}
@@ -139,8 +80,8 @@ export const HybridDatabaseViewer: React.FC = () => {
               sont sauvegardés automatiquement dans localStorage avec backup
             </li>
             <li>
-              <strong>📁 Export/Import :</strong> Exportez vos données en JSON
-              et importez-les sur n'importe quel ordinateur
+              <strong>📁 Export/Import :</strong> Utilisez les boutons en haut
+              de page pour exporter/importer vos données en JSON
             </li>
             <li>
               <strong>🌍 Portabilité :</strong> Vos fichiers JSON peuvent être
@@ -212,13 +153,8 @@ export const HybridDatabaseViewer: React.FC = () => {
                   <div key={index} className="search-result-item">
                     <div className="result-class-tag">{result.className}</div>
                     <div className="root-word-display">
-                      <span
-                        className="font-display"
-                        style={{ fontFamily: "ScribeWork" }}
-                      >
-                        {"<"}
-                        {result.rootWord.font}
-                        {">"}
+                      <span className="scribe-font">
+                        {"<" + result.rootWord.font + ">"}
                       </span>
                       <span className="ipa-display">
                         /{result.rootWord.ipa}/
@@ -244,8 +180,8 @@ export const HybridDatabaseViewer: React.FC = () => {
                   premiers root words !
                 </p>
                 <p>
-                  Ou importez une base de données existante avec le bouton "📤
-                  Importer JSON" ci-dessus.
+                  Ou importez une base de données existante avec le bouton "📥
+                  Importer" en haut de page.
                 </p>
               </div>
             ) : (
@@ -259,13 +195,8 @@ export const HybridDatabaseViewer: React.FC = () => {
                     <div className="root-words-grid">
                       {rootWords.map((word, index) => (
                         <div key={index} className="root-word-item">
-                          <span
-                            className="font-display"
-                            style={{ fontFamily: "ScribeWork" }}
-                          >
-                            {"<"}
-                            {word.font}
-                            {">"}
+                          <span className="scribe-font">
+                            {"<" + word.font + ">"}
                           </span>
                           <span className="ipa-display">/{word.ipa}/</span>
                           <span className="meaning-display">

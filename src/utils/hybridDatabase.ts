@@ -7,8 +7,13 @@ export interface RootWord {
   signification: string;
 }
 
+export interface WordClass {
+  priority: number;
+  words: RootWord[];
+}
+
 export type RootWordDatabase = {
-  [className: string]: RootWord[];
+  [className: string]: WordClass;
 };
 
 export interface DatabaseExport {
@@ -24,11 +29,7 @@ export interface DatabaseExport {
 
 // Word Classes
 export enum WordClasses {
-  PREFIXE = "prefixe",
-  SUFFIXE = "suffixe",
   RACINE = "racine",
-  MODIFICATEUR = "modificateur",
-  CONNECTEUR = "connecteur",
 }
 
 // localStorage keys
@@ -37,11 +38,7 @@ const BACKUP_KEY = "hybrid_root_words_backup";
 
 // Default database structure
 const DEFAULT_DATABASE: RootWordDatabase = {
-  [WordClasses.PREFIXE]: [],
-  [WordClasses.SUFFIXE]: [],
-  [WordClasses.RACINE]: [],
-  [WordClasses.MODIFICATEUR]: [],
-  [WordClasses.CONNECTEUR]: [],
+  [WordClasses.RACINE]: { priority: 5, words: [] },
 };
 
 // Initialize database from localStorage or defaults
@@ -52,8 +49,28 @@ function loadFromLocalStorage(): RootWordDatabase {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
+
+      // Migration: Convert old format (array) to new format (WordClass)
+      const migratedData: RootWordDatabase = {};
+
+      for (const [className, value] of Object.entries(parsed)) {
+        if (Array.isArray(value)) {
+          // Old format: convert array to WordClass
+          migratedData[className] = {
+            priority: 0,
+            words: value as RootWord[],
+          };
+        } else if (value && typeof value === "object" && "words" in value) {
+          // New format: already WordClass
+          migratedData[className] = value as WordClass;
+        } else {
+          // Invalid format: use default
+          migratedData[className] = { priority: 0, words: [] };
+        }
+      }
+
       // Merge with defaults to ensure all classes exist
-      return { ...DEFAULT_DATABASE, ...parsed };
+      return { ...DEFAULT_DATABASE, ...migratedData };
     }
   } catch (error) {
     console.warn("Error loading from localStorage:", error);
@@ -183,7 +200,7 @@ export function importDatabase(file: File): Promise<boolean> {
 }
 
 // Restore from localStorage backup
-export function restoreFromBackup(): boolean {
+export const restoreFromBackup = (): boolean => {
   if (typeof window === "undefined") return false;
 
   try {
@@ -205,18 +222,22 @@ export function restoreFromBackup(): boolean {
     alert("❌ Erreur lors de la restauration.");
     return false;
   }
-}
+};
 
 // Get total words count
-function getTotalWordsCount(): number {
-  return Object.values(PROJECT_ROOT_WORDS).reduce(
-    (total, words) => total + words.length,
-    0
-  );
-}
+const getTotalWordsCount = (): number => {
+  return Object.values(PROJECT_ROOT_WORDS).reduce((total, wordClass) => {
+    // Guard: ensure wordClass exists and has words property
+    if (!wordClass || !wordClass.words || !Array.isArray(wordClass.words)) {
+      console.warn("Invalid wordClass detected:", wordClass);
+      return total;
+    }
+    return total + wordClass.words.length;
+  }, 0);
+};
 
 // Add new word class
-export function addWordClass(className: string): void {
+export const addWordClass = (className: string, priority: number = 0): void => {
   const normalizedClassName = className.toLowerCase().trim();
 
   if (!PROJECT_ROOT_WORDS[normalizedClassName]) {
@@ -226,88 +247,145 @@ export function addWordClass(className: string): void {
       .replace(/[^A-Z0-9]/g, "_");
     (WordClasses as any)[enumKey] = normalizedClassName;
 
-    // Initialize empty array for this class
-    PROJECT_ROOT_WORDS[normalizedClassName] = [];
+    // Initialize empty WordClass for this class
+    PROJECT_ROOT_WORDS[normalizedClassName] = { priority, words: [] };
 
     // Save to localStorage immediately
     saveToLocalStorage(PROJECT_ROOT_WORDS);
   }
-}
+};
 
 // Add root word to database with automatic localStorage save
-export function addRootWordToClass(
+export const addRootWordToClass = (
   className: string,
-  rootWord: RootWord
-): void {
+  rootWord: RootWord,
+  priority: number = 0
+): void => {
   const normalizedClassName = className.toLowerCase().trim();
 
   // Ensure the class exists
-  addWordClass(normalizedClassName);
+  addWordClass(normalizedClassName, priority);
 
   // Add the root word to the class
   if (!PROJECT_ROOT_WORDS[normalizedClassName]) {
-    PROJECT_ROOT_WORDS[normalizedClassName] = [];
+    PROJECT_ROOT_WORDS[normalizedClassName] = { priority, words: [] };
   }
 
-  PROJECT_ROOT_WORDS[normalizedClassName].push(rootWord);
+  // Update priority if provided
+  if (priority > 0) {
+    PROJECT_ROOT_WORDS[normalizedClassName].priority = priority;
+  }
+
+  PROJECT_ROOT_WORDS[normalizedClassName].words.push(rootWord);
 
   // Auto-save to localStorage
   saveToLocalStorage(PROJECT_ROOT_WORDS);
 
   console.log("✅ Root word saved with automatic localStorage backup!");
-}
+};
 
 // Get all word classes
-export function getAllWordClasses(): string[] {
+export const getAllWordClasses = (): string[] => {
   return Object.values(WordClasses);
-}
+};
+
+// Get all word classes with their priorities
+export const getAllWordClassesWithPriorities = (): {
+  className: string;
+  priority: number;
+}[] => {
+  return Object.entries(PROJECT_ROOT_WORDS).map(([className, wordClass]) => ({
+    className,
+    priority:
+      wordClass && typeof wordClass.priority === "number"
+        ? wordClass.priority
+        : 0,
+  }));
+};
+
+// Update class priority
+export const updateClassPriority = (
+  className: string,
+  priority: number
+): void => {
+  const normalizedClassName = className.toLowerCase().trim();
+
+  if (PROJECT_ROOT_WORDS[normalizedClassName]) {
+    PROJECT_ROOT_WORDS[normalizedClassName].priority = priority;
+    saveToLocalStorage(PROJECT_ROOT_WORDS);
+  }
+};
 
 // Get all root words
-export function getAllRootWords(): {
+export const getAllRootWords = (): {
   className: string;
   rootWords: RootWord[];
-}[] {
-  return Object.entries(PROJECT_ROOT_WORDS).map(([className, rootWords]) => ({
+  priority: number;
+}[] => {
+  return Object.entries(PROJECT_ROOT_WORDS).map(([className, wordClass]) => ({
     className,
-    rootWords,
+    rootWords: wordClass && wordClass.words ? wordClass.words : [],
+    priority:
+      wordClass && typeof wordClass.priority === "number"
+        ? wordClass.priority
+        : 0,
   }));
-}
+};
 
 // Search root words
-export function searchRootWords(
+export const searchRootWords = (
   searchTerm: string
-): { className: string; rootWord: RootWord }[] {
-  const results: { className: string; rootWord: RootWord }[] = [];
+): { className: string; rootWord: RootWord; priority: number }[] => {
+  const results: { className: string; rootWord: RootWord; priority: number }[] =
+    [];
   const searchLower = searchTerm.toLowerCase();
 
-  Object.entries(PROJECT_ROOT_WORDS).forEach(([className, rootWords]) => {
-    rootWords.forEach((rootWord) => {
+  Object.entries(PROJECT_ROOT_WORDS).forEach(([className, wordClass]) => {
+    // Guard: ensure wordClass exists and has words property
+    if (!wordClass || !wordClass.words || !Array.isArray(wordClass.words)) {
+      console.warn(
+        "Invalid wordClass detected in search:",
+        className,
+        wordClass
+      );
+      return;
+    }
+
+    wordClass.words.forEach((rootWord) => {
       if (
         rootWord.signification.toLowerCase().includes(searchLower) ||
         rootWord.ipa.toLowerCase().includes(searchLower) ||
         rootWord.font.toLowerCase().includes(searchLower)
       ) {
-        results.push({ className, rootWord });
+        results.push({
+          className,
+          rootWord,
+          priority: wordClass.priority || 0,
+        });
       }
     });
   });
 
   return results;
-}
+};
 
 // Get database statistics
-export function getDatabaseStats(): {
+export const getDatabaseStats = (): {
   totalClasses: number;
   totalRootWords: number;
-  classesSummary: { className: string; count: number }[];
-} {
+  classesSummary: { className: string; count: number; priority: number }[];
+} => {
   const totalClasses = Object.keys(PROJECT_ROOT_WORDS).length;
   const totalRootWords = getTotalWordsCount();
 
   const classesSummary = Object.entries(PROJECT_ROOT_WORDS).map(
-    ([className, rootWords]) => ({
+    ([className, wordClass]) => ({
       className,
-      count: rootWords.length,
+      count: wordClass && wordClass.words ? wordClass.words.length : 0,
+      priority:
+        wordClass && typeof wordClass.priority === "number"
+          ? wordClass.priority
+          : 0,
     })
   );
 
@@ -316,10 +394,10 @@ export function getDatabaseStats(): {
     totalRootWords,
     classesSummary,
   };
-}
+};
 
 // Clear all data (with confirmation)
-export function clearAllData(): boolean {
+export const clearAllData = (): boolean => {
   if (typeof window === "undefined") return false;
 
   const confirmed = window.confirm(
@@ -337,4 +415,32 @@ export function clearAllData(): boolean {
   }
 
   return false;
-}
+};
+
+// Force refresh localStorage with current DEFAULT_DATABASE structure
+export const refreshLocalStorage = (): void => {
+  if (typeof window === "undefined") return;
+
+  try {
+    // Reset to current DEFAULT_DATABASE structure
+    PROJECT_ROOT_WORDS = { ...DEFAULT_DATABASE };
+
+    // Clear old localStorage
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(BACKUP_KEY);
+
+    // Save new structure
+    saveToLocalStorage(PROJECT_ROOT_WORDS);
+
+    console.log(
+      "🔄 localStorage refreshed with new structure:",
+      PROJECT_ROOT_WORDS
+    );
+    alert(
+      "✅ localStorage rafraîchi avec la nouvelle structure !\n\n📊 Structure actuelle :\n• Classe RACINE (priorité: 5)\n• Anciennes classes supprimées"
+    );
+  } catch (error) {
+    console.error("Error refreshing localStorage:", error);
+    alert("❌ Erreur lors du rafraîchissement du localStorage.");
+  }
+};

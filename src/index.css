@@ -122,3 +122,40 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* =================================
+   GLOBAL SCRIBEWORK FONT CLASS
+   ================================= */
+
+/* Classe unique pour la police ScribeWork - seule source de vérité */
+.scribe-font {
+  font-family: "ScribeWork" !important;
+
+  /* Styles spécifiés par l'utilisateur */
+  font-size: 3em !important;
+  font-weight: 100 !important;
+
+  /* Préservation des ligatures - essentiel pour ScribeWork */
+  font-feature-settings: "liga" 1, "dlig" 1 !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+
+  /* Supprime les interférences CSS */
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Styles visuels de base */
+  color: #2c3e50;
+  text-align: center;
+  display: inline-block;
+
+  /* Transition douce */
+  transition: all 0.3s ease;
+}
+
+.scribe-font:hover {
+  transform: scale(1.02);
+  text-shadow: 2px 2px 4px rgba(44, 62, 80, 0.3);
+}

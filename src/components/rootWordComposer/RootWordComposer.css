@@ -156,15 +156,22 @@
   font-size: 1.1em;
 }
 
-.word-display {
+.root-word-display {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 10px;
   flex-wrap: wrap;
+  border-radius: 20px;
+  border: 2px solid #ababab;
+  background-color: #f8f9fa;
+  padding: 20px;
+  position: sticky;
+  top: 84px;
+  z-index: 5;
 }
 
-.word-display-text {
+.root-word-display-text {
   flex: 1;
   padding: 12px 15px;
   border: 2px solid #bdc3c7;
@@ -179,7 +186,7 @@
 }
 
 /* Legacy input styles for backward compatibility */
-.word-display input {
+.root-word-display input {
   flex: 1;
   padding: 12px 15px;
   border: 2px solid #bdc3c7;
@@ -190,12 +197,12 @@
   transition: border-color 0.3s ease;
 }
 
-.word-display input:focus {
+.root-word-display input:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
-.word-display-text {
+.root-word-display-text {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
@@ -238,7 +245,7 @@
   background: #7f8c8d;
 }
 
-.input-group input[type="text"]:not(.word-display input) {
+.input-group input[type="text"]:not(.root-word-display input) {
   width: 90%;
   padding: 12px 15px;
   border: 2px solid #bdc3c7;
@@ -477,7 +484,7 @@
     padding: 15px;
   }
 
-  .word-display {
+  .root-word-display {
     flex-direction: column;
     align-items: stretch;
   }
@@ -595,10 +602,19 @@
   color: #495057;
 }
 
-.class-dropdown,
+.class-dropdown {
+  width: 50%;
+  padding: 12px 15px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 1.1em;
+  background: white;
+  transition: border-color 0.3s ease;
+}
 .new-class-input {
   width: 100%;
   padding: 12px 15px;
+  margin-bottom: 10px;
   border: 2px solid #bdc3c7;
   border-radius: 8px;
   font-size: 1.1em;

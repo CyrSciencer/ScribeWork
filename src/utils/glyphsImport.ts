@@ -16,4 +16,5 @@ export const glyphsImport = {
   XIO: "/glyphs/XIO.svg",
   ZBA: "/glyphs/ZBA.svg",
   ʗSO: "/glyphs/ʗSO.svg",
+  THE_SCRIBE: "/glyphs/theScribe.svg",
 };

@@ -3,13 +3,13 @@ import {
   DivineRootWordsForFont,
 } from "../../utils/fixedRootWords";
 import { glyphsImport } from "../../utils/glyphsImport";
-import "./RootWords.css";
+import "./DivineRootWords.css";
 
 export const RootWords = () => {
   return (
     <div className="root-words-container">
-      <h1>Root Words</h1>
-      <h2>Divine Root Words</h2>
+      <h1>Divine Root Words</h1>
+      <small>Primordial Root Words</small>
       <div>
         divine name/word have 2 forms created by the scribe:
         <ul>

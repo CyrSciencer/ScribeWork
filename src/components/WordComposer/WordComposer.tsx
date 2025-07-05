@@ -251,8 +251,7 @@ export const WordComposer: React.FC<WordComposerProps> = ({
       // Generate automatic signification if none provided
       let finalSignification = wordSignification;
       if (!finalSignification) {
-        const { groups: priorityGroups, rootWords: priorityRootWords } =
-          createEmptyPriorityGroups();
+        const { rootWords: priorityRootWords } = createEmptyPriorityGroups();
         composedWord.forEach((rootWord) => {
           const priority = getRootWordPriority(rootWord);
           const priorityKey = getPriorityKey(priority);

@@ -1,1 +1,0 @@
-composition mots: priorité root words selon "priority", un nouvel ajout analise l'ordre actuel selon "priority"

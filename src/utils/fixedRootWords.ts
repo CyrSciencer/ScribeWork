@@ -1,26 +1,26 @@
 export enum DivineRootWords {
-  DIO = "DIO (diɵ)", // d-i-o /di.ɵ/ the source of being
-  KYO = "K'YO (k'jɵ)", // k'-y-o /k'j.ɵ/ the source of non-being
+  DIO = "DIO /diɵ/", // d-i-o /di.ɵ/ the source of being
+  KYO = "K'YO /k'jɵ/", // k'-y-o /k'j.ɵ/ the source of non-being
 
-  SKAN = "SKAN (skã)", // s-k-an /skã/ essence
-  XIO = "XIO (ʂiɵ)", // c-i-o /ʂi.ɵ/ life cycle
-  WEI = "WÈI (wɛi)", // w-è-i /wɛ.i/ the all
+  SKAN = "SKAN /skã/", // s-k-an /skã/ essence
+  XIO = "XIO /ʂiɵ/", // c-i-o /ʂi.ɵ/ life cycle
+  WEI = "WÈI /wɛi/", // w-è-i /wɛ.i/ the all
 
-  TEON = "TÈON (tɛɔ̃)", // t-è-on /tɛ.ɔ̃/ ethereal field
-  FIIN = "FIIN (fiɛ̃)", // f-i-in /fi.ɛ̃/ physical field
+  TEON = "TÈON /tɛɔ̃/", // t-è-on /tɛ.ɔ̃/ ethereal field
+  FIIN = "FIIN /fiɛ̃/", // f-i-in /fi.ɛ̃/ physical field
 
-  TRI = "ʇRI (ʇri)", // ʇ-x-i /ʇri/ birth
-  GLO = "GLO (ɢlɵ)", // g-l-o /ɢlo/ growth
-  ZBA = "ZBA (zba)", // z-b-a /zba/ decline
-  GNAI = "ɲAI (ɲai)", // q-a-i /ɲa.i/ death
+  TRI = "ʇRI /ʇri/", // ʇ-x-i /ʇri/ birth
+  GLO = "GLO /ɢlɵ/", // g-l-o /ɢlo/ growth
+  ZBA = "ZBA /zba/", // z-b-a /zba/ decline
+  GNAI = "ɲAI /ɲai/", // q-a-i /ɲa.i/ death
 
-  VRE = "VʁÉ (vʁe)", // v-ʁ-é /vʁe/ underlying truth
-  TRAN = "TʁAN (tʁã)", // t-ʁ-an /tʁã/ the ever-changing
-  CSO = "ʗSO (ʗsɵ)", // ʗ-s-o /ʗso/ understanding of the inner and outer realities
+  VRE = "VʁÉ /vʁe/", // v-ʁ-é /vʁe/ underlying truth
+  TRAN = "TʁAN /tʁã/", // t-ʁ-an /tʁã/ the ever-changing
+  CSO = "ʗSO /ʗsɵ/", // ʗ-s-o /ʗso/ understanding of the inner and outer realities
 
-  PLAN = "P'LAN (p'lã)", // p'-l-an /p'lã/ Plants/Bone/root/structure/Permanence
-  FNO = "FNO (fnɵ)", // f-n-o /fno/ Fungus/Flesh/Network/expansion/Flux
-  NMA = "NMA (nma)", // n-m-a /nma/ Animal/Blood/Movement/Vitality/Process
+  PLAN = "P'LAN /p'lã/", // p'-l-an /p'lã/ Plants/Bone/root/structure/Permanence
+  FNO = "FNO /fnɵ/", // f-n-o /fno/ Fungus/Flesh/Network/expansion/Flux
+  NMA = "NMA /nma/", // n-m-a /nma/ Animal/Blood/Movement/Vitality/Process
 }
 export enum DivineRootWordsForFont {
   // Pattern CVV: consonne-voyelle-voyelle (IPA) → voyelle1M-voyelle2B-consonne (Font)
@@ -49,4 +49,28 @@ export enum DivineRootWordsForFont {
   PLAN = "aaMppl", // p'-l-ã → aaM-pp-l (p'=pp, ã=aa)
   FNO = "oMfn", // f-n-ɵ → oM-f-n
   NMA = "aMnm", // n-m-a → aM-n-m
+}
+export enum DivineRootWordsSignification {
+  DIO = "la source première", // d-i-o /di.ɵ/ the source of being
+  KYO = "la source de non-être", // k'-y-o /k'j.ɵ/ the source of non-being
+
+  SKAN = "essence", // s-k-an /skã/ essence
+  XIO = "cycle de vie", // c-i-o /ʂi.ɵ/ life cycle
+  WEI = "tout", // w-è-i /wɛ.i/ the all
+
+  TEON = "champ éthéré", // t-è-on /tɛ.ɔ̃/ ethereal field
+  FIIN = "champ physique", // f-i-in /fi.ɛ̃/ physical field
+
+  TRI = "naissance", // ʇ-x-i /ʇri/ birth
+  GLO = "croissance", // g-l-o /ɢlo/ growth
+  ZBA = "déclin", // z-b-a /zba/ decline
+  GNAI = "mort", // q-a-i /ɲa.i/ death
+
+  VRE = "vérité", // v-ʁ-é /vʁe/ underlying truth
+  TRAN = "le changement", // t-ʁ-an /tʁã/ the ever-changing
+  CSO = "conscience", // ʗ-s-o /ʗso/ understanding of the inner and outer realities
+
+  PLAN = "Plantes/Os/racine/structure/Permanence", // p'-l-an /p'lã/ Plants/Bone/root/structure/Permanence
+  FNO = "Fungus/Chair/Réseau/expansion/Flux", // f-n-o /fno/ Fungus/Flesh/Network/expansion/Flux
+  NMA = "Animal/Sang/Mouvement/Vitalité/Processus", // n-m-a /nma/ Animal/Blood/Movement/Vitality/Process
 }

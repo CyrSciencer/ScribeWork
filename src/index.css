@@ -128,6 +128,9 @@ table {
    ================================= */
 
 /* Classe unique pour la police ScribeWork - seule source de vérité */
+.complete-word {
+  margin-left: -20px;
+}
 .scribe-font {
   font-family: "ScribeWork" !important;
 

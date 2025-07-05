@@ -372,7 +372,7 @@ export const RootWordComposer: React.FC = () => {
           /{getIPAString()}/
         </span>
         <div
-          className="root-word-display-text scribe-font"
+          className="root-word-display-text scribe-font complete-word"
           title="Font Form (ScribeWork.otf avec M/B pour voyelles)"
         >
           {"<"}

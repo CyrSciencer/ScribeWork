@@ -364,7 +364,7 @@ export const WordComposer: React.FC<WordComposerProps> = ({
       >
         {composedWord.length > 0 ? (
           <div className="word-details">
-            <div className="scribe-font">
+            <div className="scribe-font complete-word">
               {"<" + composedDisplay.font + ">"}
             </div>
             <div className="ipa-display">/{composedDisplay.ipa}/</div>
@@ -417,7 +417,9 @@ export const WordComposer: React.FC<WordComposerProps> = ({
                     </div>
                   )}
                   <div className="scribe-font">{rootWord.font}</div>
-                  <div className="root-word-ipa">/{rootWord.ipa}/</div>
+                  <div className="root-word-ipa">
+                    {rootWord.signification.split(" ")[1]}
+                  </div>
                   <div className="root-word-meaning">
                     {rootWord.signification}
                   </div>

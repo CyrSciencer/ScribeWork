@@ -153,7 +153,7 @@ export const HybridDatabaseViewer: React.FC = () => {
                   <div key={index} className="search-result-item">
                     <div className="result-class-tag">{result.className}</div>
                     <div className="root-word-display">
-                      <span className="scribe-font">
+                      <span className="scribe-font complete-word">
                         {"<" + result.rootWord.font + ">"}
                       </span>
                       <span className="ipa-display">
@@ -195,7 +195,7 @@ export const HybridDatabaseViewer: React.FC = () => {
                     <div className="root-words-grid">
                       {rootWords.map((word, index) => (
                         <div key={index} className="root-word-item">
-                          <span className="scribe-font">
+                          <span className="scribe-font complete-word">
                             {"<" + word.font + ">"}
                           </span>
                           <span className="ipa-display">/{word.ipa}/</span>

@@ -1,6 +1,7 @@
 import {
   DivineRootWords,
   DivineRootWordsForFont,
+  DivineRootWordsSignification,
 } from "../../utils/fixedRootWords";
 import { glyphsImport } from "../../utils/glyphsImport";
 import "./DivineRootWords.css";
@@ -8,13 +9,13 @@ import "./DivineRootWords.css";
 export const RootWords = () => {
   return (
     <div className="root-words-container">
-      <h1>Divine Root Words</h1>
-      <small>Primordial Root Words</small>
+      <h1>Concepts divins</h1>
+      <small>Mots primordiaux divins</small>
       <div>
-        divine name/word have 2 forms created by the scribe:
+        Les concepts divins ont deux formes créées par le scribe :
         <ul>
-          <li>the runic form</li>
-          <li>the glyph form</li>
+          <li>la forme runique</li>
+          <li>la forme glyphe</li>
         </ul>
       </div>
       <div>
@@ -22,8 +23,17 @@ export const RootWords = () => {
           console.log("imageName", key);
           return (
             <div key={rootWord} className="root-word-container">
-              {rootWord} {"->"}
-              <span className="font-text">
+              <div className="root-word-text">
+                {rootWord}
+                <div className="root-word-signification">
+                  {
+                    DivineRootWordsSignification[
+                      key as keyof typeof DivineRootWordsSignification
+                    ]
+                  }
+                </div>
+              </div>
+              <div className="font-text complete-word">
                 {"<"}
                 {
                   DivineRootWordsForFont[
@@ -31,7 +41,7 @@ export const RootWords = () => {
                   ]
                 }
                 {">"}
-              </span>
+              </div>
               <span>
                 <img
                   src={glyphsImport[key as keyof typeof glyphsImport]}

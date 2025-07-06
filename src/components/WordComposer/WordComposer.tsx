@@ -6,6 +6,7 @@ import {
 } from "../../utils/hybridDatabase";
 import {
   DivineRootWords,
+  DivineRootWordsIPA,
   DivineRootWordsForFont,
 } from "../../utils/fixedRootWords";
 import { glyphsImport } from "../../utils/glyphsImport";
@@ -98,12 +99,10 @@ export const WordComposer: React.FC<WordComposerProps> = ({
   // Convert Divine Root Words to ExtendedRootWord format
   const convertDivineRootWords = (): ExtendedRootWord[] => {
     return Object.entries(DivineRootWords).map(([key, value]) => {
-      const ipaMatch = value.match(/\(([^)]+)\)/);
-      const ipa = ipaMatch ? ipaMatch[1] : "";
       const name = value.split(" (")[0];
 
       return {
-        ipa: ipa,
+        ipa: DivineRootWordsIPA[key as keyof typeof DivineRootWordsIPA],
         font: DivineRootWordsForFont[
           key as keyof typeof DivineRootWordsForFont
         ],
@@ -407,24 +406,32 @@ export const WordComposer: React.FC<WordComposerProps> = ({
                   }`}
                   onClick={() => addRootWord(rootWord)}
                 >
-                  {rootWord.isDivine && rootWord.glyphImage && (
-                    <div className="glyph-image">
-                      <img
-                        src={rootWord.glyphImage}
-                        alt={rootWord.signification}
-                        className="divine-glyph"
-                      />
-                    </div>
-                  )}
-                  <div className="scribe-font">{rootWord.font}</div>
-                  <div className="root-word-ipa">
-                    {rootWord.signification.split(" ")[1]}
-                  </div>
-                  <div className="root-word-meaning">
-                    {rootWord.signification}
-                  </div>
-                  {rootWord.isDivine && (
-                    <div className="divine-badge">⭐ Divine</div>
+                  {rootWord.isDivine && rootWord.glyphImage ? (
+                    <>
+                      <div className="glyph-image">
+                        <img
+                          src={rootWord.glyphImage}
+                          alt={rootWord.signification}
+                          className="divine-glyph"
+                        />
+                      </div>
+
+                      <div className="scribe-font">{rootWord.font}</div>
+                      <div className="root-word-ipa">/{rootWord.ipa}/</div>
+                      <div className="root-word-meaning">
+                        {rootWord.signification}
+                      </div>
+
+                      <div className="divine-badge">⭐ Divine</div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="scribe-font">{rootWord.font}</div>
+                      <div className="root-word-ipa">/{rootWord.ipa}/</div>
+                      <div className="root-word-meaning">
+                        {rootWord.signification}
+                      </div>
+                    </>
                   )}
                 </div>
               ))}

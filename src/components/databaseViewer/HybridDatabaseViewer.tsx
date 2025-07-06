@@ -153,7 +153,7 @@ export const HybridDatabaseViewer: React.FC = () => {
                   <div key={index} className="search-result-item">
                     <div className="result-class-tag">{result.className}</div>
                     <div className="root-word-display">
-                      <span className="scribe-font complete-word">
+                      <span className="scribe-font ">
                         {"<" + result.rootWord.font + ">"}
                       </span>
                       <span className="ipa-display">

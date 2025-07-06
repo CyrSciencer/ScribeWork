@@ -128,9 +128,7 @@ table {
    ================================= */
 
 /* Classe unique pour la police ScribeWork - seule source de vérité */
-.complete-word {
-  margin-left: -20px;
-}
+
 .scribe-font {
   font-family: "ScribeWork" !important;
 
@@ -157,8 +155,9 @@ table {
   /* Transition douce */
   transition: all 0.3s ease;
 }
-
+.complete-word {
+  margin-left: -30px !important;
+}
 .scribe-font:hover {
-  transform: scale(1.02);
   text-shadow: 2px 2px 4px rgba(44, 62, 80, 0.3);
 }

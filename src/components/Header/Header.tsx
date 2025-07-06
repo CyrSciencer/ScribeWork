@@ -6,6 +6,7 @@ import {
 } from "../../utils/hybridDatabase";
 import {
   DivineRootWords,
+  DivineRootWordsIPA,
   DivineRootWordsForFont,
 } from "../../utils/fixedRootWords";
 import { glyphsImport } from "../../utils/glyphsImport";
@@ -51,12 +52,10 @@ export const Header: React.FC<HeaderProps> = ({
   // Convert Divine Root Words to ExtendedRootWord format
   const convertDivineRootWords = (): ExtendedRootWord[] => {
     return Object.entries(DivineRootWords).map(([key, value]) => {
-      const ipaMatch = value.match(/\(([^)]+)\)/);
-      const ipa = ipaMatch ? ipaMatch[1] : "";
       const name = value.split(" (")[0];
 
       return {
-        ipa: ipa,
+        ipa: DivineRootWordsIPA[key as keyof typeof DivineRootWordsIPA],
         font: DivineRootWordsForFont[
           key as keyof typeof DivineRootWordsForFont
         ],

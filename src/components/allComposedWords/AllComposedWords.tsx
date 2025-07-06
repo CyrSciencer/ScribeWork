@@ -169,32 +169,11 @@ export const AllComposedWords: React.FC<AllComposedWordsProps> = ({
 
           return (
             <div key={index} className="composed-word-card">
-              <div className="word-number">#{index + 1}</div>
-
-              <div className="word-displays">
-                <div className="font-display scribe-font">
-                  {"<" + display.font + ">"}
-                </div>
-                <div className="ipa-display">/{display.ipa}/</div>
-                <div className="meaning-display">"{display.meaning}"</div>
+              <div className="scribe-font complete-word">
+                {"<" + display.font + ">"}
               </div>
-
-              <div className="root-words-breakdown">
-                <h4>Composition:</h4>
-                <div className="root-words-list">
-                  {historyItem.words.map((rootWord, rwIndex) => (
-                    <span key={rwIndex} className="root-word-item">
-                      <span className="rw-font scribe-font">
-                        {rootWord.font}
-                      </span>
-                      <span className="rw-ipa">/{rootWord.ipa}/</span>
-                      <span className="rw-meaning">
-                        "{rootWord.signification}"
-                      </span>
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <div className="ipa-display">/{display.ipa}/</div>
+              <div className="meaning-display">"{display.meaning}"</div>
             </div>
           );
         })}

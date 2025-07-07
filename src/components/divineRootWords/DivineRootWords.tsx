@@ -24,7 +24,7 @@ export const RootWords = () => {
           return (
             <div key={rootWord} className="root-word-container">
               {rootWord}
-              <span className="scribe-font complete-word">
+              <span className="scribe-font ">
                 {"<"}
                 {
                   DivineRootWordsForFont[

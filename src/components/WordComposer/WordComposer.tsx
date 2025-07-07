@@ -412,7 +412,7 @@ export const WordComposer: React.FC<WordComposerProps> = () => {
       >
         {composedWord.length > 0 ? (
           <div className="word-details">
-            <div className="scribe-font complete-word">
+            <div className="scribe-font ">
               {"<" + composedDisplay.font + ">"}
             </div>
             <div className="ipa-display">/{composedDisplay.ipa}/</div>

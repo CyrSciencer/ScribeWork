@@ -267,7 +267,7 @@ export const HybridDatabaseViewer: React.FC = () => {
                 {classData.rootWords.map((rootWord, index) => (
                   <div key={index} className="root-word-card">
                     <div className="word-display-section">
-                      <div className="scribe-font complete-word">
+                      <div className="scribe-font ">
                         {"<" + rootWord.font + ">"}
                       </div>
                       <div className="word-ipa">/{rootWord.ipa}/</div>

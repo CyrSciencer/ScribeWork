@@ -8,6 +8,7 @@ export enum ExtrasOfLingua {
   TWO = "2",
   THREE = "3",
   FOUR = "4",
+  H = "h",
 }
 
 export enum ConsonantsOfLingua {

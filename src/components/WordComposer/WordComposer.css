@@ -2,24 +2,12 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
   position: relative;
   overflow: visible;
 }
 
-.word-composer h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 30px;
-  font-size: 2.5em;
-  font-weight: 700;
-}
-
 .word-composer h3 {
-  color: #34495e;
+  color: var(--text-secondary);
   margin-bottom: 15px;
   font-size: 1.4em;
   font-weight: 600;
@@ -27,11 +15,11 @@
 
 /* Class Selection */
 .class-selection {
-  background: #f8f9fa;
+  background: var(--light-color);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
 }
 
 .class-buttons {
@@ -42,8 +30,8 @@
 }
 
 .class-button {
-  background: #fff;
-  border: 2px solid #ddd;
+  background: white;
+  border: 2px solid var(--border-dark);
   border-radius: 8px;
   padding: 12px 16px;
   cursor: pointer;
@@ -57,14 +45,14 @@
 }
 
 .class-button:hover {
-  background: #e9ecef;
-  border-color: #007bff;
+  background: var(--light-dark);
+  border-color: var(--primary-color);
   transform: translateY(-1px);
 }
 
 .class-button.active {
-  background: #007bff;
-  border-color: #007bff;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
 }
 
@@ -83,7 +71,7 @@
 
 .selected-class-info {
   background: #e7f3ff;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid var(--primary-color);
   padding: 15px;
   border-radius: 5px;
   margin-top: 15px;
@@ -96,12 +84,12 @@
 
 /* Composed Word Display */
 .composed-word-display {
-  background: #fff;
-  border: 2px solid #e9ecef;
+  background: white;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
   /* Allow word-display to escape this container's bounds */
   position: static;
   overflow: visible;
@@ -111,9 +99,9 @@
 
 /* Word Display - Now independent and can stick beyond parent container */
 .word-display {
-  background: #f8f9fa;
+  background: var(--light-color);
   position: sticky;
-  top: 84px;
+  top: 104px;
   border-radius: 8px;
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -124,7 +112,7 @@
   /* Unrestricted sticky positioning - can now go past parent container */
   z-index: 100;
   border: 2px solid #afb1b3;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
   transition: all 0.3s ease;
   /* Full width and independent positioning */
   width: 100%;
@@ -144,26 +132,26 @@
 .font-display {
   font-size: 3em;
   font-weight: 100;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .ipa-display {
   font-size: 1.5em;
-  color: #6c757d;
+  color: var(--text-muted);
   margin-bottom: 10px;
   font-style: italic;
 }
 
 .meaning-display {
   font-size: 1.2em;
-  color: #495057;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .empty-state {
-  color: #6c757d;
+  color: var(--text-muted);
   font-style: italic;
   margin: 0;
   font-size: 1.1em;
@@ -178,7 +166,7 @@
 }
 
 .control-button {
-  background: #6c757d;
+  background: var(--text-muted);
   border: none;
   color: white;
   padding: 10px 20px;
@@ -198,27 +186,27 @@
 }
 
 .control-button:disabled {
-  background: #adb5bd;
+  background: var(--text-light);
   cursor: not-allowed;
   transform: none;
 }
 
 .save-button {
-  background: #28a745;
+  background: var(--success-color);
 }
 
 .save-button:hover:not(:disabled) {
-  background: #218838;
+  background: var(--success-dark);
 }
 
 /* Root Words Keyboard */
 .root-words-keyboard {
-  background: #fff;
-  border: 2px solid #e9ecef;
+  background: white;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
 }
 
 .root-words-grid {
@@ -229,8 +217,8 @@
 }
 
 .root-word-card {
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
+  background: var(--light-color);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   padding: 15px;
   cursor: pointer;
@@ -243,8 +231,8 @@
 }
 
 .root-word-card:hover {
-  background: #e9ecef;
-  border-color: #007bff;
+  background: var(--light-dark);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
 }
@@ -253,20 +241,20 @@
   font-weight: 100;
   font-size: 3em;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .root-word-ipa {
   font-size: 1.1em;
-  color: #6c757d;
+  color: var(--text-muted);
   margin-bottom: 8px;
   font-style: italic;
 }
 
 .root-word-meaning {
   font-size: 0.9em;
-  color: #495057;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -636,4 +624,115 @@
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Composition Mode Toggle */
+.composition-mode-toggle {
+  margin-bottom: 15px;
+}
+
+.mode-toggle-button {
+  background: #6f42c1;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(111, 66, 193, 0.3);
+}
+
+.mode-toggle-button:hover {
+  background: #5a2d91;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(111, 66, 193, 0.4);
+}
+
+/* Grammatical Class Save Section */
+.grammatical-class-save-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.grammatical-class-selection {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grammatical-class-selection label {
+  font-weight: 600;
+  color: #495057;
+  font-size: 1.1em;
+}
+
+.grammatical-class-select {
+  background: white;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 1em;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 300px;
+}
+
+.grammatical-class-select:hover {
+  border-color: #007bff;
+}
+
+.grammatical-class-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.grammatical-class-select option {
+  padding: 8px;
+  background: white;
+  color: #495057;
+}
+
+/* Enhanced word controls layout */
+.word-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+  .grammatical-class-select {
+    min-width: 250px;
+  }
+
+  .grammatical-class-save-section {
+    align-items: center;
+  }
+
+  .grammatical-class-selection {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grammatical-class-select {
+    min-width: 200px;
+  }
+
+  .mode-toggle-button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
 }

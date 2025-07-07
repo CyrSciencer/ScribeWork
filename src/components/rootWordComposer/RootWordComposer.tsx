@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   ConsonantsOfLingua,
   MainVowelsOfLingua,
+  ExtrasOfLingua,
 } from "../../utils/soundsOfLingua";
 import {
   getAllWordClasses,
@@ -63,6 +64,10 @@ const mainVowelToIPA: { [key: string]: string } = {
   [MainVowelsOfLingua.I]: "i", // i
 };
 
+const extrasToIPA: { [key: string]: string } = {
+  [ExtrasOfLingua.H]: "h", // h
+};
+
 export const RootWordComposer: React.FC = () => {
   const [currentSounds, setCurrentSounds] = useState<Sound[]>([]); // Store sounds in IPA order
   const [wordClass, setWordClass] = useState("");
@@ -70,14 +75,15 @@ export const RootWordComposer: React.FC = () => {
   const [isCreatingNewClass, setIsCreatingNewClass] = useState(false);
   const [meaning, setMeaning] = useState("");
   const [priority, setPriority] = useState(0);
-  const [selectedPattern, setSelectedPattern] = useState<"CCV" | "CVV" | null>(
-    null
-  );
+  const [selectedPattern, setSelectedPattern] = useState<
+    "CCV" | "CVV" | "CV" | null
+  >(null);
 
   // Pattern definitions
   const patterns = {
     CCV: ["consonant", "consonant", "vowel"],
     CVV: ["consonant", "vowel", "vowel"],
+    CV: ["consonant", "vowel", "vowel"], // CV becomes CVH automatically
   };
 
   // Get current expected sound type based on pattern and position
@@ -92,6 +98,17 @@ export const RootWordComposer: React.FC = () => {
   const canAddSound = (sound: Sound): boolean => {
     if (!selectedPattern) return false;
     const expectedType = getExpectedSoundType();
+
+    // For CV pattern, treat extras (like H) as vowels in the third position
+    if (
+      selectedPattern === "CV" &&
+      sound.category === "extra" &&
+      expectedType === "vowel" &&
+      currentSounds.length === 2
+    ) {
+      return true;
+    }
+
     return expectedType === sound.category;
   };
 
@@ -115,6 +132,10 @@ export const RootWordComposer: React.FC = () => {
     // Auto-assign M/B: 1st vowel gets M, 2nd vowel gets B
     const vowelsWithSuffix = vowelSounds.map((vowel, index) => {
       const suffix = index === 0 ? "M" : "B";
+      // For H in CV pattern, don't add M/B suffix since it's already "h"
+      if (vowel.fontForm === "h") {
+        return vowel.fontForm;
+      }
       return vowel.fontForm + suffix;
     });
 
@@ -152,6 +173,16 @@ export const RootWordComposer: React.FC = () => {
       display: mainVowelToIPA[value] || value, // True IPA form
       fontForm: value.replace("M", ""), // Base form without M/B
       category: "vowel",
+    })
+  );
+
+  // Extras sounds (like H)
+  const extras: Sound[] = Object.entries(ExtrasOfLingua).map(
+    ([key, value]) => ({
+      value: key, // Enum key (code-friendly form)
+      display: extrasToIPA[value] || value, // True IPA form
+      fontForm: value, // Font form (enum value)
+      category: "extra",
     })
   );
 
@@ -204,7 +235,26 @@ export const RootWordComposer: React.FC = () => {
   const handleSoundClick = (sound: Sound) => {
     // Only add if pattern allows and not complete
     if (canAddSound(sound) && currentSounds.length < 3) {
-      setCurrentSounds((prev) => [...prev, sound]);
+      setCurrentSounds((prev) => {
+        const newSounds = [...prev, sound];
+
+        // For CV pattern: automatically add H after vowel
+        if (
+          selectedPattern === "CV" &&
+          sound.category === "vowel" &&
+          newSounds.length === 2
+        ) {
+          const hSound: Sound = {
+            value: "H",
+            display: extrasToIPA[ExtrasOfLingua.H],
+            fontForm: ExtrasOfLingua.H,
+            category: "vowel", // Treat H as a second vowel for CV pattern
+          };
+          return [...newSounds, hSound];
+        }
+
+        return newSounds;
+      });
     }
   };
 
@@ -216,7 +266,7 @@ export const RootWordComposer: React.FC = () => {
     setCurrentSounds((prev) => prev.slice(0, -1));
   };
 
-  const handlePatternSelect = (pattern: "CCV" | "CVV") => {
+  const handlePatternSelect = (pattern: "CCV" | "CVV" | "CV") => {
     setSelectedPattern(pattern);
     setCurrentSounds([]); // Reset when changing pattern
   };
@@ -336,6 +386,15 @@ export const RootWordComposer: React.FC = () => {
             <strong>CVV Pattern</strong>
             <span>Consonne-Voyelle-Voyelle</span>
           </button>
+          <button
+            className={`pattern-button ${
+              selectedPattern === "CV" ? "active" : ""
+            }`}
+            onClick={() => handlePatternSelect("CV")}
+          >
+            <strong>CV Pattern</strong>
+            <span>Consonne-Voyelle</span>
+          </button>
         </div>
 
         {selectedPattern && (
@@ -348,7 +407,17 @@ export const RootWordComposer: React.FC = () => {
               </button>
             </div>
             <div className="next-sound-hint">
-              {getExpectedSoundType() && (
+              {selectedPattern === "CV" && currentSounds.length === 0 && (
+                <p>
+                  ➡️ <strong>Prochain son attendu:</strong> 🔵 Consonne
+                </p>
+              )}
+              {selectedPattern === "CV" && currentSounds.length === 1 && (
+                <p>
+                  ➡️ <strong>Prochain son attendu:</strong> 🔴 Voyelle
+                </p>
+              )}
+              {selectedPattern !== "CV" && getExpectedSoundType() && (
                 <p>
                   ➡️ <strong>Prochain son attendu:</strong>{" "}
                   {getExpectedSoundType() === "consonant"

@@ -128,7 +128,10 @@ table {
    ================================= */
 
 /* Classe unique pour la police ScribeWork - seule source de vérité */
-
+@font-face {
+  font-family: "ScribeWork";
+  src: url("../public/fonts/scribeWork.otf") format("opentype");
+}
 .scribe-font {
   font-family: "ScribeWork" !important;
 

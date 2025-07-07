@@ -5,6 +5,12 @@ import {
   RootWord,
 } from "../../utils/hybridDatabase";
 import {
+  getAllGrammaticalClasses,
+  addComposedWord,
+  getAllComposedWords,
+  ExtendedRootWord as ComposedWordRootWord,
+} from "../../utils/composedWordsDatabase";
+import {
   DivineRootWords,
   DivineRootWordsIPA,
   DivineRootWordsForFont,
@@ -23,11 +29,12 @@ interface ExtendedRootWord extends RootWord {
   glyphImage?: string;
 }
 
+interface GrammaticalClassData {
+  className: string;
+}
+
 interface WordComposerProps {
-  wordHistory: { words: ExtendedRootWord[]; signification: string }[];
-  setWordHistory: (
-    history: { words: ExtendedRootWord[]; signification: string }[]
-  ) => void;
+  // No props needed anymore
 }
 
 // Constants
@@ -59,10 +66,7 @@ const PRIORITY_MAP: { [key: number]: keyof WordComposition["priority"] } = {
   10: "ten",
 };
 
-export const WordComposer: React.FC<WordComposerProps> = ({
-  wordHistory,
-  setWordHistory,
-}) => {
+export const WordComposer: React.FC<WordComposerProps> = () => {
   const [availableClasses, setAvailableClasses] = useState<ClassWithPriority[]>(
     []
   );
@@ -72,6 +76,13 @@ export const WordComposer: React.FC<WordComposerProps> = ({
   const [wordSignification, setWordSignification] = useState<string>("");
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const wordDisplayRef = useRef<HTMLDivElement>(null);
+
+  // State for grammatical classes
+  const [grammaticalClasses, setGrammaticalClasses] = useState<
+    GrammaticalClassData[]
+  >([]);
+  const [selectedGrammaticalClass, setSelectedGrammaticalClass] =
+    useState<string>("");
 
   // Utility function to create empty priority groups
   const createEmptyPriorityGroups = () => {
@@ -196,6 +207,15 @@ export const WordComposer: React.FC<WordComposerProps> = ({
     loadClasses();
   }, []);
 
+  // Load grammatical classes on component mount
+  useEffect(() => {
+    const loadGrammaticalClasses = () => {
+      const classes = getAllGrammaticalClasses();
+      setGrammaticalClasses(classes);
+    };
+    loadGrammaticalClasses();
+  }, []);
+
   // Load root words when class is selected
   useEffect(() => {
     if (selectedClass) {
@@ -245,38 +265,45 @@ export const WordComposer: React.FC<WordComposerProps> = ({
     setWordSignification("");
   };
 
-  const saveToHistory = () => {
-    if (composedWord.length > 0) {
-      // Generate automatic signification if none provided
-      let finalSignification = wordSignification;
-      if (!finalSignification) {
-        const { rootWords: priorityRootWords } = createEmptyPriorityGroups();
-        composedWord.forEach((rootWord) => {
-          const priority = getRootWordPriority(rootWord);
-          const priorityKey = getPriorityKey(priority);
-          priorityRootWords[priorityKey].push(rootWord);
-        });
+  const saveToComposedWordsDatabase = () => {
+    if (composedWord.length > 0 && selectedGrammaticalClass) {
+      const composedDisplay = generateWordDisplay(
+        composedWord,
+        wordSignification
+      );
 
-        finalSignification = PRIORITY_ORDER.flatMap(
-          (priority) => priorityRootWords[priority]
-        )
-          .map((rw) => rw.signification)
-          .join(" + ");
+      // Convert ExtendedRootWord to ComposedWordRootWord format
+      const convertedRootWords: ComposedWordRootWord[] = composedWord.map(
+        (rw) => ({
+          ipa: rw.ipa,
+          font: rw.font,
+          signification: rw.signification,
+          isDivine: rw.isDivine,
+          glyphImage: rw.glyphImage,
+        })
+      );
+
+      try {
+        const savedWord = addComposedWord(
+          selectedGrammaticalClass,
+          convertedRootWords,
+          composedDisplay.meaning,
+          composedDisplay.font,
+          composedDisplay.ipa
+        );
+
+        alert(
+          `✅ Mot composé sauvegardé dans la classe "${selectedGrammaticalClass}" !\n\nMot: ${composedDisplay.font}\nSignification: ${composedDisplay.meaning}`
+        );
+
+        setComposedWord([]);
+        setWordSignification("");
+        setSelectedGrammaticalClass("");
+      } catch (error) {
+        console.error("Error saving composed word:", error);
+        alert("❌ Erreur lors de la sauvegarde du mot composé.");
       }
-
-      const newHistoryItem = {
-        words: [...composedWord],
-        signification: finalSignification,
-      };
-
-      setWordHistory([...wordHistory, newHistoryItem]);
-      setComposedWord([]);
-      setWordSignification("");
     }
-  };
-
-  const clearHistory = () => {
-    setWordHistory([]);
   };
 
   const getPriorityIndicator = (priority: number) => {
@@ -346,13 +373,36 @@ export const WordComposer: React.FC<WordComposerProps> = ({
         </div>
 
         <div className="word-controls">
-          <button
-            onClick={saveToHistory}
-            disabled={composedWord.length === 0}
-            className="control-button save-button"
-          >
-            💾 Sauvegarder
-          </button>
+          <div className="grammatical-class-save-section">
+            <div className="grammatical-class-selection">
+              <label htmlFor="grammatical-class-select">
+                Classe grammaticale:
+              </label>
+              <select
+                id="grammatical-class-select"
+                value={selectedGrammaticalClass}
+                onChange={(e) => setSelectedGrammaticalClass(e.target.value)}
+                className="grammatical-class-select"
+              >
+                <option value="">Sélectionnez une classe...</option>
+                {grammaticalClasses.map((grammarClass) => (
+                  <option
+                    key={grammarClass.className}
+                    value={grammarClass.className}
+                  >
+                    {grammarClass.className}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button
+              onClick={saveToComposedWordsDatabase}
+              disabled={composedWord.length === 0 || !selectedGrammaticalClass}
+              className="control-button save-button"
+            >
+              💾 Sauvegarder
+            </button>
+          </div>
         </div>
       </div>
 
@@ -439,43 +489,6 @@ export const WordComposer: React.FC<WordComposerProps> = ({
           ) : (
             <p className="empty-state">Aucun root word dans cette classe</p>
           )}
-        </div>
-      )}
-
-      {/* Word History */}
-      {wordHistory.length > 0 && (
-        <div className="word-history">
-          <h3>Historique des mots composés</h3>
-          <div className="history-controls">
-            <button onClick={clearHistory} className="control-button">
-              🗑️ Effacer l'historique
-            </button>
-          </div>
-          <div className="history-list">
-            {wordHistory.map((historyItem, index) => {
-              const display = generateWordDisplay(
-                historyItem.words,
-                historyItem.signification
-              );
-              return (
-                <div key={index} className="history-item">
-                  <div className="scribe-font">{display.font}</div>
-                  <div className="history-ipa">/{display.ipa}/</div>
-                  <div className="history-meaning">{display.meaning}</div>
-                  <button
-                    onClick={() => {
-                      setComposedWord([...historyItem.words]);
-                      setWordSignification(historyItem.signification);
-                    }}
-                    className="restore-button"
-                    title="Restaurer ce mot"
-                  >
-                    🔄
-                  </button>
-                </div>
-              );
-            })}
-          </div>
         </div>
       )}
     </div>

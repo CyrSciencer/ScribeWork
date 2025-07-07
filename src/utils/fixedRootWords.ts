@@ -1,12 +1,12 @@
 export enum DivineRootWords {
   DIO = "DIO", // d-i-o /di.ɵ/ the source of being
-  KYO = "K'YO", // k'-y-o /k'j.ɵ/ the source of non-being
+  KRO = "K'ʁO", // k'-ʁ-o /k'ʁ.ɵ/ the source of non-being
 
   SKAN = "SKAN", // s-k-an /skã/ essence
   XIO = "XIO", // c-i-o /ʂi.ɵ/ life cycle
   WEI = "WÈI", // w-è-i /wɛ.i/ the all
 
-  TEON = "TÈON", // t-è-on /tɛ.ɔ̃/ ethereal field
+  YEON = "YÈON", // y-è-on /jɛ.ɔ̃/ ethereal field
   FIIN = "FIIN", // f-i-in /fi.ɛ̃/ physical field
 
   TRI = "ʇRI", // ʇ-x-i /ʇri/ birth
@@ -25,13 +25,13 @@ export enum DivineRootWords {
 
 export enum DivineRootWordsIPA {
   DIO = "diɵ", // d-i-o /di.ɵ/ the source of being
-  KYO = "k'jɵ", // k'-y-o /k'j.ɵ/ the source of non-being
+  KRO = "k'ʁɵ", // k'-ʁ-o /k'ʁ.ɵ/ the source of non-being
 
   SKAN = "skã", // s-k-an /skã/ essence
   XIO = "ʂiɵ", // c-i-o /ʂi.ɵ/ life cycle
   WEI = "wɛi", // w-è-i /wɛ.i/ the all
 
-  TEON = "tɛɔ̃", // t-è-on /tɛ.ɔ̃/ ethereal field
+  YEON = "jɛɔ̃", // y-è-on /jɛ.ɔ̃/ ethereal field
   FIIN = "fiɛ̃", // f-i-in /fi.ɛ̃/ physical field
 
   TRI = "ʇri", // ʇ-x-i /ʇri/ birth
@@ -51,13 +51,13 @@ export enum DivineRootWordsIPA {
 export enum DivineRootWordsForFont {
   // Pattern CVV: consonne-voyelle-voyelle (IPA) → voyelle1M-voyelle2B-consonne (Font)
   DIO = "iMoBd", // d-i-ɵ → iM-oB-d
-  KYO = "oMkky", // k'-j-ɵ → oM-kk-y (k'=kk, j=y)
+  KRO = "oMkkr", // k'-j-ɵ → oM-kk-y (k'=kk, j=y)
   XIO = "iMoBx", // ʂ-i-ɵ → iM-oB-x (ʂ=x)
   WEI = "eaMiBw", // w-ɛ-i → eaM-iB-w (ɛ=ea)
 
   // Pattern CCV: consonne-consonne-voyelle (IPA) → voyelleM-cons1-cons2 (Font)
   SKAN = "aaMsk", // s-k-ã → aaM-s-k (ã=aa)
-  TEON = "eaMooBt", // t-è-on /tɛ.ɔ̃/ ethereal field
+  YEON = "eaMooBy", // t-è-on /tɛ.ɔ̃/ ethereal field
   FIIN = "iMeeBf", // f-i-ɛ̃ → iM-eeB-f (ɛ̃=ee)
 
   // Birth-Death cycle (CCV pattern)
@@ -79,13 +79,13 @@ export enum DivineRootWordsForFont {
 
 export enum DivineRootWordsSignification {
   DIO = "la source première", // d-i-o /di.ɵ/ the source of being
-  KYO = "la source de non-être", // k'-y-o /k'j.ɵ/ the source of non-being
+  KRO = "la source de non-être", // k'-ʁ-o /k'ʁ.ɵ/ the source of non-being
 
   SKAN = "essence", // s-k-an /skã/ essence
   XIO = "cycle de vie", // c-i-o /ʂi.ɵ/ life cycle
   WEI = "tout", // w-è-i /wɛ.i/ the all
 
-  TEON = "champ éthéré", // t-è-on /tɛ.ɔ̃/ ethereal field
+  YEON = "champ éthéré", // t-è-on /tɛ.ɔ̃/ ethereal field
   FIIN = "champ physique", // f-i-in /fi.ɛ̃/ physical field
 
   TRI = "naissance", // ʇ-x-i /ʇri/ birth

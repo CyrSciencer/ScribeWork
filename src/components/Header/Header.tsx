@@ -5,6 +5,11 @@ import {
   RootWord,
 } from "../../utils/hybridDatabase";
 import {
+  exportComposedWordsDatabase,
+  importComposedWordsDatabase,
+  getComposedWordsDatabaseStats,
+} from "../../utils/composedWordsDatabase";
+import {
   DivineRootWords,
   DivineRootWordsIPA,
   DivineRootWordsForFont,
@@ -31,22 +36,14 @@ interface ExportData {
     }>;
     divine: ExtendedRootWord[];
   };
-  composedWords: { words: ExtendedRootWord[]; signification: string }[];
+  composedWords: any; // ComposedWordsDatabaseExport type
 }
 
 interface HeaderProps {
-  wordHistory: { words: ExtendedRootWord[]; signification: string }[];
-  setWordHistory: (
-    history: { words: ExtendedRootWord[]; signification: string }[]
-  ) => void;
   currentPage: number;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  wordHistory,
-  setWordHistory,
-  currentPage,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Convert Divine Root Words to ExtendedRootWord format
@@ -71,13 +68,14 @@ export const Header: React.FC<HeaderProps> = ({
     const allRootWords = getAllRootWords();
     const allClasses = getAllWordClassesWithPriorities();
     const divineRootWords = convertDivineRootWords();
+    const composedWordsDatabase = exportComposedWordsDatabase();
 
     const exportData: ExportData = {
       metadata: {
-        version: "1.0.0",
+        version: "3.0.0",
         exportDate: new Date().toISOString(),
         description:
-          "Lingua Word Composer Export - Root Words and Composed Words",
+          "Lingua Word Composer Export - Root Words and Composed Words Database",
       },
       rootWords: {
         classes: allRootWords.map((classData) => ({
@@ -89,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
         })),
         divine: divineRootWords,
       },
-      composedWords: wordHistory,
+      composedWords: composedWordsDatabase,
     };
 
     const jsonString = JSON.stringify(exportData, null, 2);
@@ -108,15 +106,15 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   // Import data from JSON file
-  const importData = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const importData = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = async (e) => {
       try {
         const content = e.target?.result as string;
-        const importedData: ExportData = JSON.parse(content);
+        const importedData: any = JSON.parse(content);
 
         // Validate the imported data structure
         if (
@@ -130,18 +128,69 @@ export const Header: React.FC<HeaderProps> = ({
           return;
         }
 
-        // Import composed words to history
-        setWordHistory(importedData.composedWords);
+        let databaseCount = 0;
+
+        // Handle different export versions
+        if (importedData.metadata.version === "3.0.0") {
+          // Version 3.0.0 - Only composed words database
+          try {
+            const dbBlob = new Blob(
+              [JSON.stringify(importedData.composedWords)],
+              {
+                type: "application/json",
+              }
+            );
+            const dbFile = new File([dbBlob], "composed-words-db.json", {
+              type: "application/json",
+            });
+
+            await importComposedWordsDatabase(dbFile);
+            const dbStats = getComposedWordsDatabaseStats();
+            databaseCount = dbStats.totalWords;
+          } catch (error) {
+            console.warn("Error importing composed words database:", error);
+          }
+        } else if (
+          importedData.metadata.version === "2.0.0" &&
+          importedData.composedWords.history
+        ) {
+          // Version 2.0.0 - Legacy format with history and database
+          if (importedData.composedWords.database) {
+            try {
+              const dbBlob = new Blob(
+                [JSON.stringify(importedData.composedWords.database)],
+                {
+                  type: "application/json",
+                }
+              );
+              const dbFile = new File([dbBlob], "composed-words-db.json", {
+                type: "application/json",
+              });
+
+              await importComposedWordsDatabase(dbFile);
+              const dbStats = getComposedWordsDatabaseStats();
+              databaseCount = dbStats.totalWords;
+            } catch (error) {
+              console.warn("Error importing composed words database:", error);
+            }
+          }
+        } else {
+          // Version 1.0.0 or older - Legacy history format (no longer supported for composed words)
+          console.warn(
+            "Legacy history format no longer supported for composed words"
+          );
+        }
 
         // Show success message
         alert(
           `Import réussi!\n` +
-            `- Classes de mots: ${importedData.rootWords.classes.length}\n` +
+            `- Classes de mots insécables: ${importedData.rootWords.classes.length}\n` +
             `- Mots divins: ${importedData.rootWords.divine.length}\n` +
-            `- Mots composés: ${importedData.composedWords.length}\n` +
+            `- Base de données mots composés: ${databaseCount}\n` +
             `- Date d'export: ${new Date(
               importedData.metadata.exportDate
-            ).toLocaleDateString()}`
+            ).toLocaleDateString()}\n` +
+            `- Version: ${importedData.metadata.version || "1.0.0"}`
         );
       } catch (error) {
         console.error("Erreur lors de l'import:", error);

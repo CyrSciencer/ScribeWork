@@ -6,16 +6,9 @@
   gap: 10px;
 }
 
-.root-words-container h1 {
-  font-size: 3rem;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  background-color: aliceblue;
-}
 .root-words-container > div:nth-child(3) {
   width: 75%;
-  background-color: #f0f0f0;
+  background-color: var(--light-color);
   padding: 10px;
   border-radius: 10px;
 }
@@ -39,9 +32,6 @@
   gap: 10px;
   justify-content: center;
 }
-h2 {
-  font-size: 2rem;
-}
 
 .root-word-container {
   display: flex;
@@ -49,11 +39,11 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid #000;
+  border: 1px solid var(--border-dark);
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  background-color: var(--light-color);
 }
 
 .font-text {

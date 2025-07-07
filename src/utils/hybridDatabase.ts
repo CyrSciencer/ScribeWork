@@ -417,6 +417,103 @@ export const clearAllData = (): boolean => {
   return false;
 };
 
+// Delete a specific root word
+export const deleteRootWord = (
+  className: string,
+  rootWordIndex: number
+): boolean => {
+  const normalizedClassName = className.toLowerCase().trim();
+
+  if (!PROJECT_ROOT_WORDS[normalizedClassName]) {
+    console.warn(`Class ${normalizedClassName} not found`);
+    return false;
+  }
+
+  const wordClass = PROJECT_ROOT_WORDS[normalizedClassName];
+  if (rootWordIndex < 0 || rootWordIndex >= wordClass.words.length) {
+    console.warn(`Invalid root word index: ${rootWordIndex}`);
+    return false;
+  }
+
+  // Remove the root word
+  wordClass.words.splice(rootWordIndex, 1);
+
+  // Save to localStorage
+  saveToLocalStorage(PROJECT_ROOT_WORDS);
+
+  console.log(`✅ Root word deleted from class ${normalizedClassName}`);
+  return true;
+};
+
+// Move root word to different class
+export const moveRootWordToClass = (
+  fromClassName: string,
+  rootWordIndex: number,
+  toClassName: string
+): boolean => {
+  const normalizedFromClass = fromClassName.toLowerCase().trim();
+  const normalizedToClass = toClassName.toLowerCase().trim();
+
+  if (!PROJECT_ROOT_WORDS[normalizedFromClass]) {
+    console.warn(`Source class ${normalizedFromClass} not found`);
+    return false;
+  }
+
+  if (!PROJECT_ROOT_WORDS[normalizedToClass]) {
+    console.warn(`Target class ${normalizedToClass} not found`);
+    return false;
+  }
+
+  const fromWordClass = PROJECT_ROOT_WORDS[normalizedFromClass];
+  if (rootWordIndex < 0 || rootWordIndex >= fromWordClass.words.length) {
+    console.warn(`Invalid root word index: ${rootWordIndex}`);
+    return false;
+  }
+
+  // Remove from source class
+  const rootWord = fromWordClass.words.splice(rootWordIndex, 1)[0];
+
+  // Add to target class
+  PROJECT_ROOT_WORDS[normalizedToClass].words.push(rootWord);
+
+  // Save to localStorage
+  saveToLocalStorage(PROJECT_ROOT_WORDS);
+
+  console.log(
+    `✅ Root word moved from ${normalizedFromClass} to ${normalizedToClass}`
+  );
+  return true;
+};
+
+// Update a specific root word
+export const updateRootWord = (
+  className: string,
+  rootWordIndex: number,
+  updatedRootWord: RootWord
+): boolean => {
+  const normalizedClassName = className.toLowerCase().trim();
+
+  if (!PROJECT_ROOT_WORDS[normalizedClassName]) {
+    console.warn(`Class ${normalizedClassName} not found`);
+    return false;
+  }
+
+  const wordClass = PROJECT_ROOT_WORDS[normalizedClassName];
+  if (rootWordIndex < 0 || rootWordIndex >= wordClass.words.length) {
+    console.warn(`Invalid root word index: ${rootWordIndex}`);
+    return false;
+  }
+
+  // Update the root word
+  wordClass.words[rootWordIndex] = { ...updatedRootWord };
+
+  // Save to localStorage
+  saveToLocalStorage(PROJECT_ROOT_WORDS);
+
+  console.log(`✅ Root word updated in class ${normalizedClassName}`);
+  return true;
+};
+
 // Force refresh localStorage with current DEFAULT_DATABASE structure
 export const refreshLocalStorage = (): void => {
   if (typeof window === "undefined") return;

@@ -287,9 +287,7 @@ export const moveComposedWordToClass = (
 
   // Find and remove word from current class
   let foundWord: ComposedWord | null = null;
-  for (const [className, classData] of Object.entries(
-    COMPOSED_WORDS_DATABASE
-  )) {
+  for (const [, classData] of Object.entries(COMPOSED_WORDS_DATABASE)) {
     const wordIndex = classData.words.findIndex((word) => word.id === wordId);
     if (wordIndex !== -1) {
       foundWord = classData.words.splice(wordIndex, 1)[0];

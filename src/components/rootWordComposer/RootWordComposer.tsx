@@ -176,16 +176,6 @@ export const RootWordComposer: React.FC = () => {
     })
   );
 
-  // Extras sounds (like H)
-  const extras: Sound[] = Object.entries(ExtrasOfLingua).map(
-    ([key, value]) => ({
-      value: key, // Enum key (code-friendly form)
-      display: extrasToIPA[value] || value, // True IPA form
-      fontForm: value, // Font form (enum value)
-      category: "extra",
-    })
-  );
-
   // Component for displaying all 3 forms of a sound
   const SoundButton: React.FC<{ sound: Sound; category: string }> = ({
     sound,

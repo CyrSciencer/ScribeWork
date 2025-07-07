@@ -7,7 +7,6 @@ import {
 import {
   getAllGrammaticalClasses,
   addComposedWord,
-  getAllComposedWords,
   ExtendedRootWord as ComposedWordRootWord,
 } from "../../utils/composedWordsDatabase";
 import {
@@ -284,7 +283,7 @@ export const WordComposer: React.FC<WordComposerProps> = () => {
       );
 
       try {
-        const savedWord = addComposedWord(
+        addComposedWord(
           selectedGrammaticalClass,
           convertedRootWords,
           composedDisplay.meaning,

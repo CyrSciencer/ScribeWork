@@ -19,13 +19,6 @@ interface RootWordClassData {
   priority: number;
 }
 
-interface RootWordWithIndex {
-  rootWord: RootWord;
-  index: number;
-  className: string;
-  priority: number;
-}
-
 export const HybridDatabaseViewer: React.FC = () => {
   const [rootWordsData, setRootWordsData] = useState<RootWordClassData[]>([]);
   const [selectedClass, setSelectedClass] = useState<string>("all");

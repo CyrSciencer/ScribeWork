@@ -5,7 +5,6 @@ import {
   ExtrasOfLingua,
 } from "../../utils/soundsOfLingua";
 import {
-  getAllWordClasses,
   addRootWordToClass,
   RootWord,
   getDatabaseStats,

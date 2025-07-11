@@ -5,11 +5,13 @@ import {
   ExtrasOfLingua,
 } from "../../utils/soundsOfLingua";
 import {
+  getAllWordClasses,
   addRootWordToClass,
   RootWord,
   getDatabaseStats,
   updateClassPriority,
   UpdatedWordClasses,
+  doesFontExist,
 } from "../../utils/hybridDatabase";
 import "./RootWordComposer.css";
 
@@ -273,6 +275,13 @@ export const RootWordComposer: React.FC = () => {
     // Validation
     if (!selectedPattern) {
       alert("Veuillez d'abord choisir un pattern (CCV ou CVV)");
+      return;
+    }
+    // Check for duplicates before saving
+    if (doesFontExist(currentWord)) {
+      alert(
+        `❌ ERREUR : Le mot en font "${currentWord}" existe déjà dans la base de données !`
+      );
       return;
     }
 

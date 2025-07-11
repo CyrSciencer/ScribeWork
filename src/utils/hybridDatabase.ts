@@ -373,6 +373,25 @@ export const searchRootWords = (
   return results;
 };
 
+// Check if a root word with a given "font" form already exists
+export const doesFontExist = (font: string): boolean => {
+  const fontLower = font.toLowerCase();
+
+  for (const className in PROJECT_ROOT_WORDS) {
+    const wordClass = PROJECT_ROOT_WORDS[className];
+    if (wordClass && wordClass.words) {
+      const found = wordClass.words.some(
+        (rootWord) => rootWord.font.toLowerCase() === fontLower
+      );
+      if (found) {
+        return true; // Exit early if found
+      }
+    }
+  }
+
+  return false;
+};
+
 // Get database statistics
 export const getDatabaseStats = (): {
   totalClasses: number;

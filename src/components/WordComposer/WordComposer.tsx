@@ -8,6 +8,7 @@ import {
   getAllGrammaticalClasses,
   addComposedWord,
   ExtendedRootWord as ComposedWordRootWord,
+  doesComposedFontExist,
 } from "../../utils/composedWordsDatabase";
 import {
   DivineRootWords,
@@ -281,6 +282,14 @@ export const WordComposer: React.FC<WordComposerProps> = () => {
           glyphImage: rw.glyphImage,
         })
       );
+
+      // Check for duplicates before saving
+      if (doesComposedFontExist(composedDisplay.font)) {
+        alert(
+          `❌ ERREUR : Le mot composé en font "${composedDisplay.font}" existe déjà !`
+        );
+        return;
+      }
 
       try {
         addComposedWord(

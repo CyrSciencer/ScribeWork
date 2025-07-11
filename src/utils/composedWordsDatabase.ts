@@ -337,6 +337,25 @@ export const searchComposedWords = (
   return results;
 };
 
+// Check if a composed word with a given "font" form already exists
+export const doesComposedFontExist = (font: string): boolean => {
+  const fontLower = font.toLowerCase();
+
+  for (const className in COMPOSED_WORDS_DATABASE) {
+    const classData = COMPOSED_WORDS_DATABASE[className];
+    if (classData && classData.words) {
+      const found = classData.words.some(
+        (word) => word.font.toLowerCase() === fontLower
+      );
+      if (found) {
+        return true; // Exit early if found
+      }
+    }
+  }
+
+  return false;
+};
+
 // Get database statistics
 export const getComposedWordsDatabaseStats = (): {
   totalClasses: number;

@@ -203,19 +203,6 @@
   background-color: white;
   text-align: left;
 }
-.ipa-display {
-  font-size: 1.3em;
-  font-family: "Times New Roman", serif;
-  color: #e74c3c;
-  font-weight: bold;
-  min-width: 100px;
-  text-align: center;
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid var(--border-color);
-}
-
 .word-controls {
   display: flex;
   gap: 10px;
@@ -406,7 +393,6 @@
 }
 
 .sound-ipa {
-  font-family: "Times New Roman", serif;
   font-size: 1.2em;
   background: linear-gradient(135deg, #e8f5e8, #d4edda);
   border-color: #28a745;

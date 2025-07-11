@@ -415,7 +415,7 @@ export const WordComposer: React.FC<WordComposerProps> = () => {
             <div className="scribe-font ">
               {"<" + composedDisplay.font + ">"}
             </div>
-            <div className="ipa-display">/{composedDisplay.ipa}/</div>
+            <div className="sound-ipa">/{composedDisplay.ipa}/</div>
             <div className="meaning-display">{composedDisplay.meaning}</div>
           </div>
         ) : (

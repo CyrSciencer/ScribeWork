@@ -160,30 +160,14 @@ table {
 }
 
 /* =================================
-   IPA CHARACTER DISPLAY FIXES
+   GLOBAL IPA STYLING
    ================================= */
-
-/* Amélioration du rendu des caractères IPA avec diacritiques */
-.ipa-display,
-.root-word-ipa,
-.history-ipa,
 .sound-ipa {
-  /* Police optimisée pour IPA */
-  font-family: "Segoe UI", "Times New Roman", "Doulos SIL", "Charis SIL", serif !important;
-
-  /* Rendu optimal des caractères combinés */
-  text-rendering: optimizeQuality !important;
-  font-feature-settings: "calt" 1, "liga" 1 !important;
-
-  /* Support des caractères combinés Unicode */
-  unicode-bidi: bidi-override !important;
-  direction: ltr !important;
-
-  /* Espacement pour éviter les chevauchements */
-  letter-spacing: 0.02em !important;
-
-  /* Hauteur de ligne pour les diacritiques */
-  line-height: 1.3 !important;
+  /* Use a generic serif font family for better character support across browsers */
+  font-family: serif;
+  /* Improve rendering of combined characters and ligatures */
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1, "calt" 1;
 }
 
 .scribe-font:hover {

@@ -7,13 +7,13 @@ export interface RootWord {
   signification: string;
 }
 
-export interface WordClass {
+export interface WordClassSystem {
   priority: number;
   words: RootWord[];
 }
 
 export type RootWordDatabase = {
-  [className: string]: WordClass;
+  [className: string]: WordClassSystem;
 };
 
 export interface DatabaseExport {
@@ -28,9 +28,13 @@ export interface DatabaseExport {
 }
 
 // Word Classes
-export enum WordClasses {
-  RACINE = "racine",
-}
+export const WordClasses = {
+  RACINE: "racine",
+};
+export type WordClass = keyof typeof WordClasses;
+export const UpdatedWordClasses = (): WordClass[] => {
+  return getAllRootWords().map((rootWord) => rootWord.className as WordClass);
+};
 
 // localStorage keys
 const STORAGE_KEY = "hybrid_root_words";
@@ -42,7 +46,7 @@ const DEFAULT_DATABASE: RootWordDatabase = {
 };
 
 // Initialize database from localStorage or defaults
-function loadFromLocalStorage(): RootWordDatabase {
+const loadFromLocalStorage = (): RootWordDatabase => {
   if (typeof window === "undefined") return { ...DEFAULT_DATABASE };
 
   try {
@@ -62,7 +66,7 @@ function loadFromLocalStorage(): RootWordDatabase {
           };
         } else if (value && typeof value === "object" && "words" in value) {
           // New format: already WordClass
-          migratedData[className] = value as WordClass;
+          migratedData[className] = value as WordClassSystem;
         } else {
           // Invalid format: use default
           migratedData[className] = { priority: 0, words: [] };
@@ -76,10 +80,10 @@ function loadFromLocalStorage(): RootWordDatabase {
     console.warn("Error loading from localStorage:", error);
   }
   return { ...DEFAULT_DATABASE };
-}
+};
 
 // Save to localStorage with automatic backup
-function saveToLocalStorage(database: RootWordDatabase): void {
+const saveToLocalStorage = (database: RootWordDatabase): void => {
   if (typeof window === "undefined") return;
 
   try {
@@ -95,13 +99,13 @@ function saveToLocalStorage(database: RootWordDatabase): void {
   } catch (error) {
     console.error("Error saving to localStorage:", error);
   }
-}
+};
 
 // Main database instance
 export let PROJECT_ROOT_WORDS: RootWordDatabase = loadFromLocalStorage();
 
 // Export current database as downloadable JSON
-export function exportDatabase(): DatabaseExport {
+export const exportDatabase = (): DatabaseExport => {
   const exportData: DatabaseExport = {
     wordClasses: PROJECT_ROOT_WORDS,
     lastUpdated: new Date().toISOString(),
@@ -114,10 +118,10 @@ export function exportDatabase(): DatabaseExport {
   };
 
   return exportData;
-}
+};
 
 // Download database as JSON file
-export function downloadDatabase(): void {
+export const downloadDatabase = (): void => {
   try {
     const exportData = exportDatabase();
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -144,10 +148,10 @@ export function downloadDatabase(): void {
     console.error("Error downloading database:", error);
     alert("❌ Erreur lors de l'export. Voir la console pour plus de détails.");
   }
-}
+};
 
 // Import database from JSON file
-export function importDatabase(file: File): Promise<boolean> {
+export const importDatabase = (file: File): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
@@ -197,7 +201,7 @@ export function importDatabase(file: File): Promise<boolean> {
 
     reader.readAsText(file);
   });
-}
+};
 
 // Restore from localStorage backup
 export const restoreFromBackup = (): boolean => {

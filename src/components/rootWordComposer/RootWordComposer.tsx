@@ -10,6 +10,7 @@ import {
   RootWord,
   getDatabaseStats,
   updateClassPriority,
+  UpdatedWordClasses,
 } from "../../utils/hybridDatabase";
 import "./RootWordComposer.css";
 
@@ -216,7 +217,7 @@ export const RootWordComposer: React.FC = () => {
               : "Non disponible pour ce pattern"
           }
         >
-          {sound.value}
+          {sound.value.toUpperCase()}
         </button>
       </div>
     );
@@ -427,7 +428,7 @@ export const RootWordComposer: React.FC = () => {
 
       <div className="root-word-display">
         <label>Mot en cours :</label>
-        <span className="ipa-display" title="IPA Form (phonétique)">
+        <span className="sound-ipa" title="IPA Form (phonétique)">
           /{getIPAString()}/
         </span>
         <div
@@ -474,7 +475,7 @@ export const RootWordComposer: React.FC = () => {
                   className="class-dropdown"
                 >
                   <option value="">Sélectionnez une classe...</option>
-                  {getAllWordClasses().map((cls) => (
+                  {UpdatedWordClasses().map((cls) => (
                     <option key={cls} value={cls}>
                       {cls}
                     </option>

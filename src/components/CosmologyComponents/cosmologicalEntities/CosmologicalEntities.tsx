@@ -194,31 +194,32 @@ const ScripturgicBeingSection = ({
 
 export const CosmologicalEntities = () => {
   const { ANGELS, DEMONS, FEY, ELEMENTALS } = ScripturgicBeings;
+  // eslint-disable-next-line
   const [hoveringEntity, setHoveringEntity] = useState<string | null>(null);
   return (
     <div>
       <ScripturgicBeingSection
         title="Angels"
         vowelSet={ANGELS.vowelsSets as unknown as string[]}
-        onMouseEnter={setHoveringEntity}
+        onMouseEnter={(key: string) => setHoveringEntity(key)}
         onMouseLeave={() => setHoveringEntity(null)}
       />
       <ScripturgicBeingSection
         title="Demons"
         vowelSet={DEMONS.vowelsSets as unknown as string[]}
-        onMouseEnter={setHoveringEntity}
+        onMouseEnter={(key: string) => setHoveringEntity(key)}
         onMouseLeave={() => setHoveringEntity(null)}
       />
       <ScripturgicBeingSection
         title="Fey"
         vowelSet={FEY.vowelsSets as unknown as string[]}
-        onMouseEnter={setHoveringEntity}
+        onMouseEnter={(key: string) => setHoveringEntity(key)}
         onMouseLeave={() => setHoveringEntity(null)}
       />
       <ScripturgicBeingSection
         title="Elementals"
         vowelSet={ELEMENTALS.vowelsSets as unknown as string[]}
-        onMouseEnter={setHoveringEntity}
+        onMouseEnter={(key: string) => setHoveringEntity(key)}
         onMouseLeave={() => setHoveringEntity(null)}
       />
     </div>

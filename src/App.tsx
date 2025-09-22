@@ -15,7 +15,6 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { WordCreation } from "./pages/WordCreation";
 import { Cosmology } from "./pages/Cosmology";
-import { FullWordList } from "./components/WordCreationComponents/fullWordList/FullWordList";
 // Define the root word type
 interface RootWord {
   rootWord: string;

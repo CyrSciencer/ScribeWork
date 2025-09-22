@@ -129,11 +129,11 @@ table {
 
 /* Classe unique pour la police ScribeWork - seule source de vérité */
 @font-face {
-  font-family: "ScribeWork";
-  src: url("../public/fonts/scribeWork.otf") format("opentype");
+  font-family: "cadef";
+  src: url("../public/fonts/cadef.otf") format("opentype");
 }
 .scribe-font {
-  font-family: "ScribeWork" !important;
+  font-family: "cadef" !important;
 
   /* Styles spécifiés par l'utilisateur */
   font-size: 3em !important;

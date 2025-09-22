@@ -1,0 +1,29 @@
+import CosmologicalBeings from "../components/CosmologyComponents/cosmologicalBeings/CosmologicalBeings";
+import "../components/CosmologyComponents/Cosmology.css";
+import { useState } from "react";
+import { CosmologicalEntities } from "../components/CosmologyComponents/cosmologicalEntities/CosmologicalEntities";
+
+export const Cosmology = () => {
+  const [page, setPage] = useState(1);
+  return (
+    <div className="cosmology-page">
+      <div className="page-navigation">
+        {page !== 1 && (
+          <button className="page-button" onClick={() => setPage(page - 1)}>
+            ← Page {page - 1}
+          </button>
+        )}
+        <span className="page-indicator">Page {page}</span>
+        {page !== 2 && (
+          <button className="page-button" onClick={() => setPage(page + 1)}>
+            Page {page + 1} →
+          </button>
+        )}
+      </div>
+      <div className="page-content">{page === 1 && <CosmologicalBeings />}</div>
+      <div className="page-content">
+        {page === 2 && <CosmologicalEntities />}
+      </div>
+    </div>
+  );
+};

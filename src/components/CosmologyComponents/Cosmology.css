@@ -1,0 +1,117 @@
+.cosmology-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cosmology-page h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.cosmology-sections {
+  display: grid;
+  gap: 2rem;
+}
+
+.cosmology-sections section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.cosmology-sections h2 {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+.cosmic-entities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cosmic-entity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.cosmic-name {
+  font-family: "cadef", monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  min-width: 80px;
+  text-align: center;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.cosmic-meaning {
+  position: absolute;
+
+  z-index: auto;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.vowel-sets {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.vowel-label {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.vowel-set {
+  font-family: "cadef", monospace;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #bbdefb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .cosmology-page {
+    padding: 1rem;
+  }
+
+  .cosmic-entity {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cosmic-name {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .vowel-sets {
+    flex-wrap: wrap;
+  }
+}

@@ -1,42 +1,276 @@
-import { useState } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
-import { Header } from "./components/Header/Header";
-import { RootWordComposer } from "./components/rootWordComposer/RootWordComposer";
-import { RootWords } from "./components/divineRootWords/DivineRootWords";
-import { HybridDatabaseViewer } from "./components/databaseViewer/HybridDatabaseViewer";
-import { WordComposer } from "./components/WordComposer/WordComposer";
-import { ComposedWordsViewer } from "./components/composedWordsViewer/ComposedWordsViewer";
+import { Header } from "./components/header/Header";
+import { WordCreation } from "./pages/WordCreation";
+import { Cosmology } from "./pages/Cosmology";
+import { FullWordList } from "./components/WordCreationComponents/fullWordList/FullWordList";
+// Define the root word type
+interface RootWord {
+  rootWord: string;
+  wordMeaning: string;
+}
 
-function App() {
-  const [page, setPage] = useState<number>(1);
+// Define the context type
+interface RootWordsContextType {
+  rootWords: RootWord[];
+  addRootWord: (rootWord: string, wordMeaning: string) => void;
+  updateRootWord: (
+    index: number,
+    rootWord: string,
+    wordMeaning: string
+  ) => void;
+  removeRootWord: (index: number) => void;
+}
+
+// Define the full word type
+interface FullWord {
+  fullWord: string;
+  meaning?: string;
+}
+
+// Define the full word context type
+interface FullWordContextType {
+  fullWords: FullWord[];
+  addFullWord: (fullWord: string, meaning?: string) => void;
+  updateFullWord: (index: number, fullWord: string, meaning?: string) => void;
+  removeFullWord: (index: number) => void;
+  setCurrentFullWord: (fullWord: string) => void;
+  currentFullWord: string;
+}
+
+// Define the notification type
+interface Notification {
+  id: string;
+  message: string;
+  type: "success" | "error" | "info";
+}
+
+// Define the notification context type
+interface NotificationContextType {
+  showNotification: (
+    message: string,
+    type?: "success" | "error" | "info"
+  ) => void;
+}
+
+// Create the contexts
+const RootWordsContext = createContext<RootWordsContextType | undefined>(
+  undefined
+);
+
+const FullWordContext = createContext<FullWordContextType | undefined>(
+  undefined
+);
+
+const NotificationContext = createContext<NotificationContextType | undefined>(
+  undefined
+);
+
+// Custom hooks to use the contexts
+export const useRootWords = () => {
+  const context = useContext(RootWordsContext);
+  if (context === undefined) {
+    throw new Error("useRootWords must be used within a RootWordsProvider");
+  }
+  return context;
+};
+
+export const useFullWord = () => {
+  const context = useContext(FullWordContext);
+  if (context === undefined) {
+    throw new Error("useFullWord must be used within a FullWordProvider");
+  }
+  return context;
+};
+
+export const useNotification = () => {
+  const context = useContext(NotificationContext);
+  if (context === undefined) {
+    throw new Error(
+      "useNotification must be used within a NotificationProvider"
+    );
+  }
+  return context;
+};
+
+// Provider components
+const RootWordsProvider = ({ children }: { children: ReactNode }) => {
+  const [rootWords, setRootWords] = useState<RootWord[]>([]);
+
+  const addRootWord = (rootWord: string, wordMeaning: string) => {
+    setRootWords((prev) => [...prev, { rootWord, wordMeaning }]);
+  };
+
+  const updateRootWord = (
+    index: number,
+    rootWord: string,
+    wordMeaning: string
+  ) => {
+    setRootWords((prev) =>
+      prev.map((item, i) => (i === index ? { rootWord, wordMeaning } : item))
+    );
+  };
+
+  const removeRootWord = (index: number) => {
+    setRootWords((prev) => prev.filter((_, i) => i !== index));
+  };
 
   return (
-    <div className="App">
-      <Header currentPage={page} />
-      <main>
-        <div className="page-navigation">
-          {page !== 1 && (
-            <button className="page-button" onClick={() => setPage(page - 1)}>
-              ← Page {page - 1}
-            </button>
-          )}
-          <span className="page-indicator">Page {page}</span>
-          {page !== 5 && (
-            <button className="page-button" onClick={() => setPage(page + 1)}>
-              Page {page + 1} →
-            </button>
-          )}
-        </div>
+    <RootWordsContext.Provider
+      value={{ rootWords, addRootWord, updateRootWord, removeRootWord }}
+    >
+      {children}
+    </RootWordsContext.Provider>
+  );
+};
 
-        <div className="page-content">
-          {page === 1 && <RootWordComposer />}
-          {page === 2 && <RootWords />}
-          {page === 3 && <HybridDatabaseViewer />}
-          {page === 4 && <WordComposer />}
-          {page === 5 && <ComposedWordsViewer />}
-        </div>
-      </main>
+const FullWordProvider = ({ children }: { children: ReactNode }) => {
+  const [fullWords, setFullWords] = useState<FullWord[]>([]);
+  const [currentFullWord, setCurrentFullWord] = useState<string>("");
+
+  const addFullWord = (fullWord: string, meaning?: string) => {
+    setFullWords((prev) => [...prev, { fullWord, meaning }]);
+  };
+
+  const updateFullWord = (
+    index: number,
+    fullWord: string,
+    meaning?: string
+  ) => {
+    setFullWords((prev) =>
+      prev.map((item, i) => (i === index ? { fullWord, meaning } : item))
+    );
+  };
+
+  const removeFullWord = (index: number) => {
+    setFullWords((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  return (
+    <FullWordContext.Provider
+      value={{
+        fullWords,
+        addFullWord,
+        updateFullWord,
+        removeFullWord,
+        setCurrentFullWord,
+        currentFullWord,
+      }}
+    >
+      {children}
+    </FullWordContext.Provider>
+  );
+};
+
+// Notification component
+const NotificationPopup = ({
+  notification,
+  onClose,
+}: {
+  notification: Notification;
+  onClose: () => void;
+}) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 3000); // Auto-close after 3 seconds
+
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  // Function to format the message with cadef font for words
+  const formatMessage = (message: string) => {
+    // Extract words in quotes and wrap them with scribe-font class
+    return message.replace(
+      /"([^"]+)"/g,
+      '<span class="scribe-font" style="font-size: 0.3em;">$1</span>'
+    );
+  };
+
+  return (
+    <div className={`notification notification-${notification.type}`}>
+      <span
+        dangerouslySetInnerHTML={{
+          __html: formatMessage(notification.message),
+        }}
+      />
+      <button className="notification-close" onClick={onClose}>
+        ×
+      </button>
     </div>
+  );
+};
+
+const NotificationProvider = ({ children }: { children: ReactNode }) => {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  const showNotification = (
+    message: string,
+    type: "success" | "error" | "info" = "success"
+  ) => {
+    const id = Date.now().toString();
+    const notification: Notification = { id, message, type };
+
+    setNotifications((prev) => [...prev, notification]);
+  };
+
+  const removeNotification = (id: string) => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
+  };
+
+  return (
+    <NotificationContext.Provider value={{ showNotification }}>
+      {children}
+      <div className="notification-container">
+        {notifications.map((notification) => (
+          <NotificationPopup
+            key={notification.id}
+            notification={notification}
+            onClose={() => removeNotification(notification.id)}
+          />
+        ))}
+      </div>
+    </NotificationContext.Provider>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <RootWordsProvider>
+        <FullWordProvider>
+          <NotificationProvider>
+            <div className="App">
+              <Header />
+              <main>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<Navigate to="/wordCreation" replace />}
+                  />
+                  <Route path="/wordCreation" element={<WordCreation />} />
+                  <Route path="/cosmology" element={<Cosmology />} />
+                </Routes>
+              </main>
+            </div>
+          </NotificationProvider>
+        </FullWordProvider>
+      </RootWordsProvider>
+    </Router>
   );
 }
 

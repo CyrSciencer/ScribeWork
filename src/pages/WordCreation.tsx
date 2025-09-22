@@ -1,8 +1,8 @@
-import { RootWordComposer } from "../components/WordCreationComponents/rootWordComposer/RootWordComposer";
-import { RootWordList } from "../components/WordCreationComponents/rootWordList/RootWordList";
-import { AddVowel } from "../components/WordCreationComponents/addVowel/AddVowel";
+import { RootWordComposer } from "components/WordCreationComponents/rootWordComposer/RootWordComposer";
+import { RootWordList } from "components/WordCreationComponents/rootWordList/RootWordList";
+import { AddVowel } from "components/WordCreationComponents/addVowel/AddVowel";
 import { useState } from "react";
-import { FullWordList } from "../components/WordCreationComponents/fullWordList/FullWordList";
+import { FullWordList } from "components/WordCreationComponents/fullWordList/FullWordList";
 
 export const WordCreation = () => {
   const [page, setPage] = useState<number>(1);

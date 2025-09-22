@@ -1,7 +1,7 @@
-import CosmologicalBeings from "components/CosmologyComponents/cosmologicalBeings/CosmologicalBeings";
-import "components/CosmologyComponents/Cosmology.css";
+import CosmologicalBeings from "../components/CosmologyComponents/cosmologicalBeings/CosmologicalBeings";
+import "../components/CosmologyComponents/Cosmology.css";
 import { useState } from "react";
-import { CosmologicalEntities } from "components/CosmologyComponents/cosmologicalEntities/CosmologicalEntities";
+import { CosmologicalEntities } from "../components/CosmologyComponents/cosmologicalEntities/CosmologicalEntities";
 
 export const Cosmology = () => {
   const [page, setPage] = useState(1);

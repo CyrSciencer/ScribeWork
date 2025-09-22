@@ -12,9 +12,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import { Header } from "components/header/Header";
-import { WordCreation } from "pages/WordCreation";
-import { Cosmology } from "pages/Cosmology";
+import { Header } from "./components/header/Header";
+import { WordCreation } from "./pages/WordCreation";
+import { Cosmology } from "./pages/Cosmology";
 // Define the root word type
 interface RootWord {
   rootWord: string;

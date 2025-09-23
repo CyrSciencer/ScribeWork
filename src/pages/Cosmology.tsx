@@ -3,7 +3,6 @@ import "../components/CosmologyComponents/Cosmology.css";
 import { useState } from "react";
 import { CosmologicalEntities } from "../components/CosmologyComponents/cosmologicalEntities/CosmologicalEntities";
 import { PureGlyphs } from "../components/CosmologyComponents/pureGlyphs/PureGlyphs";
-import { LesserDivinities } from "../components/CosmologyComponents/lesserDivinities/LesserDivinities";
 import { Conjurates } from "../components/CosmologyComponents/conjurates/Conjurates";
 
 export const Cosmology = () => {

@@ -93,6 +93,37 @@
   font-size: 0.9rem;
   border: 1px solid #bbdefb;
 }
+.conjurate {
+  border: 1px solid #ddd;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f3f7fa;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  margin-bottom: 1rem;
+}
+.pure-glyph-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+.meaning {
+  position: relative;
+  z-index: auto;
+  background-color: #d7f0f8;
+  align-self: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #b7b2f3;
+}
+.pure-glyph {
+  font-family: "cadef", monospace;
+  font-size: 4rem;
+  color: #333;
+  border: 3px solid #b1ccdb;
+  border-radius: 6px;
+  padding-left: 1.5rem;
+}
 
 /* Responsive design */
 @media (max-width: 768px) {

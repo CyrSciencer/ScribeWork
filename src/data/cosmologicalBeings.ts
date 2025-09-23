@@ -222,3 +222,40 @@ export const ScripturgicBeings = {
 
 export type ScripturgicBeing =
   (typeof ScripturgicBeings)[keyof typeof ScripturgicBeings];
+
+export const cosmicGlyphsSystem = {
+  moonPhases: {
+    newMoon: {
+      description: "Beginning, potential, hidden power",
+    },
+    waxingCrescent: {
+      description: "Growth, intention, building energy",
+    },
+    firstQuarter: {
+      description: "Action, decision, momentum",
+    },
+    waxingGibbous: {
+      description: "Refinement, adjustment, preparation",
+    },
+    fullMoon: {
+      description: "Peak power, completion, manifestation",
+    },
+    waningGibbous: {
+      description: "Gratitude, sharing, abundance",
+    },
+    lastQuarter: {
+      description: "Release, forgiveness, letting go",
+    },
+    waningCrescent: {
+      description: "Rest, surrender, renewal",
+    },
+  },
+  sunMilestones: {
+    equinox: {
+      description: "Balance, renewal, new beginnings",
+    },
+    solstice: {
+      description: "Peak energy, abundance, celebration",
+    },
+  },
+} as const;

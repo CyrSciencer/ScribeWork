@@ -226,36 +226,46 @@ export type ScripturgicBeing =
 export const cosmicGlyphsSystem = {
   moonPhases: {
     newMoon: {
-      description: "Beginning, potential, hidden power",
+      description: "potential, hidden power",
+      glyph: "newMoon.png",
     },
     waxingCrescent: {
-      description: "Growth, intention, building energy",
+      description: "intention, building energy",
+      glyph: "waxingCrescent.png",
     },
     firstQuarter: {
-      description: "Action, decision, momentum",
+      description: "decision, momentum",
+      glyph: "firstQuarter.png",
     },
     waxingGibbous: {
-      description: "Refinement, adjustment, preparation",
+      description: "Refinement, adjustment",
+      glyph: "waxingGibbous.png",
     },
     fullMoon: {
-      description: "Peak power, completion, manifestation",
+      description: "completion, manifestation",
+      glyph: "fullMoon.png",
     },
     waningGibbous: {
-      description: "Gratitude, sharing, abundance",
+      description: "sharing, abundance",
+      glyph: "waningGibbous.png",
     },
     lastQuarter: {
-      description: "Release, forgiveness, letting go",
+      description: "Release, letting go",
+      glyph: "lastQuarter.png",
     },
     waningCrescent: {
-      description: "Rest, surrender, renewal",
+      description: "Rest, surrender",
+      glyph: "waningCrescent.png",
     },
   },
   sunMilestones: {
     equinox: {
-      description: "Balance, renewal, new beginnings",
+      description: "Balance, shift",
+      glyph: "equinox.png",
     },
     solstice: {
-      description: "Peak energy, abundance, celebration",
+      description: "abundance, celebration",
+      glyph: "solstice.png",
     },
   },
 } as const;

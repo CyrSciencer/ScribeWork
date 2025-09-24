@@ -11,6 +11,9 @@ export const Header = () => {
         <Link to="/cosmology" className="nav-link">
           Cosmology
         </Link>
+        <Link to="/scripturgicInscription" className="nav-link">
+          Scripturgic Inscription
+        </Link>
       </nav>
     </div>
   );

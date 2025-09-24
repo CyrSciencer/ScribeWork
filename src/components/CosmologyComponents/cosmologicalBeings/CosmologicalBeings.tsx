@@ -8,7 +8,7 @@ import {
   cosmicFondation,
   ScripturgicBeings,
   DaemonOrder,
-} from "../../../data/cosmologicalBeings";
+} from "../../../data/cosmologicalAspects";
 import { useState } from "react";
 
 // Types for the cosmological data
@@ -41,7 +41,7 @@ const BeingDisplay = ({ rootWord, meaning, className = "" }: BeingProps) => {
         onMouseEnter={() => setHoveringEntity(rootWord)}
         onMouseLeave={() => setHoveringEntity(null)}
       >
-        <span className="cosmic-name scribe-font">{formattedName}</span>
+        <span className="cosmic-name">{formattedName}</span>
       </div>
       {hoveringEntity === rootWord && (
         <div className="cosmic-meaning">{meaning}</div>
@@ -135,7 +135,7 @@ const ScripturgicBeingsSection = () => {
             >
               <div className="vowel-sets">
                 {value.vowelsSets.map((vowel: string, index: number) => (
-                  <div key={index} className="vowel-set scribe-font">
+                  <div key={index} className="cosmic-name">
                     {"h" + vowel}
                   </div>
                 ))}

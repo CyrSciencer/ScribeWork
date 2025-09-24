@@ -15,6 +15,7 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { WordCreation } from "./pages/WordCreation";
 import { Cosmology } from "./pages/Cosmology";
+import { ScripturgicInscription } from "./pages/ScripturgicInscription";
 // Define the root word type
 interface RootWord {
   rootWord: string;
@@ -263,6 +264,10 @@ function App() {
                   />
                   <Route path="/wordCreation" element={<WordCreation />} />
                   <Route path="/cosmology" element={<Cosmology />} />
+                  <Route
+                    path="/scripturgicInscription"
+                    element={<ScripturgicInscription />}
+                  />
                 </Routes>
               </main>
             </div>

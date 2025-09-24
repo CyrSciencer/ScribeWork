@@ -50,15 +50,13 @@
 
 .cosmic-name {
   font-family: "cadef", monospace;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 5rem;
+
   color: #333;
   min-width: 80px;
   text-align: center;
-  background: white;
+
   padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ddd;
 }
 
 .cosmic-meaning {
@@ -84,15 +82,6 @@
   font-weight: 500;
 }
 
-.vowel-set {
-  font-family: "cadef", monospace;
-  background: #e3f2fd;
-  color: #1976d2;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  border: 1px solid #bbdefb;
-}
 .conjurate {
   border: 1px solid #ddd;
   gap: 1rem;
@@ -102,6 +91,7 @@
   border-left: 4px solid #667eea;
   margin-bottom: 1rem;
 }
+
 .pure-glyph-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -118,13 +108,56 @@
 }
 .pure-glyph {
   font-family: "cadef", monospace;
-  font-size: 4rem;
+  font-size: 5rem;
   color: #333;
   border: 3px solid #b1ccdb;
   border-radius: 6px;
-  padding-left: 1.5rem;
+  padding-left: 10px;
 }
-
+.cosmic-glyphs img {
+  width: 200px;
+  height: 200px;
+}
+.cosmic-glyphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.cosmic-glyphs > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #ddbcdb;
+  background: #f5f2f8;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 90%;
+}
+.cosmic-glyphs > div > p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+.cosmic-glyphs > div span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  text-decoration: underline;
+}
+.cosmic-glyphs > div > img {
+  width: 200px;
+  height: 200px;
+}
 /* Responsive design */
 @media (max-width: 768px) {
   .cosmology-page {

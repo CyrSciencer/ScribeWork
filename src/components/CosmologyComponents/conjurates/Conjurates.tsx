@@ -1,4 +1,5 @@
 import { Conjurates as ConjuratesData } from "../../../data/Conjurates";
+
 export const Conjurates = () => {
   return (
     <div>
@@ -6,7 +7,8 @@ export const Conjurates = () => {
       {ConjuratesData.map((conjurate) => (
         <div key={conjurate.name} className="conjurate">
           <h2>{conjurate.name}</h2>
-          <p className="scribe-font">{conjurate.cosmicName}</p>
+          <p className="cosmic-name">{conjurate.cosmicName}</p>
+          <p>| {conjurate.cosmicName} |</p>
           <p>{conjurate.description}</p>
         </div>
       ))}

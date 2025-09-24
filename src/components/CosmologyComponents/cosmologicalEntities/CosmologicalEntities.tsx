@@ -6,7 +6,7 @@ import {
   CosmicDynamism,
   cosmicFondation,
   ScripturgicBeings,
-} from "../../../data/cosmologicalBeings";
+} from "../../../data/cosmologicalAspects";
 import { useState } from "react";
 
 // Types for the cosmological data
@@ -52,7 +52,7 @@ const EntityDisplay = ({
         onMouseEnter={() => setHoveringEntity(rootWord)}
         onMouseLeave={() => setHoveringEntity(null)}
       >
-        <div className="cosmic-name scribe-font">{fullName}</div>
+        <div className="cosmic-name">{fullName}</div>
       </div>
       {hoveringEntity === rootWord && (
         <div className="cosmic-meaning">

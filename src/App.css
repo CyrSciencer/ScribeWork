@@ -11,8 +11,6 @@
 .scribe-font {
   font-family: "cadef", monospace;
   font-weight: 100;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
 }
 
 /* CSS Variables for Common Colors */
@@ -50,6 +48,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 25px;
 }
 
 h1,
@@ -422,6 +421,7 @@ main {
   background-color: var(--light-color);
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  font-size: 25px;
 }
 
 .page-button {

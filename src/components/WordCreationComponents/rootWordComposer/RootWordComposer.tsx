@@ -17,7 +17,7 @@ const RootWord = ({
   return (
     <div className="word-display">
       <p>Composed word:</p>{" "}
-      <p className="fontable-text" style={{ fontSize: "6rem" }}>
+      <p className="fontable-text" style={{ fontSize: "7rem" }}>
         {rootWord}
       </p>
       <button className="button" onClick={() => setRootWord("")}>

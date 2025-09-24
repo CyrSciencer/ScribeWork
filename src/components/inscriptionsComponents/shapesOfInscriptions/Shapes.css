@@ -1,0 +1,43 @@
+.shapes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.shapes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.circle {
+  margin-top: 100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 15px double black;
+  position: relative;
+}
+
+.circle-item {
+  font-family: "cadef", monospace;
+  font-size: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(calc(var(--angle, 0deg)));
+  color: black;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(50% - 250px * cos(var(--angle, 0deg)));
+  left: calc(50% + 250px * sin(var(--angle, 0deg)));
+  background-color: rgb(255, 255, 255);
+  border: 5px solid black;
+  border-radius: 50%;
+  padding: 15px 10px 15px 20px;
+}

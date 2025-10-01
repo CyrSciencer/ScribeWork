@@ -135,7 +135,7 @@ const ScripturgicBeingsSection = () => {
             >
               <div className="vowel-sets">
                 {value.vowelsSets.map((vowel: string, index: number) => (
-                  <div key={index} className="cosmic-name">
+                  <div key={index} className="cosmic-vowel">
                     {"h" + vowel}
                   </div>
                 ))}

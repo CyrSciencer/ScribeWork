@@ -1,5 +1,7 @@
 import "./Shapes.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import html2canvas from "html2canvas";
+
 export const Shapes = () => {
   const [names, setNames] = useState<string[]>([
     "rétieɲéa",
@@ -8,6 +10,20 @@ export const Shapes = () => {
     "wùvèinoã",
   ]); // You can easily add/remove names here
   const [newName, setNewName] = useState<string>("");
+  const shapesRef = useRef<HTMLDivElement>(null);
+
+  const exportToPNG = async () => {
+    if (shapesRef.current) {
+      const canvas = await html2canvas(shapesRef.current, {
+        backgroundColor: "transparent",
+        scale: 2, // Higher quality
+      });
+      const link = document.createElement("a");
+      link.download = "inscription-shape.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  };
   return (
     <div className="shapes-container">
       <h1>Shapes</h1>
@@ -24,6 +40,7 @@ export const Shapes = () => {
       >
         Add Name
       </button>
+      <button onClick={exportToPNG}>Export to PNG</button>
       <div className="names-container">
         {names.map((name, index) => (
           <div>
@@ -38,7 +55,7 @@ export const Shapes = () => {
           </div>
         ))}
       </div>
-      <div className="shapes">
+      <div className="shapes" ref={shapesRef}>
         <div className="circle">
           {names.map((name, index) => {
             const angle = (360 / names.length) * index;
@@ -52,6 +69,7 @@ export const Shapes = () => {
               </div>
             );
           })}
+          <div className="circleSecond"></div>
         </div>
       </div>
     </div>

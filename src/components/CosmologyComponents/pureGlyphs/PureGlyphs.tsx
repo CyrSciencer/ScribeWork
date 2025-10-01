@@ -20,7 +20,7 @@ export const PureGlyphs = () => {
             onMouseEnter={() => setHoveringGlyph(consonant)}
             onMouseLeave={() => setHoveringGlyph(null)}
           >
-            {"j'" + consonant + "'"}
+            {"j" + consonant}
           </div>
         ))}
       </div>

@@ -206,6 +206,7 @@ export const AddVowel = () => {
           {(vowelSlotIndex === 1 ? getValidSecondSlotVowels() : vowels).map(
             (vowel: string, index: number) => {
               const originalIndex = vowels.indexOf(vowel);
+              const firstVowel = vowelSet[vowelSetIndex][vowelSlotIndex - 1];
               return (
                 <div>
                   <div key={index}>
@@ -227,6 +228,7 @@ export const AddVowel = () => {
                     <button
                       key={index}
                       className="keyboard-key"
+                      style={{ paddingLeft: "10px" }}
                       onMouseEnter={() => setCurrentVowel(vowel)}
                       onMouseLeave={() => setCurrentVowel(null)}
                       onClick={() => {
@@ -241,8 +243,7 @@ export const AddVowel = () => {
                         });
                       }}
                     >
-                      {vowelSet[vowelSetIndex][vowelSlotIndex - 1]}
-                      {vowel}
+                      {`${firstVowel ? firstVowel : ""}${vowel}`}
                     </button>
                   </div>
                 </div>

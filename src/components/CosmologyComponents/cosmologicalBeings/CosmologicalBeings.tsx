@@ -1,9 +1,9 @@
 import {
   DivinePrinciple,
   PrimaryTriad,
-  Field,
+  Essences,
   Cycle,
-  Logics,
+  Structures,
   CosmicDynamism,
   cosmicFondation,
   ScripturgicBeings,
@@ -29,23 +29,28 @@ interface BeingProps {
   className?: string;
 }
 
-const BeingDisplay = ({ rootWord, meaning, className = "" }: BeingProps) => {
+interface BeingDisplayProps extends BeingProps {
+  onHover: (rootWord: string, meaning: string) => void;
+  onLeave: () => void;
+}
+
+const BeingDisplay = ({
+  rootWord,
+  meaning,
+  className = "",
+  onHover,
+  onLeave,
+}: BeingDisplayProps) => {
   const formattedName =
     rootWord[0] + "'" + rootWord[1] + "'" + rootWord[2] + "'";
-  const [hoveringEntity, setHoveringEntity] = useState<string | null>(null);
   return (
-    <div>
-      <div
-        key={rootWord}
-        className={`cosmic-entity ${className}`}
-        onMouseEnter={() => setHoveringEntity(rootWord)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      >
-        <span className="cosmic-name">{formattedName}</span>
-      </div>
-      {hoveringEntity === rootWord && (
-        <div className="cosmic-meaning">{meaning}</div>
-      )}
+    <div
+      key={rootWord}
+      className={`cosmic-entity ${className}`}
+      onMouseEnter={() => onHover(formattedName, meaning)}
+      onMouseLeave={onLeave}
+    >
+      <span className="cosmic-name">{formattedName}</span>
     </div>
   );
 };
@@ -55,9 +60,17 @@ interface BeingGroupProps {
   data: CosmologicalData | CosmicDynamismData | CosmicFoundationData;
   isDynamism?: boolean;
   isFoundation?: boolean;
+  onHover: (rootWord: string, meaning: string) => void;
+  onLeave: () => void;
 }
 
-const BeingGroup = ({ data, isDynamism, isFoundation }: BeingGroupProps) => {
+const BeingGroup = ({
+  data,
+  isDynamism,
+  isFoundation,
+  onHover,
+  onLeave,
+}: BeingGroupProps) => {
   return (
     <div className="cosmic-entities">
       {Object.entries(data).map(([key, value]) => {
@@ -84,7 +97,15 @@ const BeingGroup = ({ data, isDynamism, isFoundation }: BeingGroupProps) => {
           meaning = value as string;
         }
 
-        return <BeingDisplay key={key} rootWord={rootWord} meaning={meaning} />;
+        return (
+          <BeingDisplay
+            key={key}
+            rootWord={rootWord}
+            meaning={meaning}
+            onHover={onHover}
+            onLeave={onLeave}
+          />
+        );
       })}
     </div>
   );
@@ -97,6 +118,8 @@ interface CosmologicalSectionProps {
   className?: string;
   isDynamism?: boolean;
   isFoundation?: boolean;
+  onHover: (rootWord: string, meaning: string) => void;
+  onLeave: () => void;
 }
 
 const CosmologicalSection = ({
@@ -105,6 +128,8 @@ const CosmologicalSection = ({
   className = "",
   isDynamism,
   isFoundation,
+  onHover,
+  onLeave,
 }: CosmologicalSectionProps) => {
   return (
     <section className={className}>
@@ -113,25 +138,33 @@ const CosmologicalSection = ({
         data={data}
         isDynamism={isDynamism}
         isFoundation={isFoundation}
+        onHover={onHover}
+        onLeave={onLeave}
       />
     </section>
   );
 };
 
 // Component for scripturgic beings section
-const ScripturgicBeingsSection = () => {
-  const [hoveringEntity, setHoveringEntity] = useState<string | null>(null);
+interface ScripturgicBeingsSectionProps {
+  onHover: (rootWord: string, meaning: string) => void;
+  onLeave: () => void;
+}
+
+const ScripturgicBeingsSection = ({
+  onHover,
+  onLeave,
+}: ScripturgicBeingsSectionProps) => {
   return (
     <section className="scripturgic-beings">
       <h2>Scripturgic Beings</h2>
       <div className="cosmic-entities">
         {Object.entries(ScripturgicBeings).map(([key, value]) => (
-          <div>
+          <div key={key}>
             <div
-              key={key}
               className="cosmic-entity"
-              onMouseEnter={() => setHoveringEntity(key)}
-              onMouseLeave={() => setHoveringEntity(null)}
+              onMouseEnter={() => onHover(key, value.description)}
+              onMouseLeave={onLeave}
             >
               <div className="vowel-sets">
                 {value.vowelsSets.map((vowel: string, index: number) => (
@@ -141,11 +174,6 @@ const ScripturgicBeingsSection = () => {
                 ))}
               </div>
             </div>
-            {hoveringEntity === key && (
-              <div className="cosmic-meaning" style={{ left: "100px" }}>
-                {key}: {value.description}
-              </div>
-            )}
           </div>
         ))}
       </div>
@@ -154,38 +182,86 @@ const ScripturgicBeingsSection = () => {
 };
 
 const CosmologicalBeings = () => {
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+  } | null>(null);
+
+  const handleHover = (name: string, meaning: string) => {
+    setHoveringEntity({ name, meaning });
+  };
+
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+
   return (
     <div className="cosmology-page">
       <h1>Cosmological Beings</h1>
+
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html: hoveringEntity.meaning.replace(/\n/g, "<br>"),
+          }}
+        />
+      )}
 
       <div className="cosmology-sections">
         <CosmologicalSection
           title="Divine Principle"
           data={DivinePrinciple}
           className="divine-principle"
+          onHover={handleHover}
+          onLeave={handleLeave}
         />
 
         <CosmologicalSection
           title="Primary Triad"
           data={PrimaryTriad}
           className="primary-triad"
+          onHover={handleHover}
+          onLeave={handleLeave}
         />
 
-        <CosmologicalSection title="Field" data={Field} className="field" />
+        <CosmologicalSection
+          title="Essences"
+          data={Essences}
+          className="Essences"
+          onHover={handleHover}
+          onLeave={handleLeave}
+        />
 
-        <CosmologicalSection title="Cycle" data={Cycle} className="cycle" />
+        <CosmologicalSection
+          title="Cycle"
+          data={Cycle}
+          className="cycle"
+          onHover={handleHover}
+          onLeave={handleLeave}
+        />
 
-        <CosmologicalSection title="Logics" data={Logics} className="logics" />
+        <CosmologicalSection
+          title="Structures"
+          data={Structures}
+          className="logics"
+          onHover={handleHover}
+          onLeave={handleLeave}
+        />
         <CosmologicalSection
           title="Daemons"
           data={DaemonOrder}
           className="daemons"
+          onHover={handleHover}
+          onLeave={handleLeave}
         />
         <CosmologicalSection
           title="Cosmic Dynamism"
           data={CosmicDynamism}
           className="cosmic-dynamism"
           isDynamism={true}
+          onHover={handleHover}
+          onLeave={handleLeave}
         />
 
         <CosmologicalSection
@@ -193,9 +269,11 @@ const CosmologicalBeings = () => {
           data={cosmicFondation}
           className="cosmic-foundation"
           isFoundation={true}
+          onHover={handleHover}
+          onLeave={handleLeave}
         />
 
-        <ScripturgicBeingsSection />
+        <ScripturgicBeingsSection onHover={handleHover} onLeave={handleLeave} />
       </div>
     </div>
   );

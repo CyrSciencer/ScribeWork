@@ -6,6 +6,75 @@
   justify-content: center;
   width: 100%;
 }
+
+.name-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.max-names-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.max-names-control label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+.max-names-control input {
+  width: 60px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.readonly-input {
+  background-color: #f8f9fa;
+  color: #495057;
+  cursor: not-allowed;
+}
+
+.add-name-control {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-name-control input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.add-name-control button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-name-control button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.add-name-control button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
 .shapes {
   display: flex;
   flex-direction: column;
@@ -19,9 +88,9 @@
 }
 .circle {
   margin: 50px;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
+  width: var(--magicTypeOne);
+  height: var(--magicTypeOne);
+  border-radius: var(--magicShape);
   border: 5px solid rgb(0, 0, 0);
   box-shadow: 0 0 0 -10px rgb(255, 255, 255);
   position: relative;
@@ -30,19 +99,19 @@
   justify-content: center;
 }
 .circleSecond {
-  width: 390px;
-  height: 390px;
-  border-radius: 50%;
+  width: var(--magicTypeTwo);
+  height: var(--magicTypeTwo);
+  border-radius: var(--magicShape);
   border: 5px solid rgb(0, 0, 0);
   box-shadow: 0 0 0 -10px rgb(255, 255, 255);
 }
-.circle-item {
+.name-item {
   font-family: "cadef", monospace;
   font-size: 57px;
   position: absolute;
   transform: translate(-50%, -50%) rotate(calc(var(--angle, 0deg)));
-  color: black;
-
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
   height: 70px;
   display: flex;
   align-items: center;
@@ -50,7 +119,10 @@
   top: calc(50% - 250px * cos(var(--angle, 0deg)));
   left: calc(50% + 250px * sin(var(--angle, 0deg)));
 
-  border: 5px solid black;
-  border-radius: 50%;
+  border-top: var(--topAndBotBorder);
+  border-right: 5px solid black;
+  border-bottom: var(--topAndBotBorder);
+  border-left: 5px solid black;
+  border-radius: var(--magicShape);
   padding: 18px 0px 12px 10px;
 }

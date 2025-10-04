@@ -38,7 +38,7 @@ export const Conjurates: ConjurateModel[] = [
       "Probability manipulation",
       "Form shifting and shape changing",
       "Infinite potential manifestation",
-      "Chaos field generation",
+      "Chaos Essences generation",
     ],
     weaknesses: [
       "Cannot maintain stable form for extended periods",
@@ -72,7 +72,7 @@ export const Conjurates: ConjurateModel[] = [
       "Elemental mastery and combination",
       "Tool and weapon manifestation",
       "Symbolic magic amplification",
-      "Force field creation and manipulation",
+      "Force Essences creation and manipulation",
     ],
     weaknesses: [
       "Requires intense concentration to maintain effects",

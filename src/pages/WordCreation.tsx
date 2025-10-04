@@ -3,9 +3,14 @@ import { RootWordList } from "../components/WordCreationComponents/rootWordList/
 import { AddVowel } from "../components/WordCreationComponents/addVowel/AddVowel";
 import { useState } from "react";
 import { FullWordList } from "../components/WordCreationComponents/fullWordList/FullWordList";
+import { useRootWords, useFullWord } from "../App";
 
 export const WordCreation = () => {
   const [page, setPage] = useState<number>(1);
+  const { rootWords } = useRootWords();
+  const { fullWords } = useFullWord();
+  console.log("rootwords:", rootWords);
+  console.log("fullwords:", fullWords);
   console.log("fullwordlist:", FullWordList);
   return (
     <div className="word-creation-page">

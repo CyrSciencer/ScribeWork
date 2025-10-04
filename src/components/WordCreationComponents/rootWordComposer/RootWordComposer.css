@@ -25,7 +25,7 @@
 
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(45px, 45px));
   grid-gap: 3rem;
   max-width: 100%;
   width: fit-content;
@@ -49,7 +49,6 @@
 
 .keyboard-key:hover {
   background-color: #7ca5ff;
-  font-size: 3rem;
 
   color: #ffffff;
 }

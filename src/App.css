@@ -2,6 +2,60 @@
    COMMON STYLES - SHARED ACROSS PAGES
    ================================= */
 
+/* Cookie Notification Styles */
+.cookie-notification {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-light);
+  animation: slideInFromTop 0.3s ease-out;
+}
+
+.cookie-notification p {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.clear-words-button {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.clear-words-button:hover {
+  background: var(--danger-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.clear-words-button:active {
+  transform: translateY(0);
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Font Definition */
 @font-face {
   font-family: "cadef";

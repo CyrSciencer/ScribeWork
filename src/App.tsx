@@ -16,6 +16,7 @@ import { Header } from "./components/header/Header";
 import { WordCreation } from "./pages/WordCreation";
 import { Cosmology } from "./pages/Cosmology";
 import { ScripturgicInscription } from "./pages/ScripturgicInscription";
+import { setCookie, getCookie, areCookiesAvailable } from "./utils/cookies";
 // Define the root word type
 interface RootWord {
   rootWord: string;
@@ -109,6 +110,31 @@ export const useNotification = () => {
 const RootWordsProvider = ({ children }: { children: ReactNode }) => {
   const [rootWords, setRootWords] = useState<RootWord[]>([]);
 
+  // Load root words from cookies on component mount
+  useEffect(() => {
+    if (areCookiesAvailable()) {
+      const savedRootWords = getCookie("rootWords");
+      if (savedRootWords) {
+        try {
+          const parsedWords = JSON.parse(savedRootWords);
+          setRootWords(parsedWords);
+        } catch (error) {
+          console.error("Error parsing saved root words:", error);
+        }
+      }
+    }
+  }, []);
+
+  // Save root words to cookies whenever they change
+  useEffect(() => {
+    if (areCookiesAvailable() && rootWords.length > 0) {
+      setCookie("rootWords", JSON.stringify(rootWords), {
+        maxAge: 365 * 24 * 60 * 60, // 1 year
+        path: "/",
+      });
+    }
+  }, [rootWords]);
+
   const addRootWord = (rootWord: string, wordMeaning: string) => {
     setRootWords((prev) => [...prev, { rootWord, wordMeaning }]);
   };
@@ -139,6 +165,31 @@ const RootWordsProvider = ({ children }: { children: ReactNode }) => {
 const FullWordProvider = ({ children }: { children: ReactNode }) => {
   const [fullWords, setFullWords] = useState<FullWord[]>([]);
   const [currentFullWord, setCurrentFullWord] = useState<string>("");
+
+  // Load full words from cookies on component mount
+  useEffect(() => {
+    if (areCookiesAvailable()) {
+      const savedFullWords = getCookie("fullWords");
+      if (savedFullWords) {
+        try {
+          const parsedWords = JSON.parse(savedFullWords);
+          setFullWords(parsedWords);
+        } catch (error) {
+          console.error("Error parsing saved full words:", error);
+        }
+      }
+    }
+  }, []);
+
+  // Save full words to cookies whenever they change
+  useEffect(() => {
+    if (areCookiesAvailable() && fullWords.length > 0) {
+      setCookie("fullWords", JSON.stringify(fullWords), {
+        maxAge: 365 * 24 * 60 * 60, // 1 year
+        path: "/",
+      });
+    }
+  }, [fullWords]);
 
   const addFullWord = (fullWord: string, meaning?: string) => {
     setFullWords((prev) => [...prev, { fullWord, meaning }]);

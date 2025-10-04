@@ -1,8 +1,8 @@
 import {
   PrimaryTriad,
-  Field,
+  Essences,
   Cycle,
-  Logics,
+  Structures,
   CosmicDynamism,
   cosmicFondation,
   ScripturgicBeings,
@@ -26,8 +26,8 @@ interface EntityProps {
   vowelSet: string[];
   meaning: string;
   entityType: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  onHover: (name: string, meaning: string) => void;
+  onLeave: () => void;
 }
 
 const EntityDisplay = ({
@@ -35,8 +35,9 @@ const EntityDisplay = ({
   vowelSet,
   meaning,
   entityType,
+  onHover,
+  onLeave,
 }: EntityProps) => {
-  const [hoveringEntity, setHoveringEntity] = useState<string | null>(null);
   const fullName =
     rootWord[0] +
     vowelSet[0] +
@@ -46,19 +47,12 @@ const EntityDisplay = ({
     vowelSet[2];
 
   return (
-    <div>
-      <div
-        className="cosmic-entity"
-        onMouseEnter={() => setHoveringEntity(rootWord)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      >
-        <div className="cosmic-name">{fullName}</div>
-      </div>
-      {hoveringEntity === rootWord && (
-        <div className="cosmic-meaning">
-          {entityType} of {meaning}
-        </div>
-      )}
+    <div
+      className="cosmic-entity"
+      onMouseEnter={() => onHover(fullName, `${entityType} of ${meaning}`)}
+      onMouseLeave={onLeave}
+    >
+      <div className="cosmic-name">{fullName}</div>
     </div>
   );
 };
@@ -68,8 +62,8 @@ interface EntityGroupProps {
   data: CosmologicalData | CosmicDynamismData | CosmicFoundationData;
   vowelSet: string[];
   entityType: string;
-  onMouseEnter: (key: string) => void;
-  onMouseLeave: () => void;
+  onHover: (name: string, meaning: string) => void;
+  onLeave: () => void;
   isDynamism?: boolean;
   isFoundation?: boolean;
 }
@@ -78,8 +72,8 @@ const EntityGroup = ({
   data,
   vowelSet,
   entityType,
-  onMouseEnter,
-  onMouseLeave,
+  onHover,
+  onLeave,
   isDynamism,
   isFoundation,
 }: EntityGroupProps) => {
@@ -116,8 +110,8 @@ const EntityGroup = ({
             vowelSet={vowelSet}
             meaning={meaning}
             entityType={entityType}
-            onMouseEnter={() => onMouseEnter(key)}
-            onMouseLeave={onMouseLeave}
+            onHover={onHover}
+            onLeave={onLeave}
           />
         );
       })}
@@ -129,15 +123,15 @@ const EntityGroup = ({
 interface ScripturgicBeingSectionProps {
   title: string;
   vowelSet: string[];
-  onMouseEnter: (key: string) => void;
-  onMouseLeave: () => void;
+  onHover: (name: string, meaning: string) => void;
+  onLeave: () => void;
 }
 
 const ScripturgicBeingSection = ({
   title,
   vowelSet,
-  onMouseEnter,
-  onMouseLeave,
+  onHover,
+  onLeave,
 }: ScripturgicBeingSectionProps) => {
   return (
     <div>
@@ -147,44 +141,44 @@ const ScripturgicBeingSection = ({
           data={PrimaryTriad}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
         />
         <EntityGroup
-          data={Field}
+          data={Essences}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
         />
         <EntityGroup
           data={Cycle}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
         />
         <EntityGroup
-          data={Logics}
+          data={Structures}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
         />
         <EntityGroup
           data={CosmicDynamism}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
           isDynamism={true}
         />
         <EntityGroup
           data={cosmicFondation}
           vowelSet={vowelSet}
           entityType={title.toLowerCase().slice(0, -1)}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onHover={onHover}
+          onLeave={onLeave}
           isFoundation={true}
         />
       </div>
@@ -193,35 +187,41 @@ const ScripturgicBeingSection = ({
 };
 
 export const CosmologicalEntities = () => {
-  const { ANGELS, DEMONS, FEY, ELEMENTALS } = ScripturgicBeings;
-  // eslint-disable-next-line
-  const [hoveringEntity, setHoveringEntity] = useState<string | null>(null);
+  const { ELEMENTALS } = ScripturgicBeings;
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+  } | null>(null);
+
+  const handleHover = (name: string, meaning: string) => {
+    setHoveringEntity({ name, meaning });
+  };
+
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+
   return (
-    <div>
-      <ScripturgicBeingSection
-        title="Angels"
-        vowelSet={ANGELS.vowelsSets as unknown as string[]}
-        onMouseEnter={(key: string) => setHoveringEntity(key)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      />
-      <ScripturgicBeingSection
-        title="Demons"
-        vowelSet={DEMONS.vowelsSets as unknown as string[]}
-        onMouseEnter={(key: string) => setHoveringEntity(key)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      />
-      <ScripturgicBeingSection
-        title="Fey"
-        vowelSet={FEY.vowelsSets as unknown as string[]}
-        onMouseEnter={(key: string) => setHoveringEntity(key)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      />
-      <ScripturgicBeingSection
-        title="Elementals"
-        vowelSet={ELEMENTALS.vowelsSets as unknown as string[]}
-        onMouseEnter={(key: string) => setHoveringEntity(key)}
-        onMouseLeave={() => setHoveringEntity(null)}
-      />
+    <div className="cosmology-page">
+      <h1>Cosmological Entities</h1>
+
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html: hoveringEntity.meaning.replace(/\n/g, "<br>"),
+          }}
+        />
+      )}
+
+      <div className="cosmology-sections">
+        <ScripturgicBeingSection
+          title="Elementals"
+          vowelSet={ELEMENTALS.vowelsSets as unknown as string[]}
+          onHover={handleHover}
+          onLeave={handleLeave}
+        />
+      </div>
     </div>
   );
 };

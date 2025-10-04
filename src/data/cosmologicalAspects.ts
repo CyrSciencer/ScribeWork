@@ -3,11 +3,11 @@ export const DivinePrinciple = {
   ʇxʁ: "the source of non-being", //the source of non-being
 } as const;
 export const PrimaryTriad = {
-  pws: "essence", //essence the fill
-  fmṕ: "cycle", //cycle the dynamic
-  rtɲ: "structure", //all the structure
+  pws: "essence - what fills the universe", //essence the fill
+  fbṕ: "cycle - the dynamism of the universe", //cycle the dynamic
+  rtɲ: "structure - what is the form of the universe", //all the structure
 } as const;
-export const Field = {
+export const Essences = {
   ɲvx: "ethereal field", //ethereal
   gdr: "physical field", //physical
 } as const;
@@ -17,7 +17,7 @@ export const Cycle = {
   gkz: "decline", //decline
   tnx: "death", //death
 } as const;
-export const Logics = {
+export const Structures = {
   tgr: "the blueprint", //blueprint
   vrd: "the fabric", //fabric
   nsɲ: "the will", //will
@@ -38,39 +38,27 @@ export const BiologicalLineage = {
   fxr: "Fungus/Flesh/Flux", //Fungus/Flesh/Network/expansion/Flux
   ṕms: "Animal/Blood/Process", //Animal/Blood/Movement/Vitality/Process
 } as const;
-export const CyclicStructure = {
-  ryt: "Cyclic Order", // Cyclic Order - rhythm/pattern/sequence
-  wṕk: "Structural Renewal", // Structural Renewal - rebirth/restoration
-  rtw: "Temporal Framework", // Temporal Framework - time/flow/foundation
-} as const;
-export const StructuralEssence = {
-  wsd: "Essence Allocation", // Essence Allocation - distribution/flow/balance
-  drk: "Structural Integrity", // Structural Integrity - foundation/glue/unity
-  gsr: "Essence Organization", // Essence Organization - arrangement/order/categorization
-} as const;
 export const DaemonOrder = {
-  kzn: "stillness", // Against fṕm, stillness
+  zkn: "stillness", // Against fbṕ, stillness
   zrf: "amalgam", // Against spw, amalgam
   zʇc: "void", // Against ɲtr, void
 } as const;
 export const scribeGivenNames = {
   ...DivinePrinciple,
   ...PrimaryTriad,
-  ...Field,
+  ...Essences,
   ...Cycle,
-  ...Logics,
+  ...Structures,
   ...nsɲAspect,
   ...BiologicalLineage,
-  ...CyclicStructure,
-  ...StructuralEssence,
   ...DaemonOrder,
 } as const;
 export const godlyConcept = {
   lmv: DivinePrinciple.lmv,
   ...PrimaryTriad,
-  ...Field,
+  ...Essences,
   ...Cycle,
-  ...Logics,
+  ...Structures,
 } as const;
 
 export const CosmicDynamism = {
@@ -142,80 +130,53 @@ export const CosmicDynamism = {
 } as const;
 export const cosmicFondation = {
   bismuth: {
-    cosmologicalRole:
-      'The "noble anchor of existence," representing the structural foundation of the physical world—flesh, bone, and material presence. It is the most refined and enduring physical form.',
+    cosmologicalRole: "The cosmological anchor of the physical realm",
     scripturgicName: "dkm", // Defense + Cold + Life - Pure Physical foundation
-    realWorldJustification:
-      'Bismuth is the heaviest stable (non-radioactive) element. This physical "heaviness" and stability make it the perfect analogue for the ultimate anchor of the material realm. It is a dense, crystalline, yet brittle metal, which can symbolize the strength and fragility of the physical body. Its most unique property is that it expands when it solidifies (like water), suggesting that the physical form isn\'t just a simple condensation of energy but a complex, structured state that occupies a defined space.',
   },
   antimony: {
-    cosmologicalRole:
-      'The "bridge between thought and form," enabling the translation of ethereal concepts into physical understanding. It represents intellectual capacity and perception with exceptional clarity.',
+    cosmologicalRole: "The thread that link the physical to the ethereal",
     scripturgicName: "ftɲ", // Change + Truth + Dream - Physical made Ethereal
-    realWorldJustification:
-      "Antimony is a metalloid or semi-metal, meaning it has properties of both metals and non-metals. This dual nature makes it a perfect metaphor for the mind, which exists between the purely abstract (thought) and the concrete (physical reality). Its primary modern use is in semiconductors (diodes, infrared detectors), which are devices that precisely control the flow of electrical signals (information). This directly mirrors the mind's function of processing and translating abstract concepts into tangible understanding.",
   },
   silver: {
-    cosmologicalRole:
-      'The "bridge between form and transcendence," translating physical experiences into ethereal understanding. It represents the spiritual capacity to perceive the divine essence within material existence.',
+    cosmologicalRole: "The thread that link the ethereal to the physical",
     scripturgicName: "pwr", // Force + Water + Weaving - Ethereal made Physical
-    realWorldJustification:
-      'Silver is the most electrically and thermally conductive metal, making it the ultimate medium for transmission and flow. This supreme conductivity symbolizes its role as a perfect bridge, translating the "energy" of physical experience into spiritual wisdom. It is also the most reflective metal, linking it to light, perception, and revealing what is hidden. This aligns with its function of perceiving the "divine essence." Its use in historical photography—capturing an image from light—is a direct parallel to its role in capturing and translating physical experiences into a higher, ethereal form.',
   },
   gold: {
-    cosmologicalRole:
-      'The "pure awareness beyond form" and the "eternal witness." It is the unchanging, insɲrruptible essence of consciousness that persists through all transformations.',
+    cosmologicalRole: "The cosmological anchor of the ethereal realm",
     scripturgicName: "lnv", // Light + Calm + Vibration - Pure Ethereal transcendence
-    realWorldJustification:
-      'Gold is one of the most unreactive chemical elements. It is highly resistant to corrosion, tarnish, and decay, making it a powerful symbol of permanence, purity, and insɲrruptibility. Its essence remains unchanged by its environment, just as the Soul is described as the "unchanging observer." Furthermore, Gold is the most malleable and ductile of all metals; a single gram can be beaten into a sheet of one square meter. This suggests that while the soul can be "spread" across vast experiences, it never breaks or loses its fundamental nature.',
   },
   copper: {
-    cosmologicalRole:
-      'The "universal mediator" and "connector chain between all elements." It facilitates all change, transformation, and the flow between all states of being.',
+    cosmologicalRole: "The conduit between the physical and ethereal",
     scripturgicName: "vws", // Vibration + Water + Swiftness - Bridge between realms
-    realWorldJustification:
-      'Copper is an exceptional conductor of heat and electricity, second only to Silver. This allows it to represent the flow and transfer of energy inherent in all change. More importantly, copper readily forms alloys with a vast number of other metals (such as brass with zinc or bronze with tin). This real-world ability to unify and combine with other elements to create new substances with different properties makes it the perfect representation of the "element unifier" that facilitates transitions between states.',
   },
   titanium: {
-    cosmologicalRole:
-      'The "absolute boundary" between the physical and ethereal realms. It represents the ultimate resistance to transcendence and maintains the separation between worlds.',
+    cosmologicalRole: "The wall that separate the realms",
     scripturgicName: "cdk", // Rupture + Defense + Cold - Absolute separation wall
-    realWorldJustification:
-      'Titanium has the highest strength-to-density ratio of any metal. It is incredibly strong, durable, and exceptionally resistant to corrosion. In the real world, it is used to create strong, impenetrable barriers in aerospace and marine applications. This unparalleled strength and resistance to degradation by outside forces make it the ideal physical representation of an "absolute boundary" and an "impenetrable wall" that maintains the fundamental structure of reality.',
   },
 };
 export const ScripturgicBeings = {
   ANGELS: {
     name: "Angels",
     description:
-      "Provide the pure power and direct intent of a concept. Using an Angel's name brings forth the whole, unadulterated essence of a magical idea.",
-    role: "pure power and direct intent",
-    effect: "brings forth the whole, unadulterated essence of a magical idea",
+      "angels are born from divinity, they are vectors of divine energy",
     vowelsSets: ["é", "ie", "éa"],
   },
   DEMONS: {
     name: "Demons",
     description:
-      "Provide the power of negation and the absence of a concept. A Demon's name doesn't destroy; it creates a void where a concept's power should be.",
-    role: "negation and absence",
-    effect: "creates a void where a concept's power should be",
+      "demons are born in the places devoid of divinity, they carry a will outside of diviniy's control.\n(daemons ≠ demons)",
     vowelsSets: ["ĩ", "õè", "ĩo"],
   },
   FEY: {
     name: "Fey",
     description:
-      "Provide distortion and falsehood. Their names are used to create illusions or to twist the reality of a concept, making something appear to be what it is not.",
-    role: "distortion and falsehood",
-    effect: "creates illusions or twists the reality of a concept",
-    vowelsSets: ["ù", "èi", "oã"],
+      "fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
+    vowelsSets: ["i", "oã", "eé"],
   },
   ELEMENTALS: {
     name: "Elementals",
     description:
-      "Provide the physical processes of a concept. Their names are the toolkit for manipulating the tangible world. They don't command the whole concept but rather its specific, repeatable parts. For example, an Elemental of Fire's name would give you control over a spark, a burn rate, or the production of smoke.",
-    role: "physical processes",
-    effect:
-      "manipulates the tangible world through specific, repeatable parts of a concept",
+      "elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
     vowelsSets: ["a", "ãe", "õĩ"],
   },
 } as const;
@@ -224,48 +185,197 @@ export type ScripturgicBeing =
   (typeof ScripturgicBeings)[keyof typeof ScripturgicBeings];
 
 export const cosmicGlyphsSystem = {
+  names: [
+    "Novilunium",
+    "Intentum",
+    "Coagulatio",
+    "Mutatio",
+    "Rubedo",
+    "Solutio",
+    "Cassatio",
+    "Quies",
+    "Aequilux",
+    "Fixatio",
+  ],
   moonPhases: {
     newMoon: {
       description: "potential, hidden power",
       glyph: "newMoon.png",
+      magicalPrecision:
+        "Spells are latent and invisible. Power is stored in the caster's intent (+Vpure), but the spell has a −50% chance of immediate success.",
+      vectorInfluence:
+        "Favors Angels (latent ideal) and Demons (concealed void).",
+      inscriptionInfluence:
+        "Inscriptions become invisible and latent. The spell power is stored within the inscription itself, activating only when specific conditions are met.",
+      spellEffect:
+        "Creates a hidden reservoir of magical energy that can be tapped later. The energy remains invisible until activated.",
     },
     waxingCrescent: {
       description: "intention, building energy",
       glyph: "waxingCrescent.png",
+      magicalPrecision:
+        "Magic has an accelerated build time. Rituals require fewer steps, but the energy is chaotic and prone to misdirection.",
+      vectorInfluence: "Favors Elementals (faster processes).",
+      inscriptionInfluence:
+        "Inscriptions build power rapidly but become unstable. The inscription must be completed quickly or it will discharge unpredictably.",
+      spellEffect:
+        "Accelerates the growth and development of any ongoing process. Plants grow faster, wounds heal quicker, but the effect is unpredictable and may cause mutations.",
     },
     firstQuarter: {
       description: "decision, momentum",
       glyph: "firstQuarter.png",
+      magicalPrecision:
+        "Magic requires a definitive, immediate sacrifice or cost to succeed, but the effect is immediate and powerful.",
+      vectorInfluence: "Good for all vectors requiring a strong start.",
+      inscriptionInfluence:
+        "Inscriptions require immediate activation upon completion. The inscription becomes a trigger that must be activated within 24 hours or loses all power.",
+      spellEffect:
+        "Creates a powerful burst of energy that must be used immediately. The spell provides massive short-term power but requires a significant sacrifice to activate.",
     },
     waxingGibbous: {
       description: "Refinement, adjustment",
       glyph: "waxingGibbous.png",
+      magicalPrecision:
+        "Spells cast are malleable for 24 hours. A caster can adjust the magical effect once after release.",
+      vectorInfluence:
+        "Favors Fey (Rule-setters, allows conditional re-writing).",
+      inscriptionInfluence:
+        "Inscriptions remain editable for 24 hours after creation. The inscription can be modified once without losing its power.",
+      spellEffect:
+        "Allows the caster to refine and perfect any existing magical effect. The spell can be adjusted once after casting to improve its precision or change its target.",
     },
     fullMoon: {
       description: "completion, manifestation",
       glyph: "fullMoon.png",
+      magicalPrecision:
+        "Spells are anchored and maximized. Power is released completely, and the effect is highly stable (+Vrelational).",
+      vectorInfluence:
+        "Favors Angels (maximized creation) and Fey (perfect rule application).",
+      inscriptionInfluence:
+        "Inscriptions become permanent and unbreakable. The inscription gains maximum power and cannot be dispelled or altered.",
+      spellEffect:
+        "Creates a permanent, unbreakable magical effect. The spell becomes anchored to reality and cannot be dispelled or counteracted.",
     },
     waningGibbous: {
-      description: "sharing, abundance",
+      description: "sharing, release",
       glyph: "waningGibbous.png",
+      magicalPrecision:
+        "Magic has a reduced cost but requires shared intent (multiple casters) or an open, public location.",
+      vectorInfluence:
+        "Favors Fey (social contract) and Elementals (shared process).",
+      inscriptionInfluence:
+        "Inscriptions must be created in public or with multiple participants. The inscription becomes visible to all and requires community consensus to activate.",
+      spellEffect:
+        "Creates a communal magical effect that requires multiple participants to activate. The spell gains power from shared intent but becomes visible to all.",
     },
     lastQuarter: {
       description: "Release, letting go",
       glyph: "lastQuarter.png",
+      magicalPrecision:
+        "Magic for undoing or breaking is at maximum strength. Spells to reverse, dissolve, or remove conditions are easier to cast.",
+      vectorInfluence: "Favors Demons (negation) and Elementals (dissolution).",
+      inscriptionInfluence:
+        "Inscriptions become dissolution-focused. The inscription gains the power to break, reverse, or undo other magical effects.",
+      spellEffect:
+        "Creates a powerful dispelling effect that can break, reverse, or undo any existing magical condition. The spell specializes in dissolution and removal.",
     },
     waningCrescent: {
       description: "Rest, surrender",
       glyph: "waningCrescent.png",
+      magicalPrecision:
+        "Magic is weak, but highly resistant to counter-magic. Spells cast are slow and defensive, focused on resilience.",
+      vectorInfluence:
+        "Favors Fey (enforcing an existing law) or Angels (creating resilient barriers).",
+      inscriptionInfluence:
+        "Inscriptions become defensive and resilient. The inscription gains resistance to dispelling and counter-magic, but activates slowly.",
+      spellEffect:
+        "Creates a slow-acting but highly resilient protective barrier. The spell is weak but nearly impossible to dispel or counteract.",
     },
   },
+
   sunMilestones: {
     equinox: {
       description: "Balance, shift",
       glyph: "equinox.png",
+      magicalPrecision:
+        "Vector Convergence. powers from opposing vectors (e.g., an Angel of Fire and a Demon of Fire) can temporarily fuse their effects without annihilation. This is the only time an Angel can learn a Fey rule, or a Demon can guide an Elemental process.",
+      vectorInfluence: "Favors Fey (allows rules to cross boundaries).",
+      inscriptionInfluence:
+        "Inscriptions can combine opposing vector effects. The inscription can contain both Angel and Demon names, or Fey rules with Elemental processes, without conflict.",
+      spellEffect:
+        "Creates a balanced magical effect that can combine opposing forces without conflict. The spell allows normally incompatible magical energies to work together harmoniously.",
     },
     solstice: {
       description: "abundance, celebration",
       glyph: "solstice.png",
+      magicalPrecision:
+        "Cost Nullification. Magic is drawn directly from the celestial source, temporarily halving the physical or energetic cost of all spells, but doubling their emotional/psychological risk.",
+      vectorInfluence:
+        "Favors Elementals (maximized throughput) and Demons (great risk for great reward).",
+      inscriptionInfluence:
+        "Inscriptions draw power directly from celestial sources. The inscription requires half the normal materials but carries double the psychological cost to the creator.",
+      spellEffect:
+        "Creates a powerful magical effect that draws energy directly from celestial sources. The spell requires minimal physical cost but carries significant psychological risk to the caster.",
     },
   },
-} as const;
+};
+export const Devils = {
+  names: {
+    // Daemon Order Aspects - Devils of zkn
+    zkn: [
+      {
+        name: "The Queller",
+        description:
+          "Devil of zkn - The force that suppresses all movement and activity, bringing everything to a halt through overwhelming stillness",
+      },
+      {
+        name: "The Binder",
+        description:
+          "Devil of zkn - The force that immobilizes and restrains, preventing any form of change or transformation through absolute constraint",
+      },
+      {
+        name: "The Fossilizer",
+        description:
+          "Devil of zkn - The force that petrifies and preserves in eternal stasis, turning all things into unmoving, unchanging forms",
+      },
+    ],
+
+    // Daemon Order Aspects - Devils of zrf
+    zrf: [
+      {
+        name: "The Linker",
+        description:
+          "Devil of zrf - Forceful binding and enslavement of Essences, chaining pure forms into corrupted servitude",
+      },
+      {
+        name: "The Blender",
+        description:
+          "Devil of zrf - Blind mixing and contamination of distinct Essences, creating impure and unstable amalgamations",
+      },
+      {
+        name: "The Dissolver",
+        description:
+          "Devil of zrf - Breaking down pure forms into formless chaos, erasing the boundaries that define essence",
+      },
+    ],
+
+    // Daemon Order Aspects - Devils of zʇc
+    zʇc: [
+      {
+        name: "The Eraser",
+        description:
+          "Devil of zʇc - Systematically removes all traces of existence, wiping away matter, memory, and meaning from reality",
+      },
+      {
+        name: "The Unraveler",
+        description:
+          "Devil of zʇc - Dissolves the fabric of reality itself, undoing the connections that hold existence together",
+      },
+      {
+        name: "The Silencer",
+        description:
+          "Devil of zʇc - Eliminates all sound, thought, and communication, creating zones of absolute silence and emptiness",
+      },
+    ],
+  },
+};

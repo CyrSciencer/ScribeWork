@@ -1,28 +1,54 @@
 import { consonants, ScribeConsonants } from "../../../utils/letters";
 import { useState } from "react";
+
 export const PureGlyphs = () => {
-  const [hoveringGlyph, setHoveringGlyph] = useState<string | null>(null);
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+  } | null>(null);
+
+  const handleHover = (name: string, meaning: string) => {
+    setHoveringEntity({ name, meaning });
+  };
+
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div className="cosmology-page">
       <h1>Pure Glyphs</h1>
-      {hoveringGlyph ? (
-        <div className="meaning">
-          {ScribeConsonants[hoveringGlyph as keyof typeof ScribeConsonants]}
-        </div>
-      ) : (
-        <div className="meaning">hover glyph for meaning</div>
+
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html: hoveringEntity.meaning.replace(/\n/g, "<br>"),
+          }}
+        />
       )}
-      <div className="pure-glyph-container">
-        {consonants.map((consonant) => (
-          <div
-            key={consonant}
-            className="pure-glyph"
-            onMouseEnter={() => setHoveringGlyph(consonant)}
-            onMouseLeave={() => setHoveringGlyph(null)}
-          >
-            {"j" + consonant}
+
+      <div className="cosmology-sections">
+        <section>
+          <h2>Consonants</h2>
+          <div className="cosmic-entities">
+            {consonants.map((consonant) => (
+              <div
+                key={consonant}
+                className="cosmic-entity"
+                onMouseEnter={() =>
+                  handleHover(
+                    "j" + consonant,
+                    ScribeConsonants[consonant as keyof typeof ScribeConsonants]
+                  )
+                }
+                onMouseLeave={handleLeave}
+              >
+                <span className="cosmic-name">{"j" + consonant}</span>
+              </div>
+            ))}
           </div>
-        ))}
+        </section>
       </div>
     </div>
   );

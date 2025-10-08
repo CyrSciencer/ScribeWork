@@ -1,4 +1,4 @@
-import { Conjurates as ConjuratesData } from "../../../data/Conjurates";
+import { Conjurates as ConjuratesData } from "../../../data/conjurates";
 
 export const Conjurates = () => {
   return (

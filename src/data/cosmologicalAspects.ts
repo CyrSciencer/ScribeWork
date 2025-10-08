@@ -34,14 +34,14 @@ export const nsɲAspect = {
   tky: "personal analysis of world", //personal analysis of world in opposition to group framework
 } as const;
 export const BiologicalLineage = {
-  dvn: "Plants/Bone/root", //Plants/Bone/root/structure/Permanence
-  fxr: "Fungus/Flesh/Flux", //Fungus/Flesh/Network/expansion/Flux
-  ṕms: "Animal/Blood/Process", //Animal/Blood/Movement/Vitality/Process
+  dvn: "Plants/Rooted",
+  fxr: "Fungus/In flux",
+  ṕms: "Animal/Active process",
 } as const;
 export const DaemonOrder = {
   zkn: "stillness", // Against fbṕ, stillness
-  zrf: "amalgam", // Against spw, amalgam
-  zʇc: "void", // Against ɲtr, void
+  zrf: "amalgam", // Against pws, amalgam
+  zʇc: "oblivion", // Against rtɲ, oblivion
 } as const;
 export const scribeGivenNames = {
   ...DivinePrinciple,
@@ -128,7 +128,7 @@ export const CosmicDynamism = {
     CosmicName: "xʇɲ", // shadow/mystery, silence/void, dream/illusion
   },
 } as const;
-export const cosmicFondation = {
+export const CosmicFondation = {
   bismuth: {
     cosmologicalRole: "The cosmological anchor of the physical realm",
     scripturgicName: "dkm", // Defense + Cold + Life - Pure Physical foundation
@@ -158,26 +158,26 @@ export const ScripturgicBeings = {
   ANGELS: {
     name: "Angels",
     description:
-      "angels are born from divinity, they are vectors of divine energy",
-    vowelsSets: ["é", "ie", "éa"],
+      "angels are born from divinity and are protectors/wardens of the cosmic laws. independent from concepts, they look after and guard the concepts rather than carrying them.\n(divine born ≠ angels)",
+    vowelsSets: ["é", "oi", "éa"],
   },
   DEMONS: {
     name: "Demons",
     description:
-      "demons are born in the places devoid of divinity, they carry a will outside of diviniy's control.\n(daemons ≠ demons)",
-    vowelsSets: ["ĩ", "õè", "ĩo"],
+      "demons are born in the barren fields of reality, where divinity's light does not reach. they carry a will outside of divinity's control.\n(daemons ≠ demons)\nIf divinity = 1 and daemons = -1, then demons = 0",
+    vowelsSets: ["ù", "õu", "uù"],
   },
   FEY: {
     name: "Fey",
     description:
       "fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
-    vowelsSets: ["i", "oã", "eé"],
+    vowelsSets: ["o", "oã", "eé"],
   },
   ELEMENTALS: {
     name: "Elementals",
     description:
       "elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
-    vowelsSets: ["a", "ãe", "õĩ"],
+    vowelsSets: ["a", "éè", "ùé"],
   },
 } as const;
 

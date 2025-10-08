@@ -5,7 +5,7 @@ import {
   Cycle,
   Structures,
   CosmicDynamism,
-  cosmicFondation,
+  CosmicFondation,
   ScripturgicBeings,
   DaemonOrder,
 } from "../../../data/cosmologicalAspects";
@@ -266,7 +266,7 @@ const CosmologicalBeings = () => {
 
         <CosmologicalSection
           title="Cosmic Foundation"
-          data={cosmicFondation}
+          data={CosmicFondation}
           className="cosmic-foundation"
           isFoundation={true}
           onHover={handleHover}

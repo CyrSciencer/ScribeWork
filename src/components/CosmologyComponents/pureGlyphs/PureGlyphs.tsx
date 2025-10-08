@@ -30,7 +30,6 @@ export const PureGlyphs = () => {
 
       <div className="cosmology-sections">
         <section>
-          <h2>Consonants</h2>
           <div className="cosmic-entities">
             {consonants.map((consonant) => (
               <div

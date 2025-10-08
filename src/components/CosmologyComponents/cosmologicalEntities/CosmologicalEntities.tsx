@@ -4,224 +4,155 @@ import {
   Cycle,
   Structures,
   CosmicDynamism,
-  cosmicFondation,
+  CosmicFondation,
   ScripturgicBeings,
 } from "../../../data/cosmologicalAspects";
+import { Demons } from "../../../data/demons";
+import { Fey } from "../../../data/fey";
 import { useState } from "react";
-
-// Types for the cosmological data
-type CosmologicalData = Record<string, string>;
-type CosmicDynamismData = Record<
-  string,
-  { CosmicName: string; name: string; energyType: string }
->;
-type CosmicFoundationData = Record<
-  string,
-  { scripturgicName: string; cosmologicalRole: string }
->;
-
-// Component for individual entity display
-interface EntityProps {
-  rootWord: string;
-  vowelSet: string[];
-  meaning: string;
-  entityType: string;
-  onHover: (name: string, meaning: string) => void;
-  onLeave: () => void;
-}
-
-const EntityDisplay = ({
-  rootWord,
-  vowelSet,
-  meaning,
-  entityType,
-  onHover,
-  onLeave,
-}: EntityProps) => {
-  const fullName =
-    rootWord[0] +
-    vowelSet[0] +
-    rootWord[1] +
-    vowelSet[1] +
-    rootWord[2] +
-    vowelSet[2];
-
-  return (
-    <div
-      className="cosmic-entity"
-      onMouseEnter={() => onHover(fullName, `${entityType} of ${meaning}`)}
-      onMouseLeave={onLeave}
-    >
-      <div className="cosmic-name">{fullName}</div>
-    </div>
-  );
+const data = {
+  ...PrimaryTriad,
+  ...Essences,
+  ...Cycle,
+  ...Structures,
 };
+const cosmicFoundation = Object.keys(CosmicFondation).map(
+  (key) => CosmicFondation[key as keyof typeof CosmicFondation].scripturgicName
+);
+const cosmicDynamism = Object.keys(CosmicDynamism).map(
+  (key) => CosmicDynamism[key as keyof typeof CosmicDynamism].CosmicName
+);
+const allNames = [...Object.keys(data), ...cosmicFoundation, ...cosmicDynamism];
 
-// Component for entity group display
-interface EntityGroupProps {
-  data: CosmologicalData | CosmicDynamismData | CosmicFoundationData;
-  vowelSet: string[];
-  entityType: string;
-  onHover: (name: string, meaning: string) => void;
-  onLeave: () => void;
-  isDynamism?: boolean;
-  isFoundation?: boolean;
-}
+const cosmicFoundationDescriptions = Object.keys(CosmicFondation).reduce(
+  (acc, key) => {
+    const item = CosmicFondation[key as keyof typeof CosmicFondation];
+    acc[item.scripturgicName] = `${key} - ${item.cosmologicalRole}`;
+    return acc;
+  },
+  {} as Record<string, string>
+);
 
-const EntityGroup = ({
-  data,
-  vowelSet,
-  entityType,
-  onHover,
-  onLeave,
-  isDynamism,
-  isFoundation,
-}: EntityGroupProps) => {
-  return (
-    <div className="cosmic-entities">
-      {Object.entries(data).map(([key, value]) => {
-        let rootWord: string;
-        let meaning: string;
+const cosmicDynamismDescriptions = Object.keys(CosmicDynamism).reduce(
+  (acc, key) => {
+    const item = CosmicDynamism[key as keyof typeof CosmicDynamism];
+    acc[item.CosmicName] = `${item.name} - ${item.energyType}`;
+    return acc;
+  },
+  {} as Record<string, string>
+);
 
-        if (isDynamism) {
-          const dynamismValue = value as {
-            CosmicName: string;
-            name: string;
-            energyType: string;
-          };
-          rootWord = dynamismValue.CosmicName;
-          meaning = dynamismValue.name;
-        } else if (isFoundation) {
-          const foundationValue = value as {
-            scripturgicName: string;
-            cosmologicalRole: string;
-          };
-          rootWord = foundationValue.scripturgicName;
-          meaning = key; // Use the key (metal name) as meaning for foundation
-        } else {
-          rootWord = key;
-          meaning = value as string;
-        }
-
-        return (
-          <EntityDisplay
-            key={key}
-            rootWord={rootWord}
-            vowelSet={vowelSet}
-            meaning={meaning}
-            entityType={entityType}
-            onHover={onHover}
-            onLeave={onLeave}
-          />
-        );
-      })}
-    </div>
-  );
+const allDescriptions = {
+  ...data,
+  ...cosmicFoundationDescriptions,
+  ...cosmicDynamismDescriptions,
 };
-
-// Component for scripturgic being section
-interface ScripturgicBeingSectionProps {
-  title: string;
-  vowelSet: string[];
-  onHover: (name: string, meaning: string) => void;
-  onLeave: () => void;
-}
-
-const ScripturgicBeingSection = ({
-  title,
-  vowelSet,
-  onHover,
-  onLeave,
-}: ScripturgicBeingSectionProps) => {
-  return (
-    <div>
-      <h2>{title}</h2>
-      <div className="cosmic-entities">
-        <EntityGroup
-          data={PrimaryTriad}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-        />
-        <EntityGroup
-          data={Essences}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-        />
-        <EntityGroup
-          data={Cycle}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-        />
-        <EntityGroup
-          data={Structures}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-        />
-        <EntityGroup
-          data={CosmicDynamism}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-          isDynamism={true}
-        />
-        <EntityGroup
-          data={cosmicFondation}
-          vowelSet={vowelSet}
-          entityType={title.toLowerCase().slice(0, -1)}
-          onHover={onHover}
-          onLeave={onLeave}
-          isFoundation={true}
-        />
-      </div>
-    </div>
-  );
-};
-
-export const CosmologicalEntities = () => {
+const ElementalNaming = () => {
   const { ELEMENTALS } = ScripturgicBeings;
+  const elementalVowels = ELEMENTALS.vowelsSets;
   const [hoveringEntity, setHoveringEntity] = useState<{
     name: string;
     meaning: string;
   } | null>(null);
-
   const handleHover = (name: string, meaning: string) => {
     setHoveringEntity({ name, meaning });
   };
-
   const handleLeave = () => {
     setHoveringEntity(null);
   };
-
   return (
     <div className="cosmology-page">
-      <h1>Cosmological Entities</h1>
-
+      <h1 className="being-title">ELEMENTALS</h1>
+      <div className="cosmic-entities">
+        {allNames.map((name) => (
+          <div
+            key={name}
+            className={`cosmic-entity cosmic-name`}
+            onMouseEnter={() => handleHover(name, ELEMENTALS.description)}
+            onMouseLeave={handleLeave}
+          >
+            {name[0] +
+              elementalVowels[0] +
+              name[1] +
+              elementalVowels[1] +
+              name[2] +
+              elementalVowels[2]}
+          </div>
+        ))}
+      </div>
       {hoveringEntity && (
         <div
           className="cosmic-meaning-display"
           dangerouslySetInnerHTML={{
-            __html: hoveringEntity.meaning.replace(/\n/g, "<br>"),
+            __html:
+              "elemental of " +
+              allDescriptions[
+                hoveringEntity.name as keyof typeof allDescriptions
+              ],
           }}
         />
       )}
-
-      <div className="cosmology-sections">
-        <ScripturgicBeingSection
-          title="Elementals"
-          vowelSet={ELEMENTALS.vowelsSets as unknown as string[]}
-          onHover={handleHover}
-          onLeave={handleLeave}
-        />
+    </div>
+  );
+};
+const ScripturgicBeingsSection = ({
+  being,
+  beingObject,
+}: {
+  being: keyof typeof ScripturgicBeings;
+  beingObject: { name: string; cosmicName: string; description: string }[];
+}) => {
+  const beingVowels = ScripturgicBeings[being].vowelsSets;
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+  } | null>(null);
+  const handleHover = (name: string, meaning: string) => {
+    setHoveringEntity({ name, meaning });
+  };
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+  console.log({ beingObject });
+  return (
+    <div className="cosmology-page">
+      <h1 className="being-title">{being}</h1>
+      <div className={`cosmic-entities`}>
+        {beingObject.map((being) => (
+          <div
+            key={being.name}
+            className="cosmic-entity cosmic-name"
+            onMouseEnter={() => handleHover(being.name, being.description)}
+            onMouseLeave={handleLeave}
+          >
+            {being.cosmicName[0] +
+              beingVowels[0] +
+              being.cosmicName[1] +
+              beingVowels[1] +
+              being.cosmicName[2] +
+              beingVowels[2]}
+          </div>
+        ))}
       </div>
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html: hoveringEntity.name + " - " + hoveringEntity.meaning,
+          }}
+        />
+      )}
+    </div>
+  );
+};
+export const CosmologicalEntities = () => {
+  console.log(allNames);
+  return (
+    <div className="cosmology-page">
+      <h1>Cosmological Entities</h1>
+      <ElementalNaming />
+      <ScripturgicBeingsSection being="DEMONS" beingObject={Demons} />
+      <ScripturgicBeingsSection being="FEY" beingObject={Fey} />
     </div>
   );
 };

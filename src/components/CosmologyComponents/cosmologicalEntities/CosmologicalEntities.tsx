@@ -7,7 +7,7 @@ import {
   CosmicFondation,
   ScripturgicBeings,
 } from "../../../data/cosmologicalAspects";
-import { Demons } from "../../../data/demons";
+import { Demons } from "../../../data/Demons";
 import { Fey } from "../../../data/fey";
 import { useState } from "react";
 const data = {

@@ -1,47 +1,47 @@
 export const DivinePrinciple = {
-  lmv: "the source of being", //the source of being
-  ʇxʁ: "the source of non-being", //the source of non-being
+  lmv: "lmv: the source of being", //the source of being
+  ʇxʁ: "ʇxʁ: the source of non-being", //the source of non-being
 } as const;
 export const PrimaryTriad = {
-  pws: "essence - what fills the universe", //essence the fill
-  fbṕ: "cycle - the dynamism of the universe", //cycle the dynamic
-  rtɲ: "structure - what is the form of the universe", //all the structure
+  pws: "pws: essence - what fills the universe", //essence the fill
+  fbṕ: "fbṕ: cycle - the dynamism of the universe", //cycle the dynamic
+  rtɲ: "rtɲ: structure - what is the form of the universe", //all the structure
 } as const;
 export const Essences = {
-  ɲvx: "ethereal field", //ethereal
-  gdr: "physical field", //physical
+  ɲvx: "ɲvx: ethereal field", //ethereal
+  gdr: "gdr: physical field", //physical
 } as const;
 export const Cycle = {
-  fpl: "birth", //birth
-  myv: "growth", //growth
-  gkz: "decline", //decline
-  tnx: "death", //death
+  fpl: "fpl: birth", //birth
+  myv: "myv: growth", //growth
+  gkz: "gkz: decline", //decline
+  tnx: "tnx: death", //death
 } as const;
 export const Structures = {
-  tgr: "the blueprint", //blueprint
-  vrd: "the fabric", //fabric
-  nsɲ: "the will", //will
+  tgr: "tgr: the blueprint - what defines the universe", //blueprint
+  vrd: "vrd: the fabric - what holds the universe together", //fabric
+  nsɲ: "nsɲ: the will - what inhabits the universe", //will
 } as const;
 
 export const nsɲAspect = {
-  tdz: "factual analysis", //factual analysis in opposition to heart analysis
-  ɲml: "heart analysis", //heart analysis in opposition to factual analysis
-  dwl: "physical perception", //physical perception in opposition to ethereal perception
-  vɲc: "ethereal perception", //ethereal perception in opposition to physical perception
-  pcf: "external exploration", //external exploration in opposition to inner place of self
-  nɲm: "inner place of self", //inner place of self in opposition to external exploration
-  dwg: "optimal usage of group framework", //optimal usage of group framework in opposition to personal analysis
-  tky: "personal analysis of world", //personal analysis of world in opposition to group framework
+  tdz: "tdz: factual analysis", //factual analysis in opposition to heart analysis
+  ɲml: "ɲml: heart analysis", //heart analysis in opposition to factual analysis
+  dwl: "dwl: physical perception", //physical perception in opposition to ethereal perception
+  vɲc: "vɲc: ethereal perception", //ethereal perception in opposition to physical perception
+  pcf: "pcf: external exploration", //external exploration in opposition to inner place of self
+  nɲm: "nɲm: inner place of self", //inner place of self in opposition to external exploration
+  dwg: "dwg: optimal usage of group framework", //optimal usage of group framework in opposition to personal analysis
+  tky: "tky: personal analysis of world", //personal analysis of world in opposition to group framework
 } as const;
 export const BiologicalLineage = {
-  dvn: "Plants/Rooted",
-  fxr: "Fungus/In flux",
-  ṕms: "Animal/Active process",
+  dvn: "dvn: Plants/Rooted",
+  fxr: "fxr: Fungus/In flux",
+  ṕms: "ṕms: Animal/Active process",
 } as const;
 export const DaemonOrder = {
-  zkn: "stillness", // Against fbṕ, stillness
-  zrf: "amalgam", // Against pws, amalgam
-  zʇc: "oblivion", // Against rtɲ, oblivion
+  zkn: "zkn: stillness - born from ʇxʁ to be a forceagainst fbṕ", // Against fbṕ, stillness
+  zrf: "zrf: amalgam - born from ʇxʁ to be a force against pws", // Against pws, amalgam
+  zʇc: "zʇc: oblivion - born from ʇxʁ to be a force against rtɲ", // Against rtɲ, oblivion
 } as const;
 export const scribeGivenNames = {
   ...DivinePrinciple,
@@ -158,25 +158,30 @@ export const ScripturgicBeings = {
   ANGELS: {
     name: "Angels",
     description:
-      "angels are born from divinity and are protectors/wardens of the cosmic laws. independent from concepts, they look after and guard the concepts rather than carrying them.\n(divine born ≠ angels)",
+      "héhoihéa: angels are born from divinity and are protectors/wardens of the cosmic laws. independent from concepts, they look after and guard the concepts rather than carrying them.\n(divine born ≠ angels)",
     vowelsSets: ["é", "oi", "éa"],
+    NurimAffix: "mé",
+    KorsianAffix: "déè",
+    HafizimAffix: "gae",
+    ShaklimAffix: "roa",
+    WazifimAffix: "tè",
   },
   DEMONS: {
     name: "Demons",
     description:
-      "demons are born in the barren fields of reality, where divinity's light does not reach. they carry a will outside of divinity's control.\n(daemons ≠ demons)\nIf divinity = 1 and daemons = -1, then demons = 0",
-    vowelsSets: ["ù", "õu", "uù"],
+      "hùhuhõo: demons are born in the barren fields of reality, where divinity's light does not reach. they carry a will outside of divinity's control.\n(daemons ≠ demons)\nIf divinity = 1 and daemons = -1, then demons = 0",
+    vowelsSets: ["ù", "u", "õo"],
   },
   FEY: {
     name: "Fey",
     description:
-      "fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
+      "hohoãheé: fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
     vowelsSets: ["o", "oã", "eé"],
   },
   ELEMENTALS: {
     name: "Elementals",
     description:
-      "elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
+      "hahéèhùé:elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
     vowelsSets: ["a", "éè", "ùé"],
   },
 } as const;

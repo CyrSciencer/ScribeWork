@@ -1,11 +1,20 @@
 // Angels are born from divinity and are protectors/wardens of the cosmic laws.
 // Independent from concepts, they look after and guard the concepts rather than carrying them.
 // They maintain cosmic order and ensure the laws function properly.
-
+import { ScripturgicBeings } from "./cosmologicalAspects";
+const { ANGELS } = ScripturgicBeings;
+const {
+  vowelsSets,
+  NurimAffix,
+  KorsianAffix,
+  HafizimAffix,
+  ShaklimAffix,
+  WazifimAffix,
+} = ANGELS;
 interface Angel {
   name: string;
   cosmicName: string;
-  rank: string; //  Ophan, Seraph, Throne,  Erel, Elohim, Ish
+  rank: "Shahidiel" | "Nurim" | "Korsian" | "Hafizim" | "Shaklim" | "Wazifim"; //  Shahidiel, Nurim, Korsian,  Hafizim, Shaklim, Wazifim
   guardianOf: string; // What cosmic law/concept they protect
   description: string;
   powers: string[];
@@ -13,13 +22,23 @@ interface Angel {
   appearance: string;
   behavior: string;
 }
-
+const CosmicName = (affix: string, name: string) => {
+  return (
+    affix +
+    name[0] +
+    vowelsSets[0] +
+    name[1] +
+    vowelsSets[1] +
+    name[2] +
+    vowelsSets[2]
+  );
+};
 export const Angels: Angel[] = [
-  // ========== OPHAN (Singular - Highest) ==========
+  // ========== Shahidiel (Singular - Highest) ==========
   {
-    name: "The Ophan of the Triad",
-    cosmicName: "",
-    rank: "Ophan",
+    name: "Shahidiel of the Triad",
+    cosmicName: CosmicName("hé", "pfr"),
+    rank: "Shahidiel",
     guardianOf: "The Primary Triad (pws, fbṕ, rtɲ)",
     description:
       "The highest angel, guardian of the unity and balance of the Primary Triad. Ensures essence, cycle, and structure remain in perfect harmony. The wheel that encompasses all cosmic law.",
@@ -43,11 +62,11 @@ export const Angels: Angel[] = [
       "Rarely manifests, appearing only when the fundamental balance of reality is threatened. Speaks in three voices simultaneously, each expressing a different aspect of truth.",
   },
 
-  // ========== SERAPHS (3 - Guards each Triad aspect) ==========
+  // ========== Nurim (3 - Guards each Triad aspect) ==========
   {
-    name: "The Seraph of Essences",
-    cosmicName: "",
-    rank: "Seraph",
+    name: "The Nurim of Essences",
+    cosmicName: CosmicName(NurimAffix, "pws"),
+    rank: "Nurim",
     guardianOf: "pws - Essence (what fills the universe)",
     description:
       "Guardian of all essences that fill the universe. Protects the purity and distinction of the ethereal and physical fields. Ensures essence remains uncorrupted and flows properly.",
@@ -72,9 +91,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Seraph of Cycles",
-    cosmicName: "",
-    rank: "Seraph",
+    name: "The Nurim of Cycles",
+    cosmicName: CosmicName(NurimAffix, "fbṕ"),
+    rank: "Nurim",
     guardianOf: "fbṕ - Cycle (the dynamism of the universe)",
     description:
       "Guardian of eternal cycles and the dynamism of existence. Protects the sacred progression of birth, growth, decline, and death. Ensures time flows and nothing stagnates or rushes unnaturally.",
@@ -99,9 +118,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Seraph of Structures",
-    cosmicName: "",
-    rank: "Seraph",
+    name: "The Nurim of Structures",
+    cosmicName: CosmicName(NurimAffix, "rtɲ"),
+    rank: "Nurim",
     guardianOf: "rtɲ - Structure (what is the form of the universe)",
     description:
       "Guardian of cosmic architecture and the fundamental forms of reality. Protects the blueprint, fabric, and will that give the universe its shape. Ensures structure remains coherent and maintains its integrity.",
@@ -126,11 +145,11 @@ export const Angels: Angel[] = [
       "Precise and methodical, measuring and calculating constantly. Speaks in mathematical harmonies and geometric truths. Inflexible when structure is threatened, but compassionate to those seeking proper form.",
   },
 
-  // ========== THRONES (3 - Guards lmv) ==========
+  // ========== the Korsian (3 - Guards lmv) ==========
   {
-    name: "The First Throne of Being",
-    cosmicName: "",
-    rank: "Throne",
+    name: "The First Korsian of Being",
+    cosmicName: CosmicName(KorsianAffix, "lfm"),
+    rank: "Korsian",
     guardianOf: "lmv - The source of being (aspect of creation)",
     description:
       "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of creation and the emanation of existence from the divine source.",
@@ -149,9 +168,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Second Throne of Being",
-    cosmicName: "",
-    rank: "Throne",
+    name: "The Second Korsian of Being",
+    cosmicName: CosmicName(KorsianAffix, "mwv"),
+    rank: "Korsian",
     guardianOf: "lmv - The source of being (aspect of sustenance)",
     description:
       "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of sustenance, ensuring all that exists continues to exist by divine will.",
@@ -176,9 +195,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Third Throne of Being",
-    cosmicName: "",
-    rank: "Throne",
+    name: "The Third Korsian of Being",
+    cosmicName: CosmicName(KorsianAffix, "vɲl"),
+    rank: "Korsian",
     guardianOf: "lmv - The source of being (aspect of purpose)",
     description:
       "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of purpose, ensuring all existence serves its divine function.",
@@ -202,11 +221,11 @@ export const Angels: Angel[] = [
       "Wise and directive, constantly guiding reality toward fulfillment of divine purpose. Speaks in revelations and epiphanies, showing beings their true function.",
   },
 
-  // ========== EREL (4 - Guards universe's laws) ==========
+  // ========== Hafizim (4 - Guards universe's laws) ==========
   {
-    name: "The First Erel of Universal Law",
-    cosmicName: "",
-    rank: "Erel",
+    name: "The First Hafizim of Universal Law",
+    cosmicName: CosmicName(HafizimAffix, "gtf"),
+    rank: "Hafizim",
     guardianOf: "Laws of Causality and Consequence",
     description:
       "Guardian of cause and effect, ensuring every action has its proper consequence. Protects the fundamental law that nothing happens without reason and every cause produces its effect.",
@@ -225,9 +244,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Second Erel of Universal Law",
-    cosmicName: "",
-    rank: "Erel",
+    name: "The Second Hafizim of Universal Law",
+    cosmicName: CosmicName(HafizimAffix, "grk"),
+    rank: "Hafizim",
     guardianOf: "Laws of Conservation and Balance",
     description:
       "Guardian of conservation - ensuring energy, essence, and form are neither created nor destroyed beyond divine will, only transformed. Maintains cosmic equilibrium.",
@@ -252,9 +271,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Third Erel of Universal Law",
-    cosmicName: "",
-    rank: "Erel",
+    name: "The Third Hafizim of Universal Law",
+    cosmicName: CosmicName(HafizimAffix, "gkd"),
+    rank: "Hafizim",
     guardianOf: "Laws of Limitation and Boundary",
     description:
       "Guardian of limits and boundaries, ensuring nothing exceeds its proper domain. Protects the law that all things have limits and boundaries must be respected.",
@@ -273,9 +292,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Fourth Erel of Universal Law",
-    cosmicName: "",
-    rank: "Erel",
+    name: "The Fourth Hafizim of Universal Law",
+    cosmicName: CosmicName(HafizimAffix, "gvz"),
+    rank: "Hafizim",
     guardianOf: "Laws of Harmony and Discord",
     description:
       "Guardian of resonance and dissonance, ensuring the proper balance between harmony and discord. Protects the law that all things have their frequency and must resonate or clash appropriately.",
@@ -293,11 +312,11 @@ export const Angels: Angel[] = [
       "Musical and rhythmic, speaks in tones and harmonies. Brings discord into harmony when needed, but allows necessary discord to drive change. Listens to the music of spheres.",
   },
 
-  // ========== ELOHIM (4 - Guards major cosmic systems) ==========
+  // ========== Shaklim (4 - Guards major cosmic systems) ==========
   {
-    name: "The Elohim of Biological Lineage",
-    cosmicName: "",
-    rank: "Elohim",
+    name: "The Shaklim of Biological Lineage",
+    cosmicName: CosmicName(ShaklimAffix, "dfṕ"),
+    rank: "Shaklim",
     guardianOf: "BiologicalLineage (dvn, fxr, ṕms)",
     description:
       "Guardian of the three biological lineages that form life. Protects Plants/Rooted (dvn), Fungus/In flux (fxr), and Animal/Active process (ṕms). Ensures biological forms remain true to their lineages.",
@@ -322,9 +341,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Elohim of the Will",
-    cosmicName: "",
-    rank: "Elohim",
+    name: "The Shaklim of the Will",
+    cosmicName: CosmicName(ShaklimAffix, "nsɲ"),
+    rank: "Shaklim",
     guardianOf: "nsɲAspect - The eight aspects of Will",
     description:
       "Guardian of the eight aspects of will (nsɲ) - protecting the balance between factual and heart analysis, physical and ethereal perception, external and internal focus, group framework and personal analysis.",
@@ -349,9 +368,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Elohim of Cosmic Dynamism",
-    cosmicName: "",
-    rank: "Elohim",
+    name: "The Shaklim of Cosmic Dynamism",
+    cosmicName: CosmicName(ShaklimAffix, "rtf"),
+    rank: "Shaklim",
     guardianOf: "CosmicDynamism - The elemental forces",
     description:
       "Guardian of the ten cosmic forces: Fire, Water, Earth, Air, Aether, Lightning, Ice, Metal, Wood, and Shadow. Protects the integrity and proper interaction of elemental energies.",
@@ -376,9 +395,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "The Elohim of Cosmic Foundation",
-    cosmicName: "",
-    rank: "Elohim",
+    name: "The Shaklim of Cosmic Foundation",
+    cosmicName: CosmicName(ShaklimAffix, "vpr"),
+    rank: "Shaklim",
     guardianOf: "CosmicFondation - The six sacred metals",
     description:
       "Guardian of the six cosmic foundations: bismuth (physical anchor), antimony (physical-ethereal link), silver (ethereal-physical link), gold (ethereal anchor), copper (conduit), titanium (separation wall).",
@@ -402,11 +421,11 @@ export const Angels: Angel[] = [
       "Solid and immovable when protecting foundations, but facilitates proper flow between realms. Speaks of structure and stability. Uncompromising about maintaining cosmic architecture.",
   },
 
-  // ========== ISH OF BIOLOGICAL LINEAGE (3 - Guards each lineage) ==========
+  // ========== Wazifim OF BIOLOGICAL LINEAGE (3 - Guards each lineage) ==========
   {
-    name: "Ish of Plant Lineage",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Plant Lineage",
+    cosmicName: CosmicName(WazifimAffix, "dvn"),
+    rank: "Wazifim",
     guardianOf: "dvn - Plants/Rooted",
     description:
       "Guardian of the plant lineage and all rooted life. Protects the forms that remain anchored and grounded, ensuring permanence and stability through rootedness in biological systems.",
@@ -425,9 +444,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Fungal Lineage",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Fungal Lineage",
+    cosmicName: CosmicName(WazifimAffix, "fxr"),
+    rank: "Wazifim",
     guardianOf: "fxr - Fungus/In flux",
     description:
       "Guardian of the fungal lineage and all life in constant flux. Protects the forms that exist in transformation and change, ensuring adaptation and metamorphosis in biological systems.",
@@ -453,9 +472,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Animal Lineage",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Animal Lineage",
+    cosmicName: CosmicName(WazifimAffix, "ṕms"),
+    rank: "Wazifim",
     guardianOf: "ṕms - Animal/Active process",
     description:
       "Guardian of the animal lineage and all life of active process. Protects the forms that exist through continuous action and activity, ensuring vitality and dynamic movement in biological systems.",
@@ -480,11 +499,11 @@ export const Angels: Angel[] = [
       "Energetic and vital. Speaks of the joy of movement and the pulse of life. Values action, vitality, and the flow of living processes.",
   },
 
-  // ========== ISH OF NSɲASPECT (8 - Guards each aspect of Will) ==========
+  // ========== Wazifim OF NSɲASPECT (8 - Guards each aspect of Will) ==========
   {
-    name: "Ish of Factual Analysis",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Factual Analysis",
+    cosmicName: CosmicName(WazifimAffix, "tdz"),
+    rank: "Wazifim",
     guardianOf: "tdz - Factual analysis",
     description:
       "Guardian of factual analysis and objective reasoning. Protects the ability to perceive truth through logic and evidence, ensuring this mode of consciousness remains clear and uncorrupted.",
@@ -503,9 +522,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Heart Analysis",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Heart Analysis",
+    cosmicName: CosmicName(WazifimAffix, "ɲml"),
+    rank: "Wazifim",
     guardianOf: "ɲml - Heart analysis",
     description:
       "Guardian of heart analysis and emotional understanding. Protects the ability to perceive truth through emotion and intuition, ensuring empathy and feeling remain valid paths to knowledge.",
@@ -524,9 +543,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Physical Perception",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Physical Perception",
+    cosmicName: CosmicName(WazifimAffix, "dwl"),
+    rank: "Wazifim",
     guardianOf: "dwl - Physical perception",
     description:
       "Guardian of physical perception and material awareness. Protects the ability to perceive through the five senses and engage with the tangible world.",
@@ -551,9 +570,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Ethereal Perception",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Ethereal Perception",
+    cosmicName: CosmicName(WazifimAffix, "vɲc"),
+    rank: "Wazifim",
     guardianOf: "vɲc - Ethereal perception",
     description:
       "Guardian of ethereal perception and spiritual awareness. Protects the ability to perceive beyond the physical, to sense energy, spirit, and the unseen realms.",
@@ -578,9 +597,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of External Exploration",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of External Exploration",
+    cosmicName: CosmicName(WazifimAffix, "pcf"),
+    rank: "Wazifim",
     guardianOf: "pcf - External exploration",
     description:
       "Guardian of external exploration and outward seeking. Protects the drive to explore the world, discover new things, and engage with external reality.",
@@ -605,9 +624,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Inner Self",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Inner Self",
+    cosmicName: CosmicName(WazifimAffix, "nɲm"),
+    rank: "Wazifim",
     guardianOf: "nɲm - Inner place of self",
     description:
       "Guardian of the inner self and introspection. Protects the sacred space within, the ability to know oneself, and the journey of self-discovery.",
@@ -632,9 +651,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Group Framework",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Group Framework",
+    cosmicName: CosmicName(WazifimAffix, "dwg"),
+    rank: "Wazifim",
     guardianOf: "dwg - Optimal usage of group framework",
     description:
       "Guardian of collective wisdom and social structures. Protects the ability to work within groups, honor traditions, and benefit from shared knowledge.",
@@ -659,9 +678,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of Personal Analysis",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of Personal Analysis",
+    cosmicName: CosmicName(WazifimAffix, "tky"),
+    rank: "Wazifim",
     guardianOf: "tky - Personal analysis of world",
     description:
       "Guardian of individual perspective and personal truth. Protects the right to form one's own understanding, question traditions, and think independently.",
@@ -685,11 +704,11 @@ export const Angels: Angel[] = [
       "Speaks of personal truth and individual rights. Encourages beings to think for themselves. Values personal perspective alongside collective wisdom.",
   },
 
-  // ========== ISH OF MOON PHASES (8 - Guards each lunar phase) ==========
+  // ========== Wazifim OF MOON PHASES (8 - Guards each lunar phase) ==========
   {
-    name: "Ish of the New Moon",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the New Moon",
+    cosmicName: CosmicName(WazifimAffix, "nvx"),
+    rank: "Wazifim",
     guardianOf: "New Moon - Novilunium (potential, hidden power)",
     description:
       "Guardian of the new moon phase, protecting latent potential and hidden power. Ensures spells of invisibility and storage function properly, guards the moment of new beginnings.",
@@ -714,9 +733,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Waxing Crescent",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Waxing Crescent",
+    cosmicName: CosmicName(WazifimAffix, "ngɲ"),
+    rank: "Wazifim",
     guardianOf: "Waxing Crescent - Intentum (intention, building energy)",
     description:
       "Guardian of the waxing crescent phase, protecting building energy and developing intention. Ensures accelerated growth proceeds safely, guards the formation of purpose.",
@@ -735,9 +754,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the First Quarter",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the First Quarter",
+    cosmicName: CosmicName(WazifimAffix, "nfṕ"),
+    rank: "Wazifim",
     guardianOf: "First Quarter - Coagulatio (decision, momentum)",
     description:
       "Guardian of the first quarter phase, protecting decisive action and momentum. Ensures proper sacrifices are made and commitments honored, guards the moment of choice.",
@@ -756,9 +775,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Waxing Gibbous",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Waxing Gibbous",
+    cosmicName: CosmicName(WazifimAffix, "nrf"),
+    rank: "Wazifim",
     guardianOf: "Waxing Gibbous - Mutatio (refinement, adjustment)",
     description:
       "Guardian of the waxing gibbous phase, protecting refinement and adjustment. Ensures magic remains malleable for proper tuning, guards the process of perfection.",
@@ -783,9 +802,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Full Moon",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Full Moon",
+    cosmicName: CosmicName(WazifimAffix, "nvl"),
+    rank: "Wazifim",
     guardianOf: "Full Moon - Rubedo (completion, manifestation)",
     description:
       "Guardian of the full moon phase, protecting completion and full manifestation. Ensures magic reaches maximum power and stability, guards the moment of perfect realization.",
@@ -810,9 +829,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Waning Gibbous",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Waning Gibbous",
+    cosmicName: CosmicName(WazifimAffix, "nry"),
+    rank: "Wazifim",
     guardianOf: "Waning Gibbous - Solutio (sharing, release)",
     description:
       "Guardian of the waning gibbous phase, protecting sharing and communal release. Ensures magic flows to groups properly, guards the process of distribution and generosity.",
@@ -831,9 +850,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Last Quarter",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Last Quarter",
+    cosmicName: CosmicName(WazifimAffix, "ncʁ"),
+    rank: "Wazifim",
     guardianOf: "Last Quarter - Cassatio (release, letting go)",
     description:
       "Guardian of the last quarter phase, protecting release and dissolution. Ensures proper undoing and breaking, guards the necessary process of letting go.",
@@ -858,9 +877,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Waning Crescent",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Waning Crescent",
+    cosmicName: CosmicName(WazifimAffix, "nɲʇ"),
+    rank: "Wazifim",
     guardianOf: "Waning Crescent - Quies (rest, surrender)",
     description:
       "Guardian of the waning crescent phase, protecting rest and resilient surrender. Ensures defensive magic maintains its strength, guards the wisdom of yielding without breaking.",
@@ -878,11 +897,11 @@ export const Angels: Angel[] = [
       "Gentle but unbreakable. Speaks of the strength in rest and surrender. Values resilience and the wisdom to yield.",
   },
 
-  // ========== ISH OF SUN MILESTONES (2 - Guards solar events) ==========
+  // ========== Wazifim OF SUN MILESTONES (2 - Guards solar events) ==========
   {
-    name: "Ish of the Equinox",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Equinox",
+    cosmicName: CosmicName(WazifimAffix, "lbg"),
+    rank: "Wazifim",
     guardianOf: "Equinox - Aequilux (balance, shift)",
     description:
       "Guardian of the equinox, protecting moments of perfect balance and vector convergence. Ensures opposing forces can unite safely, guards the sacred times when boundaries dissolve.",
@@ -907,9 +926,9 @@ export const Angels: Angel[] = [
   },
 
   {
-    name: "Ish of the Solstice",
-    cosmicName: "",
-    rank: "Ish",
+    name: "Wazifim of the Solstice",
+    cosmicName: CosmicName(WazifimAffix, "lḱm"),
+    rank: "Wazifim",
     guardianOf: "Solstice - Fixatio (abundance, celebration)",
     description:
       "Guardian of the solstice, protecting abundance and the nullification of cost. Ensures celestial power flows freely while guarding against psychological harm, guards the moment of maximum light or dark.",

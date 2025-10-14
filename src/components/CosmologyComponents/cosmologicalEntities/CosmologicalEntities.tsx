@@ -10,6 +10,7 @@ import {
 import { Demons } from "../../../data/Demons";
 import { Fey } from "../../../data/fey";
 import { useState } from "react";
+import { Angels } from "../../../data/Angels";
 const data = {
   ...PrimaryTriad,
   ...Essences,
@@ -145,6 +146,43 @@ const ScripturgicBeingsSection = ({
     </div>
   );
 };
+const AngelsSection = () => {
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+  } | null>(null);
+  const handleHover = (name: string, meaning: string) => {
+    setHoveringEntity({ name, meaning });
+  };
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+  return (
+    <div className="cosmology-page">
+      <h1 className="being-title">Angels</h1>
+      <div className="cosmic-entities">
+        {Angels.map((angel) => (
+          <div
+            key={angel.name}
+            className="cosmic-entity cosmic-name"
+            onMouseEnter={() => handleHover(angel.name, angel.description)}
+            onMouseLeave={handleLeave}
+          >
+            {angel.cosmicName}
+          </div>
+        ))}
+      </div>
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html: hoveringEntity.name + " - " + hoveringEntity.meaning,
+          }}
+        />
+      )}
+    </div>
+  );
+};
 export const CosmologicalEntities = () => {
   console.log(allNames);
   return (
@@ -153,6 +191,7 @@ export const CosmologicalEntities = () => {
       <ElementalNaming />
       <ScripturgicBeingsSection being="DEMONS" beingObject={Demons} />
       <ScripturgicBeingsSection being="FEY" beingObject={Fey} />
+      <AngelsSection />
     </div>
   );
 };

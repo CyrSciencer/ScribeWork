@@ -10,7 +10,7 @@ import {
   DaemonOrder,
 } from "../../../data/cosmologicalAspects";
 import { useState } from "react";
-
+const { ANGELS } = ScripturgicBeings;
 // Types for the cosmological data
 type CosmologicalData = Record<string, string>;
 type CosmicDynamismData = Record<
@@ -180,7 +180,54 @@ const ScripturgicBeingsSection = ({
     </section>
   );
 };
+const AngelsSection = ({
+  onHover,
+  onLeave,
+}: {
+  onHover: (name: string, meaning: string) => void;
+  onLeave: () => void;
+}) => {
+  const angelHierarchy = [
+    {
+      affix: ANGELS.KorsianAffix,
+      description: "Korsian: thrones of the source of being",
+    },
+    {
+      affix: ANGELS.NurimAffix,
+      description: "Nurim: guards of the triad",
+    },
+    {
+      affix: ANGELS.HafizimAffix,
+      description: "Hafizim: guards of the universe's laws",
+    },
+    {
+      affix: ANGELS.ShaklimAffix,
+      description: "Shaklim: guards of the major cosmic systems",
+    },
+    {
+      affix: ANGELS.WazifimAffix,
+      description: "Wazifim: guards of precise cosmic aspects",
+    },
+  ];
 
+  return (
+    <section className="angels">
+      <h2>Angels hierarchy</h2>
+      <div className="cosmic-entities">
+        {angelHierarchy.map((angel, index) => (
+          <div
+            key={index}
+            className="cosmic-entity cosmic-name"
+            onMouseEnter={() => onHover(angel.affix, angel.description)}
+            onMouseLeave={onLeave}
+          >
+            {angel.affix}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 const CosmologicalBeings = () => {
   const [hoveringEntity, setHoveringEntity] = useState<{
     name: string;
@@ -274,6 +321,7 @@ const CosmologicalBeings = () => {
         />
 
         <ScripturgicBeingsSection onHover={handleHover} onLeave={handleLeave} />
+        <AngelsSection onHover={handleHover} onLeave={handleLeave} />
       </div>
     </div>
   );

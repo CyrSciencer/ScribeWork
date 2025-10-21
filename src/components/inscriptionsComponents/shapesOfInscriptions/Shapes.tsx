@@ -51,8 +51,7 @@ export const Shapes = () => {
         }
       }
     }
-    // eslint-disable-next-line
-  }, [availableNames]);
+  }, [availableNames, selectedName]);
 
   const [maxNames, setMaxNames] = useState<number>(4);
 

@@ -3,7 +3,7 @@
 // Unlike Angels who guard concepts, or Elementals who carry concepts,
 // Divine Born are free agents with divine power but their own will.
 
-interface DivineBorn {
+interface DivineBornInterface {
   name: string;
   cosmicName: string;
   description: string;
@@ -15,7 +15,7 @@ interface DivineBorn {
   nature: string; // Their independent nature despite divine origin
 }
 
-export const DivineBorn: DivineBorn[] = [
+export const DivineBorn: DivineBornInterface[] = [
   {
     name: "the one with the sun",
     cosmicName: "ʁaùgéĩr'",

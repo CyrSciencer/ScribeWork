@@ -1,5 +1,4 @@
 import {
-  PrimaryTriad,
   Essences,
   Cycle,
   Structures,

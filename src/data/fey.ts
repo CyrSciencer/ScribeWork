@@ -157,7 +157,7 @@ export const Fey: FeyEntity[] = [
   },
   {
     name: "The Constant",
-    cosmicName: "dkn",
+    cosmicName: "knb",
     rule: "what remains",
     description:
       "The fey of invariance and persistence, defining what cannot change and what survives all transformations",
@@ -171,7 +171,7 @@ export const Fey: FeyEntity[] = [
   },
   {
     name: "The Limiter",
-    cosmicName: "cdt",
+    cosmicName: "cdb",
     rule: "what boundary/limit",
     description:
       "The fey of constraint and containment, determining how far transformation can extend",
@@ -185,7 +185,7 @@ export const Fey: FeyEntity[] = [
   },
   {
     name: "The Current",
-    cosmicName: "wvf",
+    cosmicName: "wfb",
     rule: "what direction/vector",
     description:
       "The fey of flow and trajectory, governing the direction and path of transformation",

@@ -186,7 +186,7 @@ export const Demons: GreaterDemon[] = [
   },
   {
     name: "The Void Master",
-    cosmicName: "nvl",
+    cosmicName: "ɲvn",
     description:
       "Born from the ultimate barren field - the space of pure autonomy where divine presence has never existed. Emerged in the perfect null, the absolute zero, the complete absence. Governs total independence and self-originated existence.",
     powers: [
@@ -244,7 +244,7 @@ export const Demons: GreaterDemon[] = [
   },
   {
     name: "The Plague Bearer",
-    cosmicName: "zkx",
+    cosmicName: "zbx",
     description:
       "Born from the void between health and sickness, where divine vitality does not flow. Emerged in the spaces where disease arises independently, where corruption forms without divine curse. Governs autonomous pestilence and self-generated decay.",
     powers: [
@@ -324,7 +324,7 @@ export const Demons: GreaterDemon[] = [
   },
   {
     name: "The Will Forger",
-    cosmicName: "mṕy",
+    cosmicName: "mby",
     description:
       "Born from the void between stillness and action, where divine purpose does not drive movement. Emerged in the spaces where passion arises from self, where energy comes from independent will. Governs autonomous action and self-generated momentum.",
     powers: [

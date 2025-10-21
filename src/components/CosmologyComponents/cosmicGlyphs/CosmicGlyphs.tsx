@@ -10,6 +10,9 @@ export const CosmicGlyphs = () => {
           <p>
             <span>{key}:</span> {value.description}
           </p>
+          <p>
+            <span>named:</span> {value.name}
+          </p>
           <img src={"/glyphs/" + value.glyph} alt={key} />
         </div>
       ))}
@@ -18,6 +21,9 @@ export const CosmicGlyphs = () => {
         <div key={key}>
           <p>
             <span>{key}:</span> {value.description}
+          </p>
+          <p>
+            <span>named:</span> {value.name}
           </p>
           <img src={"/glyphs/" + value.glyph} alt={key} />
         </div>

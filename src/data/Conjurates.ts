@@ -134,7 +134,7 @@ export const Conjurates: ConjurateModel[] = [
     name: "The Empress",
     tarotCard: "The Empress",
     number: 3,
-    cosmicName: "n'mio",
+    cosmicName: "m'bion'",
     description:
       "The embodiment of creation and abundance, representing fertility, growth, and the nurturing power of nature.",
     manifestation:

@@ -12,7 +12,6 @@ import { Fey } from "../../../data/fey";
 import { useState } from "react";
 import { Angels } from "../../../data/Angels";
 const data = {
-  ...PrimaryTriad,
   ...Essences,
   ...Cycle,
   ...Structures,
@@ -77,7 +76,8 @@ const ElementalNaming = () => {
               name[1] +
               elementalVowels[1] +
               name[2] +
-              elementalVowels[2]}
+              elementalVowels[2] +
+              "péi"}
           </div>
         ))}
       </div>
@@ -89,7 +89,16 @@ const ElementalNaming = () => {
               "elemental of " +
               allDescriptions[
                 hoveringEntity.name as keyof typeof allDescriptions
-              ],
+              ] +
+              ` |${
+                (hoveringEntity.name as string)[0] +
+                elementalVowels[0] +
+                (hoveringEntity.name as string)[1] +
+                elementalVowels[1] +
+                (hoveringEntity.name as string)[2] +
+                elementalVowels[2] +
+                "péi"
+              }|`,
           }}
         />
       )}
@@ -107,9 +116,10 @@ const ScripturgicBeingsSection = ({
   const [hoveringEntity, setHoveringEntity] = useState<{
     name: string;
     meaning: string;
+    cosmicName: string;
   } | null>(null);
-  const handleHover = (name: string, meaning: string) => {
-    setHoveringEntity({ name, meaning });
+  const handleHover = (name: string, meaning: string, cosmicName: string) => {
+    setHoveringEntity({ name, meaning, cosmicName });
   };
   const handleLeave = () => {
     setHoveringEntity(null);
@@ -123,7 +133,9 @@ const ScripturgicBeingsSection = ({
           <div
             key={being.name}
             className="cosmic-entity cosmic-name"
-            onMouseEnter={() => handleHover(being.name, being.description)}
+            onMouseEnter={() =>
+              handleHover(being.name, being.description, being.cosmicName)
+            }
             onMouseLeave={handleLeave}
           >
             {being.cosmicName[0] +
@@ -139,7 +151,18 @@ const ScripturgicBeingsSection = ({
         <div
           className="cosmic-meaning-display"
           dangerouslySetInnerHTML={{
-            __html: hoveringEntity.name + " - " + hoveringEntity.meaning,
+            __html:
+              hoveringEntity.name +
+              " - " +
+              hoveringEntity.meaning +
+              ` |${
+                (hoveringEntity.cosmicName as string)[0] +
+                beingVowels[0] +
+                (hoveringEntity.cosmicName as string)[1] +
+                beingVowels[1] +
+                (hoveringEntity.cosmicName as string)[2] +
+                beingVowels[2]
+              }|`,
           }}
         />
       )}
@@ -150,9 +173,10 @@ const AngelsSection = () => {
   const [hoveringEntity, setHoveringEntity] = useState<{
     name: string;
     meaning: string;
+    cosmicName: string;
   } | null>(null);
-  const handleHover = (name: string, meaning: string) => {
-    setHoveringEntity({ name, meaning });
+  const handleHover = (name: string, meaning: string, cosmicName: string) => {
+    setHoveringEntity({ name, meaning, cosmicName });
   };
   const handleLeave = () => {
     setHoveringEntity(null);
@@ -165,7 +189,9 @@ const AngelsSection = () => {
           <div
             key={angel.name}
             className="cosmic-entity cosmic-name"
-            onMouseEnter={() => handleHover(angel.name, angel.description)}
+            onMouseEnter={() =>
+              handleHover(angel.name, angel.description, angel.cosmicName)
+            }
             onMouseLeave={handleLeave}
           >
             {angel.cosmicName}
@@ -176,7 +202,11 @@ const AngelsSection = () => {
         <div
           className="cosmic-meaning-display"
           dangerouslySetInnerHTML={{
-            __html: hoveringEntity.name + " - " + hoveringEntity.meaning,
+            __html:
+              hoveringEntity.name +
+              " - " +
+              hoveringEntity.meaning +
+              ` |${hoveringEntity.cosmicName}|`,
           }}
         />
       )}

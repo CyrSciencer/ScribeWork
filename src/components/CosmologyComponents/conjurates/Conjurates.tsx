@@ -5,7 +5,7 @@ export const Conjurates = () => {
     <div>
       <h1>Conjurates</h1>
       {ConjuratesData.map((conjurate) => (
-        <div key={conjurate.name} className="conjurate">
+        <div key={conjurate.name} className="singular-entity">
           <h2>{conjurate.name}</h2>
           <p className="cosmic-name">{conjurate.cosmicName}</p>
           <p>| {conjurate.cosmicName} |</p>

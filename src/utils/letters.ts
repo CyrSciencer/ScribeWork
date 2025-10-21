@@ -65,7 +65,7 @@ export const vowelsIPA = [
 
 export const specials = ["h", "j"];
 export const ScribeConsonants = {
-  b: "bounce, redirect, elasticity, spring, reform, ricochet, recoil", //
+  b: "bounce, redirect, elasticity, spring, reform, ricochet, recoil, repetition", //
 
   c: "rupture, schism, portal, crack, breach, fracture", //
 
@@ -255,10 +255,3 @@ export const ScribeDiphthongs = {
   õè: "vicinity",
   õĩ: "restricted",
 } as const;
-const theThreeWritings = {
-  scribe: "wrote the basic runes",
-  lordOnTheMoon: "wrote the runes of the moon and celestial glyphs",
-  ʇxʁ: "created the corrupted script by twisting languages of mortals",
-};
-
-export type TheThreeWritings = keyof typeof theThreeWritings;

@@ -30,7 +30,7 @@ export const nsɲAspect = {
   vɲc: "vɲc: ethereal perception", //ethereal perception in opposition to physical perception
   pcf: "pcf: external exploration", //external exploration in opposition to inner place of self
   nɲm: "nɲm: inner place of self", //inner place of self in opposition to external exploration
-  dwg: "dwg: optimal usage of group framework", //optimal usage of group framework in opposition to personal analysis
+  gvr: "gvr: optimal usage of group framework", //optimal usage of group framework in opposition to personal analysis
   tky: "tky: personal analysis of world", //personal analysis of world in opposition to group framework
 } as const;
 export const BiologicalLineage = {
@@ -181,7 +181,7 @@ export const ScripturgicBeings = {
   ELEMENTALS: {
     name: "Elementals",
     description:
-      "hahéèhùé:elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
+      "hahéèhùé: elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
     vowelsSets: ["a", "éè", "ùé"],
   },
 } as const;
@@ -190,21 +190,10 @@ export type ScripturgicBeing =
   (typeof ScripturgicBeings)[keyof typeof ScripturgicBeings];
 
 export const cosmicGlyphsSystem = {
-  names: [
-    "Novilunium",
-    "Intentum",
-    "Coagulatio",
-    "Mutatio",
-    "Rubedo",
-    "Solutio",
-    "Cassatio",
-    "Quies",
-    "Aequilux",
-    "Fixatio",
-  ],
   moonPhases: {
     newMoon: {
       description: "potential, hidden power",
+      name: "Novilunium",
       glyph: "newMoon.png",
       magicalPrecision:
         "Spells are latent and invisible. Power is stored in the caster's intent (+Vpure), but the spell has a −50% chance of immediate success.",
@@ -217,6 +206,7 @@ export const cosmicGlyphsSystem = {
     },
     waxingCrescent: {
       description: "intention, building energy",
+      name: "Intentum",
       glyph: "waxingCrescent.png",
       magicalPrecision:
         "Magic has an accelerated build time. Rituals require fewer steps, but the energy is chaotic and prone to misdirection.",
@@ -228,6 +218,7 @@ export const cosmicGlyphsSystem = {
     },
     firstQuarter: {
       description: "decision, momentum",
+      name: "Coagulatio",
       glyph: "firstQuarter.png",
       magicalPrecision:
         "Magic requires a definitive, immediate sacrifice or cost to succeed, but the effect is immediate and powerful.",
@@ -239,6 +230,7 @@ export const cosmicGlyphsSystem = {
     },
     waxingGibbous: {
       description: "Refinement, adjustment",
+      name: "mutatio",
       glyph: "waxingGibbous.png",
       magicalPrecision:
         "Spells cast are malleable for 24 hours. A caster can adjust the magical effect once after release.",
@@ -251,6 +243,7 @@ export const cosmicGlyphsSystem = {
     },
     fullMoon: {
       description: "completion, manifestation",
+      name: "rubedo",
       glyph: "fullMoon.png",
       magicalPrecision:
         "Spells are anchored and maximized. Power is released completely, and the effect is highly stable (+Vrelational).",
@@ -263,6 +256,7 @@ export const cosmicGlyphsSystem = {
     },
     waningGibbous: {
       description: "sharing, release",
+      name: "solutio",
       glyph: "waningGibbous.png",
       magicalPrecision:
         "Magic has a reduced cost but requires shared intent (multiple casters) or an open, public location.",
@@ -275,6 +269,7 @@ export const cosmicGlyphsSystem = {
     },
     lastQuarter: {
       description: "Release, letting go",
+      name: "cassatio",
       glyph: "lastQuarter.png",
       magicalPrecision:
         "Magic for undoing or breaking is at maximum strength. Spells to reverse, dissolve, or remove conditions are easier to cast.",
@@ -286,6 +281,7 @@ export const cosmicGlyphsSystem = {
     },
     waningCrescent: {
       description: "Rest, surrender",
+      name: "quies",
       glyph: "waningCrescent.png",
       magicalPrecision:
         "Magic is weak, but highly resistant to counter-magic. Spells cast are slow and defensive, focused on resilience.",
@@ -301,6 +297,7 @@ export const cosmicGlyphsSystem = {
   sunMilestones: {
     equinox: {
       description: "Balance, shift",
+      name: "aequilux",
       glyph: "equinox.png",
       magicalPrecision:
         "Vector Convergence. powers from opposing vectors (e.g., an Angel of Fire and a Demon of Fire) can temporarily fuse their effects without annihilation. This is the only time an Angel can learn a Fey rule, or a Demon can guide an Elemental process.",
@@ -312,6 +309,7 @@ export const cosmicGlyphsSystem = {
     },
     solstice: {
       description: "abundance, celebration",
+      name: "fixatio",
       glyph: "solstice.png",
       magicalPrecision:
         "Cost Nullification. Magic is drawn directly from the celestial source, temporarily halving the physical or energetic cost of all spells, but doubling their emotional/psychological risk.",

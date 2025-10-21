@@ -311,7 +311,7 @@ function App() {
                 <Routes>
                   <Route
                     path="/"
-                    element={<Navigate to="/wordCreation" replace />}
+                    element={<Navigate to="/cosmology" replace />}
                   />
                   <Route path="/wordCreation" element={<WordCreation />} />
                   <Route path="/cosmology" element={<Cosmology />} />

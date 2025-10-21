@@ -5,7 +5,7 @@ import { CosmologicalEntities } from "../components/CosmologyComponents/cosmolog
 import { PureGlyphs } from "../components/CosmologyComponents/pureGlyphs/PureGlyphs";
 import { Conjurates } from "../components/CosmologyComponents/conjurates/Conjurates";
 import { CosmicGlyphs } from "../components/CosmologyComponents/cosmicGlyphs/CosmicGlyphs";
-
+import { DivineBorn } from "../components/CosmologyComponents/divineBorn/DivineBorn";
 export const Cosmology = () => {
   const [page, setPage] = useState(1);
   return (
@@ -17,7 +17,7 @@ export const Cosmology = () => {
           </button>
         )}
         <span className="page-indicator">Page {page}</span>
-        {page !== 5 && (
+        {page !== 6 && (
           <button className="page-button" onClick={() => setPage(page + 1)}>
             Page {page + 1} →
           </button>
@@ -29,7 +29,8 @@ export const Cosmology = () => {
       </div>
       <div className="page-content">{page === 3 && <PureGlyphs />}</div>
       <div className="page-content">{page === 4 && <Conjurates />}</div>
-      <div className="page-content">{page === 5 && <CosmicGlyphs />}</div>
+      <div className="page-content">{page === 5 && <DivineBorn />}</div>
+      <div className="page-content">{page === 6 && <CosmicGlyphs />}</div>
     </div>
   );
 };

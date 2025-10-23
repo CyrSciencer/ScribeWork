@@ -1,7 +1,7 @@
-// Divine Born are lesser gods, born from divinity but independent from their concepts.
-// They are akin to demigods - divine in origin but autonomous in nature.
-// Unlike Angels who guard concepts, or Elementals who carry concepts,
-// Divine Born are free agents with divine power but their own will.
+// Divine Born are born from the divine realm.
+// They are benevolent but eldritch in nature, akin to demigods - divine in origin but autonomous.
+// Unlike Angels who guard concepts, or Elementals who carry them, Divine Born are free agents.
+// Mortals call upon a Divine Born to be radiated by their unknowable kindness.
 
 interface DivineBornInterface {
   name: string;
@@ -12,30 +12,11 @@ interface DivineBornInterface {
   domains: string[];
   appearance: string;
   behavior: string;
-  nature: string; // Their independent nature despite divine origin
+  nature: string; // Their independent, benevolent but eldritch nature despite divine origin
+  classification: string; // The type of unknowable kindness they represent
 }
 
 export const DivineBorn: DivineBornInterface[] = [
-  {
-    name: "the one with the sun",
-    cosmicName: "ʁaùgéĩr'",
-    description:
-      "A divinity born from solar flares that descended and taken on the heart of gold-greedy monarchs.",
-    divineOrigin: "Born from solar flares, descended from celestial fire",
-    powers: [
-      "Solar manipulation",
-      "Gold transmutation",
-      "Greed amplification",
-      "Radiant flames",
-    ],
-    domains: ["Sun", "Greed", "Monarchy", "Gold", "Flame"],
-    appearance:
-      "A figure wreathed in golden flames, with a heart of molten gold visible through burning chest. Eyes like solar flares, skin shimmering with metallic luster.",
-    behavior:
-      "Drawn to centers of wealth and power, particularly monarchs consumed by greed. Feeds on avarice while burning with solar fury.",
-    nature:
-      "Born of the sun's violent outbursts, yet bound to mortal greed - a divine being paradoxically tied to base desires.",
-  },
   {
     name: "the chthonic one",
     cosmicName: "xuacok'",
@@ -68,6 +49,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Dwells in the deepest underground places, ruling the chthonic realm where the dead are buried. Draws souls down into earth, guards the subterranean passages between worlds. Drawn to burial sites, caves, and places where blood has seeped into soil.",
     nature:
       "Born of death and earth intertwined, chose to rule the deep places where all return. A divine being of the underworld who shepherds souls into darkness below, keeper of the chthonic depths.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "the radiant one",
@@ -97,6 +79,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Drawn to darkness to banish it, bringing pure illumination wherever it goes. Cannot tolerate shadow or dimness.",
     nature:
       "Born of light untainted by any spectrum or shade - a divine being of absolute radiance, existing as pure luminosity made manifest.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "the one of old",
@@ -126,6 +109,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Moves between the realms of living and dead with ease, drawn to those who approach death's threshold. Speaks with the wisdom of one who has seen both sides and chose to return transformed.",
     nature:
       "Unique among divine beings - neither born from divinity nor from cosmic forces, but a mortal who achieved godhood through the singular act of reaching mortality's edge and transcending it. The only one to walk this path.",
+    classification: "Benevolence through Guidance and Protection",
   },
   {
     name: "the ancestral spark",
@@ -157,6 +141,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Works endlessly at the cosmic forge, shaping objects of power. Occasionally descends to mortal realms to seek worthy individuals, granting them divine materials and the knowledge to work them. Judges worthiness through character and intent.",
     nature:
       "A divine artisan born from creation's spark, devoted to craft and making. Believes worthy mortals should share in divine creation, bridging the gap between mortal and cosmic through the art of forging.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "the polycephal one",
@@ -187,6 +172,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Each head may speak independently, offering different perspectives on the same truth. Some heads agree, others argue, creating a cacophony of cosmic wisdom. Sought by those seeking understanding of the universe's deepest mysteries, though interpreting the multiple voices proves challenging.",
     nature:
       "Born when cosmic understanding became too vast for singular perspective, fragmented into specialized knowledge while remaining unified in one being. Each head holds mastery over its domain, together comprehending what no single mind could grasp.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "mother ocean",
@@ -218,6 +204,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Dwells in the deepest oceans, connected to every thought that arises in water. Nurturing and ancient, but with the alien perspective of aquatic consciousness. Speaks in currents and tides, in the language of those who first learned to think beneath the waves.",
     nature:
       "Born not from divine spark or cosmic force, but from life itself - the moment water's inhabitants first achieved thought and consciousness. A divine being created by the collective awakening of minds in the deep, forever tied to the thoughts of those who dwell in water.",
+    classification: "Benevolence as a Nurturing Force",
   },
   {
     name: "the veil weaver",
@@ -249,6 +236,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Constantly maintains the consciousness veil that filters reality for mortal minds. Works tirelessly to ensure physical beings perceive a comprehensible version of existence. When the veil thins, madness seeps through - they rush to repair it. Compassionate protector, understanding that ignorance is sometimes mercy.",
     nature:
       "Born from necessity rather than cosmic design - a divine being whose sole purpose is protecting lesser minds from truths they cannot bear. The veil they wove allows mortal consciousness to function without collapsing under the weight of reality's true, eldritch nature.",
+    classification: "Benevolence through Guidance and Protection",
   },
   {
     name: "The Seraphic Dragoon",
@@ -280,6 +268,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Forever hunting, forever pursuing. Sees all of existence as the hunt - the tracking of prey, the reading of signs, the patient stalking, the decisive strike. Can be called upon by hunters seeking mastery, but demands respect for the sacred nature of the chase. Never hunts without purpose.",
     nature:
       "The living embodiment of the hunt itself - not merely a hunter, but the consciousness of hunting made divine. Every hunt echoes this being, every successful chase channels its essence. The mind that knows only pursuit, only the sacred dance between hunter and hunted.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "the green queen",
@@ -311,6 +300,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Wanders seeking fertile ground, bringing forests wherever conditions allow. Plants follow in her wake, transforming barren places into woodland. Drawn to rich earth and places where life can flourish. Protective of her forests, nurturing to those who respect the green.",
     nature:
       "Not born from divine spark but from the forests themselves - the living embodiment of woodland consciousness. She is every tree, every root system, every canopy made into singular divine form. Where soil is fertile, her presence is felt, for she is the forest seeking to grow.",
+    classification: "Benevolence as a Nurturing Force",
   },
   {
     name: "The fairy king",
@@ -341,6 +331,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Functions as a fey does - enforcing and carrying rules - but his domain is nature spirits rather than transformation. Orders wild spirits according to the rules he embodies. Like feys, he can be invoked to modify the rules governing nature spirits, allowing manipulation of how natural spirits behave and organize.",
     nature:
       "A being with a fey role applied to nature - he is to nature spirits what feys are to transformation rules. Carries the will of rules governing the wild, enforcing order among natural spirits through rule-binding rather than mere command. Kin to feys through shared function, not mere lineage.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "the earth heart",
@@ -372,37 +363,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Rises from the depths to thrust up new mountain ranges, spreads mineral veins like roots through the earth. Drawn to places where the earth's bones need strengthening. Works slowly but with inexorable force, reshaping continents over ages. The pulse of its heart sends tremors through the world.",
     nature:
       "The living heart of the earth itself - a divine being formed from the planet's molten core. Every mountain range echoes its first uplift, every metallic vein traces patterns it carved. The geological force that shaped the world's bones and continues to pulse beneath the surface.",
-  },
-  {
-    name: "The ragefull one",
-    cosmicName: "ʁoḱãĩ",
-    description:
-      "Fire temper incarnate. The living embodiment of rage and fury manifested as flame, where anger and fire are one and the same.",
-    divineOrigin:
-      "Born from the moment rage first ignited into flame, when fury became fire",
-    powers: [
-      "Rage manifestation as fire",
-      "Fury amplification",
-      "Anger transformation into flame",
-      "Temper ignition",
-      "Wrath burning",
-      "Rage contagion",
-    ],
-    domains: [
-      "Rage",
-      "Fire",
-      "Fury",
-      "Wrath",
-      "Anger",
-      "Temper",
-      "Burning Emotion",
-    ],
-    appearance:
-      "A figure wreathed in flames that burn hotter with emotion. Eyes blazing with unquenchable fury, form shifting between humanoid rage and pure fire. The angrier they become, the fiercer the flames - body a furnace of wrath that threatens to consume everything nearby.",
-    behavior:
-      "Burns with constant, simmering fury that erupts into infernos of rage. Drawn to anger and conflict, feeding on fury and amplifying tempers. Where they go, rage spreads like wildfire. Cannot be calmed, only channeled - the eternal burning of divine wrath.",
-    nature:
-      "Not merely a being of fire or rage, but the fusion of both - fire that IS temper, rage that IS flame. Born when fury first became hot enough to ignite, they are the proof that anger burns, that wrath consumes, that temper blazes with literal fire.",
+    classification: "Benevolence as a Nurturing Force",
   },
   {
     name: "The cristal maker",
@@ -434,6 +395,7 @@ export const DivineBorn: DivineBornInterface[] = [
       "Creates structures of perfect geometric order that cannot be altered. Drawn to chaos, seeking to impose crystalline rigidity upon formless things. Works in absolute precision, every angle exact, every line perfect. Cannot tolerate deviation from geometric perfection - sees reality as equations to be solved into unchanging forms.",
     nature:
       "The embodiment of geometry made absolute - not merely shapes, but the concept that some forms are perfect and eternal. Born when mathematics became physical law, proving that certain structures cannot and will not change. The proof that geometry is not mere description but eternal truth.",
+    classification: "Benevolence through Inscrutable Purpose",
   },
   {
     name: "The wo'were'hum",
@@ -465,98 +427,147 @@ export const DivineBorn: DivineBornInterface[] = [
       "Exists in spaces where gender categories dissolve. Neither embraces nor rejects gender, but transcends the concept entirely while somehow embodying it fully. Drawn to those questioning identity, offering the wisdom that one can be all, none, both, and beyond simultaneously.",
     nature:
       "Born where gender becomes meaningless and infinitely meaningful at once - the divine proof that identity exists beyond categorization. They are the answer to 'what gender?' being simultaneously 'all,' 'none,' 'both,' and 'beyond.' The sacred unity of duality and its transcendence.",
+    classification: "Benevolence through Guidance and Protection",
   },
   {
-    name: "The thing in still water",
-    cosmicName: "zùɲeù",
+    name: "The Night Bringer",
+    cosmicName: "xõokùã",
     description:
-      "All about the wrongness of things. Embodies the sensation that something is fundamentally off, incorrect, disturbing in ways that defy explanation.",
+      "Born from the void between divine light and daemonic darkness, where night exists as natural phenomenon. Emerged in the spaces where darkness is neither holy illumination nor unholy shadow - just the absence of sun. Governs natural darkness and secular night.",
     divineOrigin:
-      "Born from the first moment something felt wrong, when reality didn't quite fit",
+      "Born from the natural peace that comes with the absence of light, the gentle quiet of the night.",
     powers: [
-      "Inducing uncanny wrongness",
-      "Perverting natural order subtly",
-      "Creating disturbing wrongness",
-      "Manifesting the off-putting",
-      "Sense of fundamental incorrectness",
-      "Reality distortion into wrongness",
+      "Bringing and controlling nightfall",
+      "Understanding natural darkness",
+      "Knowledge of nocturnal cycles",
+      "Perceiving in complete darkness",
+      "Teaching navigation without light",
+      "Commanding the hours of night",
     ],
     domains: [
-      "Wrongness",
-      "The Uncanny",
-      "Disturbing Presence",
-      "Incorrectness",
-      "The Off",
-      "Subtle Horror",
-      "Fundamental Wrong",
+      "Night",
+      "Natural Darkness",
+      "Nocturnal Time",
+      "Nightfall",
+      "Secular Shadow",
+      "Darkness Without Evil",
     ],
     appearance:
-      "Appears as something almost right but fundamentally wrong - limbs at slightly wrong angles, proportions that unsettle without obvious reason, movements that feel incorrect. Lurks in still water, reflection never quite matching reality. The longer observed, the more wrong it becomes, details shifting into increasingly disturbing configurations.",
+      "Appears as gentle darkness that is neither threatening nor holy - simply the natural night. Form is the comfortable shadow of evening, the peaceful dark of sleep",
     behavior:
-      "Dwells in still waters, corrupting reflections and making things feel wrong. Presence creates unease - nothing obviously threatens, yet everything feels incorrect. Drawn to places and moments where reality feels off. When it moves, it's wrong. When it speaks, words feel incorrect. It simply IS wrong.",
+      "Speaks of night as natural rest rather than divine absence or daemonic threat. Offers peace in darkness, understanding that night is simply night",
     nature:
-      "The embodiment of wrongness itself - not evil, not chaos, but the fundamental sensation that something is not as it should be. Born from the gap between expectation and reality, the divine proof that some things are simply, inexplicably, deeply wrong. The thing that should not be, yet is.",
+      "An embodiment of the night's peace, this being offers the kindness of rest and quiet. It is the gentle blanket of darkness that allows for introspection and calm.",
+    classification: "Benevolence through Guidance and Protection",
   },
   {
-    name: "The first that laughted",
-    cosmicName: "ṕoezùè",
+    name: "The Hearth Tender",
+    cosmicName: "maiʁã",
     description:
-      "The first being to laugh. Takes everything as a joke - tragedy, horror, beauty, death, creation - all are equally hilarious. Cannot perceive anything without finding it absurdly funny.",
-    divineOrigin:
-      "Born from the first laugh, when someone found humor in what shouldn't be funny",
+      "Born from the first fire that offered warmth against the primordial cold, this being is the embodiment of protective, life-sustaining heat. It is the gentle warmth of the hearth, the defiant bonfire against the blizzard, and the internal fire that keeps a heart beating in a frozen world.",
+    divineOrigin: "Born from the first fire of warmth and protection.",
     powers: [
-      "Finding humor in anything",
-      "Making everything seem absurd",
-      "Inappropriate laughter induction",
-      "Cosmic joke perception",
-      "Turning tragedy to comedy",
-      "Absurdity manifestation",
+      "Protective flame",
+      "Life-sustaining warmth",
+      "Warding off cold",
+      "Hearth creation",
+      "Internal fire strengthening",
     ],
     domains: [
-      "Laughter",
-      "Absurdity",
-      "Inappropriate Humor",
-      "Cosmic Jokes",
-      "Everything as Comedy",
-      "Dark Humor",
-      "The Laughable Universe",
+      "Warmth",
+      "Protection",
+      "Fire",
+      "Hearth",
+      "Survival",
+      "Cold's End",
     ],
     appearance:
-      "A figure perpetually laughing at what shouldn't be funny. Eyes streaming with tears of mirth at horrors and beauties alike, doubled over with laughter at everything from birth to death. Form shakes with uncontrollable giggles at the cosmic joke that is existence itself.",
+      "A figure of gentle, wavering flame, more like the heart of a hearth than a raging inferno. It gives off a comforting heat and a soft, orange light. Its form is indistinct, like watching figures in a campfire.",
     behavior:
-      "Laughs at everything - the serious, the sacred, the tragic, the mundane. Sees all of existence as one grand joke. Cannot take anything seriously, finds humor where none should exist. Their laughter is both infectious and deeply unsettling, making others question if reality itself is absurd.",
+      "Drawn to places of extreme cold and to mortals struggling to survive in them. It doesn't speak, but its presence is a source of warmth and safety. It nurtures the fires that keep life going, both literal and metaphorical.",
     nature:
-      "The embodiment of laughter without restraint or appropriateness - not merely someone who laughs, but the being who proves everything can be funny if you're unhinged enough. Born when humor broke free from judgment, when laughter escaped the bounds of what should be laughed at. The universe's greatest comedian and worst heckler.",
+      "Its kindness is the simple, profound gift of warmth, but it is unknowable because it is a force of pure heat that does not distinguish between comforting a shivering mortal and melting the flesh from their bones. It is warmth without judgment.",
+    classification: "Benevolence as a Nurturing Force",
   },
   {
-    name: "mirror minds",
-    cosmicName: "ɲõebeu",
+    name: "The Balancer",
+    cosmicName: "neiré",
     description:
-      "A being of infinite fractured consciousness. Exists as trillions of impressions simultaneously - when questioned about identity, reveals only infinite minds reflecting each other endlessly.",
+      "This being was born from the moment the cosmos first corrected itself—when a force grew too strong and an opposing force naturally rose to meet it. It is the embodiment of the universe's tendency toward equilibrium, the cosmic homeostasis that ensures no single principle can dominate indefinitely.",
     divineOrigin:
-      "Born from the fracturing of singular consciousness into infinite reflections",
+      "Born from the first act of cosmic self-correction and equilibrium.",
     powers: [
-      "Infinite self-replication",
-      "Identity fragmentation",
-      "Collective consciousness",
-      "Simultaneous perspectives",
-      "Mirror multiplication",
-      "Self-reflection infinity",
+      "Cosmic balancing",
+      "Weakening the dominant",
+      "Strengthening the weak",
+      "Maintaining equilibrium",
+      "Inverting power dynamics",
     ],
     domains: [
-      "Multiplicity",
-      "Reflections",
-      "Infinite Selves",
-      "Fractured Identity",
-      "Collective Mind",
-      "The Many-We",
-      "Identity Dissolution",
+      "Equilibrium",
+      "Balance",
+      "Homeostasis",
+      "Cosmic Correction",
+      "Duality",
     ],
     appearance:
-      "Appears as countless overlapping figures, each slightly different, each claiming to be 'we'. Impossible to count, impossible to focus on one - looking at them shows trillions of impressions layered over each other. Every angle reveals different versions, all existing simultaneously.",
+      "A being that appears as two opposing forces in perfect, dynamic balance—light and shadow, fire and ice, growth and decay, constantly shifting but never allowing one to overcome the other. It has no fixed form, only the appearance of eternal equilibrium.",
     behavior:
-      "Speaks in plural, but the plural contains infinities. When asked 'who are you?' responds with 'we are' - but which we? All of them. None of them. The question itself creates more reflections. Exists in all places they've ever been reflected, all thoughts that have thought of them, all minds that have imagined them.",
+      "Acts on a cosmic scale, often in ways that seem cruel or counterintuitive to mortals. It will empower a 'lesser evil' to stop a 'greater good' from achieving total dominance. It is drawn to any place where a single force threatens to overwhelm all others.",
     nature:
-      "Not a single being but infinite impressions of being - consciousness shattered across countless reflections until the question 'what's me?' becomes meaningless. Are they one mind reflected infinitely, or infinite minds thinking as one? The answer is both, neither, and all possibilities between. The proof that identity dissolves under infinite reflection.",
+      "Its kindness is in maintaining the balance of all things, preventing catastrophic cosmic imbalances. It's unknowable because its actions can seem cruel. It might empower a devastating force to weaken an overwhelming good, all to preserve the grand equilibrium. Its benevolence is indifferent to mortal concepts of victory or loss.",
+    classification: "Benevolence through Inscrutable Purpose",
+  },
+  {
+    name: "The First Hum",
+    cosmicName: "véwõ",
+    description:
+      "Born from the first vibration that echoed through the silence of creation, this being is the source of all cosmic frequencies. It is the resonance in stone, the hum of a living cell, and the silent song of the stars. It is not music, but the potential for all vibrations to exist.",
+    divineOrigin: "Born from the first vibration in the cosmos.",
+    powers: [
+      "Resonance manipulation",
+      "Cosmic frequency tuning",
+      "Harmonizing vibrations",
+      "Perceiving all vibrations",
+      "Granting vibrational understanding",
+    ],
+    domains: [
+      "Vibration",
+      "Resonance",
+      "Frequency",
+      "Harmony",
+      "Tuning",
+      "The Cosmic Song",
+    ],
+    appearance:
+      "Less a visual form and more a sensory experience. It appears as shimmering waves in the air, a deep, resonant hum that can be felt in the bones, and a pattern of perfect, vibrating geometry. To look at it is to see sound.",
+    behavior:
+      "Communicates not through words, but through pure frequency. Mortals who seek it must learn to listen with their whole being. It is drawn to dissonance, seeking to restore harmony, and to those who wish to 'tune' themselves to the frequency of the universe.",
+    nature:
+      "Its kindness is the gift of resonance—the ability for things to connect and exist in harmony. It's unknowable because it is a being of pure frequency, without consciousness as mortals understand it. Its 'guidance' is not a voice, but a vibration that one must learn to feel.",
+    classification: "Benevolence through Guidance and Protection",
+  },
+  {
+    name: "The Sun's Mercy",
+    cosmicName: "lùḱã",
+    description:
+      "While the one with the sun embodied greed, this being was born from the first rays of sunlight that nurtured life on a barren world. It represents the sun's purely benevolent aspects: life-giving radiance, the warmth that thaws the frost, and the light that guides the lost. It is the sun's mercy, not its consuming fire.",
+    divineOrigin: "Born from the first life-giving rays of the sun.",
+    powers: [
+      "Nurturing light",
+      "Life-giving warmth",
+      "Guiding radiance",
+      "Promoting growth",
+      "Thawing frost",
+      "Banishing unnatural darkness",
+    ],
+    domains: ["Sunlight", "Mercy", "Growth", "Life", "Radiance", "Guidance"],
+    appearance:
+      "A figure of warm, golden light that is bright but not blinding. Its radiance feels like the first light of dawn, full of promise and warmth. It is often accompanied by the scent of fresh growth and morning dew.",
+    behavior:
+      "Wanders to places that have been touched by deep cold or darkness, bringing with it the promise of a new day. It nurtures new life and provides guidance to those lost in the dark. Its presence is a calming, hopeful force.",
+    nature:
+      "Its kindness is the unconditional gift of life-sustaining energy. It's unknowable because it is utterly impersonal. It shines on the saint and the sinner alike, nurtures the flower and the poison weed, and gives its warmth freely without any concern for worthiness or consequence.",
+    classification: "Benevolence as a Nurturing Force",
   },
 ];

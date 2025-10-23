@@ -158,7 +158,7 @@ export const ScripturgicBeings = {
   ANGELS: {
     name: "Angels",
     description:
-      "héhoihéa: angels are born from divinity and are protectors/wardens of the cosmic laws. independent from concepts, they look after and guard the concepts rather than carrying them.\n(divine born ≠ angels)",
+      "angels are born from divinity and are protectors/wardens of the cosmic laws. independent from concepts, they look after and guard the concepts rather than carrying them.\n(divine born ≠ angels)",
     vowelsSets: ["é", "oi", "éa"],
     NurimAffix: "mé",
     KorsianAffix: "déè",
@@ -169,20 +169,43 @@ export const ScripturgicBeings = {
   DEMONS: {
     name: "Demons",
     description:
-      "hùhuhõo: demons are born in the barren fields of reality, where divinity's light does not reach. they carry a will outside of divinity's control.\n(daemons ≠ demons)\nIf divinity = 1 and daemons = -1, then demons = 0",
-    vowelsSets: ["ù", "u", "õo"],
+      "demons are born in the barren fields of reality, where divinity's light does not reach. they carry a will outside of divinity's control.\n(daemons ≠ demons)\nIf divinity = 1 and daemons = -1, then demons = 0",
+    suffix: "bèã",
+    preffixes: {
+      ɲié: "Demons that fill the voids of emotion and desire",
+      xoù: "Demons that fill the voids of fear and anxiety",
+      tèe: "Demons that fill the voids of meaning and identity",
+      kĩé: "Demons that fill the voids of hardship and suffering",
+    },
   },
   FEY: {
     name: "Fey",
     description:
-      "hohoãheé: fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
+      "fey are born from the manipulation of rules by various beings, they carry the will of the rules they are bound to.",
     vowelsSets: ["o", "oã", "eé"],
   },
   ELEMENTALS: {
     name: "Elementals",
     description:
-      "hahéèhùé: elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
+      "elementals are born from divinity's refusal to intervene, they carry concepts of divinity through the physical realm.",
     vowelsSets: ["a", "éè", "ùé"],
+    suffixes: {
+      ga: "Elementals of the cosmic foundation",
+      boi: "Elementals of the cosmic dynamism",
+      pei: "Elementals of the essences",
+      fui: "Elementals of the cycle",
+      rõu: "Elementals of the structure",
+    },
+  },
+  DIVINEBORN: {
+    name: "Divine Born",
+    description:
+      "divine born are born from divinity, they carry the will of divinity through the physical realm.",
+    preffixes: {
+      die: "Divine born who's benevolence is through guidance and protection",
+      mãé: "Divine born who's benevolence is as a nurturing force",
+      téã: "Divine born who's benevolence is through inscrutable purpose",
+    },
   },
 } as const;
 

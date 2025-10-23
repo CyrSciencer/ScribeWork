@@ -8,7 +8,8 @@
   text-align: center;
   color: #333;
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 3rem;
+  text-decoration: underline;
 }
 
 .cosmic-meaning-display {
@@ -184,7 +185,7 @@
   border: 2px solid #7366ea;
   border-radius: 6px;
   background-color: #a8a0ee;
-  margin-top: 2rem;
+  margin: 1rem 0 2rem 0;
   font-size: 2rem;
 }
 /* Responsive design */

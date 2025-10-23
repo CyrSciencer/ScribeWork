@@ -10,18 +10,32 @@ import { Demons } from "../../../data/Demons";
 import { Fey } from "../../../data/fey";
 import { useState } from "react";
 import { Angels } from "../../../data/Angels";
-const data = {
-  ...Essences,
-  ...Cycle,
-  ...Structures,
-};
-const cosmicFoundation = Object.keys(CosmicFondation).map(
+const essenceNames = Object.keys(Essences);
+const cycleNames = Object.keys(Cycle);
+const structureNames = Object.keys(Structures);
+const cosmicFoundationNames: string[] = Object.keys(CosmicFondation).map(
   (key) => CosmicFondation[key as keyof typeof CosmicFondation].scripturgicName
 );
-const cosmicDynamism = Object.keys(CosmicDynamism).map(
+const cosmicDynamismNames: string[] = Object.keys(CosmicDynamism).map(
   (key) => CosmicDynamism[key as keyof typeof CosmicDynamism].CosmicName
 );
-const allNames = [...Object.keys(data), ...cosmicFoundation, ...cosmicDynamism];
+const allNames = [
+  ...essenceNames,
+  ...cycleNames,
+  ...structureNames,
+  ...cosmicFoundationNames,
+  ...cosmicDynamismNames,
+];
+
+const getSuffix = (name: string): string => {
+  const { suffixes } = ScripturgicBeings.ELEMENTALS;
+  if (cosmicFoundationNames.includes(name)) return Object.keys(suffixes)[0];
+  if (cosmicDynamismNames.includes(name)) return Object.keys(suffixes)[1];
+  if (essenceNames.includes(name)) return Object.keys(suffixes)[2];
+  if (cycleNames.includes(name)) return Object.keys(suffixes)[3];
+  if (structureNames.includes(name)) return Object.keys(suffixes)[4];
+  return "";
+};
 
 const cosmicFoundationDescriptions = Object.keys(CosmicFondation).reduce(
   (acc, key) => {
@@ -42,7 +56,9 @@ const cosmicDynamismDescriptions = Object.keys(CosmicDynamism).reduce(
 );
 
 const allDescriptions = {
-  ...data,
+  ...Essences,
+  ...Cycle,
+  ...Structures,
   ...cosmicFoundationDescriptions,
   ...cosmicDynamismDescriptions,
 };
@@ -61,7 +77,7 @@ const ElementalNaming = () => {
   };
   return (
     <div className="cosmology-page">
-      <h1 className="being-title">ELEMENTALS</h1>
+      <h2 className="being-title">ELEMENTALS</h2>
       <div className="cosmic-entities">
         {allNames.map((name) => (
           <div
@@ -76,7 +92,7 @@ const ElementalNaming = () => {
               elementalVowels[1] +
               name[2] +
               elementalVowels[2] +
-              "péi"}
+              getSuffix(name)}
           </div>
         ))}
       </div>
@@ -96,71 +112,7 @@ const ElementalNaming = () => {
                 elementalVowels[1] +
                 (hoveringEntity.name as string)[2] +
                 elementalVowels[2] +
-                "péi"
-              }|`,
-          }}
-        />
-      )}
-    </div>
-  );
-};
-const ScripturgicBeingsSection = ({
-  being,
-  beingObject,
-}: {
-  being: keyof typeof ScripturgicBeings;
-  beingObject: { name: string; cosmicName: string; description: string }[];
-}) => {
-  const beingVowels = ScripturgicBeings[being].vowelsSets;
-  const [hoveringEntity, setHoveringEntity] = useState<{
-    name: string;
-    meaning: string;
-    cosmicName: string;
-  } | null>(null);
-  const handleHover = (name: string, meaning: string, cosmicName: string) => {
-    setHoveringEntity({ name, meaning, cosmicName });
-  };
-  const handleLeave = () => {
-    setHoveringEntity(null);
-  };
-  console.log({ beingObject });
-  return (
-    <div className="cosmology-page">
-      <h1 className="being-title">{being}</h1>
-      <div className={`cosmic-entities`}>
-        {beingObject.map((being) => (
-          <div
-            key={being.name}
-            className="cosmic-entity cosmic-name"
-            onMouseEnter={() =>
-              handleHover(being.name, being.description, being.cosmicName)
-            }
-            onMouseLeave={handleLeave}
-          >
-            {being.cosmicName[0] +
-              beingVowels[0] +
-              being.cosmicName[1] +
-              beingVowels[1] +
-              being.cosmicName[2] +
-              beingVowels[2]}
-          </div>
-        ))}
-      </div>
-      {hoveringEntity && (
-        <div
-          className="cosmic-meaning-display"
-          dangerouslySetInnerHTML={{
-            __html:
-              hoveringEntity.name +
-              " - " +
-              hoveringEntity.meaning +
-              ` |${
-                (hoveringEntity.cosmicName as string)[0] +
-                beingVowels[0] +
-                (hoveringEntity.cosmicName as string)[1] +
-                beingVowels[1] +
-                (hoveringEntity.cosmicName as string)[2] +
-                beingVowels[2]
+                getSuffix(hoveringEntity.name)
               }|`,
           }}
         />
@@ -182,7 +134,7 @@ const AngelsSection = () => {
   };
   return (
     <div className="cosmology-page">
-      <h1 className="being-title">Angels</h1>
+      <h2 className="being-title">Angels</h2>
       <div className="cosmic-entities">
         {Angels.map((angel) => (
           <div
@@ -212,15 +164,133 @@ const AngelsSection = () => {
     </div>
   );
 };
+const FeySection = () => {
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+    cosmicName: string;
+  } | null>(null);
+  const handleHover = (name: string, meaning: string, cosmicName: string) => {
+    setHoveringEntity({ name, meaning, cosmicName });
+  };
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+  const { FEY } = ScripturgicBeings;
+  const feyVowels = FEY.vowelsSets;
+  return (
+    <div className="cosmology-page">
+      <h2 className="being-title">Fey</h2>
+      <div className="cosmic-entities">
+        {Fey.map((fey) => (
+          <div
+            key={fey.name}
+            className="cosmic-entity cosmic-name"
+            onMouseEnter={() =>
+              handleHover(fey.name, fey.description, fey.cosmicName)
+            }
+            onMouseLeave={handleLeave}
+          >
+            {fey.cosmicName[0] +
+              feyVowels[0] +
+              fey.cosmicName[1] +
+              feyVowels[1] +
+              fey.cosmicName[2] +
+              feyVowels[2]}
+          </div>
+        ))}
+      </div>
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html:
+              hoveringEntity.name +
+              " - " +
+              hoveringEntity.meaning +
+              ` |${hoveringEntity.cosmicName}|`,
+          }}
+        />
+      )}
+    </div>
+  );
+};
+const DemonsSection = () => {
+  const [hoveringEntity, setHoveringEntity] = useState<{
+    name: string;
+    meaning: string;
+    cosmicName: string;
+  } | null>(null);
+
+  const handleHover = (name: string, meaning: string, cosmicName: string) => {
+    setHoveringEntity({ name, meaning, cosmicName });
+  };
+
+  const handleLeave = () => {
+    setHoveringEntity(null);
+  };
+
+  const { DEMONS } = ScripturgicBeings;
+  const demonSuffix = DEMONS.suffix;
+  const demonPrefixes = DEMONS.preffixes;
+
+  const getDemonPrefix = (classification: string): string => {
+    if (classification === "Filling Voids of Emotion and Desire")
+      return Object.keys(demonPrefixes)[0];
+    if (classification === "Filling Voids of Fear and Anxiety")
+      return Object.keys(demonPrefixes)[1];
+    if (classification === "Filling Voids of Meaning and Identity")
+      return Object.keys(demonPrefixes)[2];
+    if (classification === "Filling Voids of Hardship and Suffering")
+      return Object.keys(demonPrefixes)[3];
+    return "";
+  };
+
+  return (
+    <div className="cosmology-page">
+      <h2 className="being-title">Demons</h2>
+      <div className="cosmic-entities">
+        {Demons.map((demon) => {
+          const prefix = getDemonPrefix(demon.classification);
+          const cosmicName = prefix + demon.cosmicName + demonSuffix;
+          return (
+            <div
+              key={demon.name}
+              className="cosmic-entity cosmic-name"
+              onMouseEnter={() =>
+                handleHover(demon.name, demon.description, cosmicName)
+              }
+              onMouseLeave={handleLeave}
+            >
+              {cosmicName}
+            </div>
+          );
+        })}
+      </div>
+      {hoveringEntity && (
+        <div
+          className="cosmic-meaning-display"
+          dangerouslySetInnerHTML={{
+            __html:
+              hoveringEntity.name +
+              " - " +
+              hoveringEntity.meaning +
+              ` |${hoveringEntity.cosmicName}|`,
+          }}
+        />
+      )}
+    </div>
+  );
+};
 export const CosmologicalEntities = () => {
   console.log(allNames);
   return (
     <div className="cosmology-page">
       <h1>Cosmological Entities</h1>
       <ElementalNaming />
-      <ScripturgicBeingsSection being="DEMONS" beingObject={Demons} />
-      <ScripturgicBeingsSection being="FEY" beingObject={Fey} />
       <AngelsSection />
+      <FeySection />
+      <DemonsSection />
     </div>
   );
 };

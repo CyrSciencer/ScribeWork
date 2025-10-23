@@ -37,7 +37,7 @@ export const spellcraft = {
           name: "Guided Growth",
           components: ["The Green Queen (Divine Born)", "Wood Elemental"],
           effect:
-            "The Wood Elemental provides the raw essence of 'living energy', which the Green Queen then expertly shapes and guides, creating a vibrant, healthy plant or tree far faster than natural growth.",
+            "The Wood Elemental provides the raw essence of 'living energy', which the Green Queen, as an expression of her unknowable kindness, expertly shapes and guides, creating a vibrant, healthy plant far faster than natural growth.",
         },
         {
           name: "A Binding Oath",
@@ -60,7 +60,7 @@ export const spellcraft = {
             "Shaklim of Cosmic Foundation (Angel)",
           ],
           effect:
-            "The Elemental provides the raw material of 'separation'. The Divine Born forges this material into a physical shield. The Angel is petitioned to oversee the process, ensuring the final shield is not just physically durable, but cosmically aligned with the very concept of an unbreakable barrier.",
+            "The Elemental provides the raw material of 'separation'. The Divine Born is commissioned to express its unknowable kindness by forging this material into a physical shield. The Angel is petitioned to oversee the process, ensuring the final shield is not just physically durable, but cosmically aligned with the very concept of an unbreakable barrier.",
           order:
             "1. Elemental (Material) -> 2. Divine Born (Agent) -> 3. Angel (Guardian)",
         },
@@ -80,7 +80,7 @@ export const spellcraft = {
             "Earth Elemental",
           ],
           effect:
-            "A spell to see a truth that exists outside of divine knowledge. The Fey creates a tiny, temporary breach in the veil of reality. The Demon is contracted to peer through it. The Angel is petitioned to guard the caster's mind from shattering. The Earth Elemental is summoned to keep the caster's physical body anchored to reality, preventing their consciousness from being lost.",
+            "A spell to fill the caster's void of uncertainty with a forbidden truth. The Fey creates a tiny, temporary breach in the veil of reality. The Demon is then contracted to peer through it. The Angel is petitioned to guard the caster's mind from shattering, and the Earth Elemental is summoned to keep the caster's physical body anchored to reality.",
           order:
             "1. Earth Elemental (Anchor) -> 2. Angel (Guardian) -> 3. Fey (Rule Manipulation) -> 4. Demon (Agent)",
         },

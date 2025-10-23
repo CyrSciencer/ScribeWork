@@ -18,24 +18,36 @@ export const cosmology = {
     ],
   },
   Demons: {
-    cosmicName: "hùhuhõo",
+    cosmicName: "bèã",
     origin:
-      "Born in the barren fields of reality where divinity's light does not reach (the null, the autonomous gap).",
+      "Born outside of the divine realm in the barren fields where divinity's light does not reach. They now roam all of reality.",
     function:
-      "Act as unobliged, autonomous agents with free will outside of divine control. They can teach, bargain, or refuse interaction.",
+      "Understandable beings bound to the negative experiences of mortals. They act as autonomous agents with free will, and are called upon by mortals to fill an understandable void (e.g., rage, fear, sorrow).",
     relationshipToReality:
-      "Represent autonomous phenomena. Their freedom lies in their ability to bind themselves by their own word.",
+      "Represent autonomous phenomena tied to the voids in mortal experience. Their freedom lies in their ability to bind themselves by their own word.",
     contractability:
       "Demons are the most literal contractors. In their default state, they are completely free. Once a deal is struck, they transition to a 'Contracted State' where they are absolutely bound to the literal terms of the agreement. Their only remaining freedom is in the interpretation of those terms, making 'monkey paw' scenarios a significant risk.",
+    classifications: [
+      "Filling Voids of Emotion and Desire", //ɲié
+      "Filling Voids of Fear and Anxiety", //xoù
+      "Filling Voids of Meaning and Identity", //tèe
+      "Filling Voids of Hardship and Suffering", //kĩé
+    ],
   },
   DivineBorn: {
     origin:
-      "Divine in origin (e.g., born from solar flares, first dead souls, mortal ascension), but autonomous in nature.",
+      "Born from the divine realm, they are benevolent but eldritch in nature; divine in origin but autonomous.",
     function:
-      "Serve specific, bound cosmic roles. They are free agents with divine power but are tied to their function (e.g., a cosmic smith MUST forge, an underworld ruler MUST manage the dead).",
-    relationshipToReality: "Specialized, role-bound divine functions.",
+      "Serve specific, inescapable cosmic roles. Mortals call upon them to be radiated by their unknowable kindness, which is expressed through the being's core function (e.g., a cosmic smith forging an item of protection, or the Night Bringer offering peaceful darkness).",
+    relationshipToReality:
+      "Specialized, role-bound divine functions that are both benevolent and eldritch.",
     contractability:
-      "A contract with a Divine Born is a commission for them to perform their specific, unchangeable function for the summoner's benefit. One might contract 'the ancestral spark' to forge an item or 'the green queen' to create a forest. They do not change their role; they simply perform it on request for a price that aligns with their domain.",
+      "A contract with a Divine Born is a commission to receive their unknowable kindness through the performance of their function. One might contract 'the ancestral spark' to forge a protective item or 'the Night Bringer' to grant a peaceful night. They do not change their role; they simply perform it on request for a price that aligns with their domain.",
+    classifications: [
+      "Benevolence through Guidance and Protection",
+      "Benevolence as a Nurturing Force",
+      "Benevolence through Inscrutable Purpose",
+    ],
   },
   Fey: {
     cosmicName: "hohoãheé",
@@ -72,28 +84,6 @@ export const cosmology = {
       "Embodiments of experiential and archetypal aspects of reality.",
     contractability:
       "A contract with a Conjurate is an invocation of their archetype. One makes a deal with 'The Emperor' to bring structure to a chaotic nation or 'The Star' to find lost hope. The contract is an exchange to have that specific archetypal energy influence reality on the summoner's behalf.",
-  },
-  Daemons: {
-    origin: "Born from 'ʇxʁ' (the source of non-being).",
-    function: "Act as direct opposing forces to the Primary Triad.",
-    state:
-      "Constant: They exist solely to oppose their corresponding aspect of the Primary Triad.",
-    hierarchy: [
-      "zkn (stillness) - Opposes fbṕ (cycle)",
-      "zrf (amalgam) - Opposes pws (essence)",
-      "zʇc (oblivion) - Opposes rtɲ (structure)",
-    ],
-  },
-  Devils: {
-    origin: "Lesser manifestations of the Daemon principles.",
-    function: "Embody specific aspects of the Daemonic opposition.",
-    state:
-      "Constant: Like Daemons, they exist to manifest a specific form of opposition.",
-    examples: [
-      "Devils of Stillness (The Queller, The Binder)",
-      "Devils of Amalgam (The Linker, The Blender)",
-      "Devils of Oblivion (The Eraser, The Unraveler)",
-    ],
   },
   summaryHierarchy: {
     title: "Cosmological Hierarchy of Obligation & Complexity",

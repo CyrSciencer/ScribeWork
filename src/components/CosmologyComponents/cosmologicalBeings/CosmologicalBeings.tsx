@@ -11,7 +11,6 @@ import {
   IsfetianOrder,
 } from "../../../data/cosmologicalAspects";
 import { useState } from "react";
-const { DEMONS, DIVINEBORN } = ScripturgicBeings;
 // Types for the cosmological data
 type CosmologicalData = Record<string, string>;
 type CosmicDynamismData = Record<
@@ -142,107 +141,6 @@ const CosmologicalSection = ({
         onHover={onHover}
         onLeave={onLeave}
       />
-    </section>
-  );
-};
-const DemonsSection = ({
-  onHover,
-  onLeave,
-}: {
-  onHover: (name: string, meaning: string) => void;
-  onLeave: () => void;
-}) => {
-  const DemonsCategories = [
-    {
-      affix: Object.keys(DEMONS.preffixes)[0],
-      description: DEMONS.preffixes.ɲié,
-    },
-    {
-      affix: Object.keys(DEMONS.preffixes)[1],
-      description: DEMONS.preffixes.xoù,
-    },
-    {
-      affix: Object.keys(DEMONS.preffixes)[2],
-      description: DEMONS.preffixes.tèe,
-    },
-    {
-      affix: Object.keys(DEMONS.preffixes)[3],
-      description: DEMONS.preffixes.kĩé,
-    },
-  ];
-
-  return (
-    <section className="angels">
-      <h2>Demon marker</h2>
-      <div className="cosmic-entities">
-        <div
-          className="cosmic-entity cosmic-name"
-          onMouseEnter={() => onHover(DEMONS.suffix, DEMONS.description)}
-          onMouseLeave={onLeave}
-        >
-          {DEMONS.suffix}
-        </div>
-      </div>
-      <h2>Demons categories</h2>
-      <div className="cosmic-entities">
-        {DemonsCategories.map((demon, index) => (
-          <div
-            key={index}
-            className="cosmic-entity cosmic-name"
-            onMouseEnter={() => onHover(demon.affix, demon.description)}
-            onMouseLeave={onLeave}
-          >
-            {demon.affix}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-const DivineBornSection = ({
-  onHover,
-  onLeave,
-}: {
-  onHover: (name: string, meaning: string) => void;
-  onLeave: () => void;
-}) => {
-  const divineBornCategories = [
-    {
-      affix: Object.keys(DIVINEBORN.preffixes)[0],
-      description: DIVINEBORN.preffixes.die,
-    },
-    {
-      affix: Object.keys(DIVINEBORN.preffixes)[1],
-      description: DIVINEBORN.preffixes.mãé,
-    },
-    {
-      affix: Object.keys(DIVINEBORN.preffixes)[2],
-      description: DIVINEBORN.preffixes.téã,
-    },
-  ];
-  return (
-    <section className="angels">
-      <h2
-        onMouseEnter={() => onHover(DIVINEBORN.name, DIVINEBORN.description)}
-        onMouseLeave={onLeave}
-        style={{ color: "rgb(110, 76, 76)" }}
-      >
-        Divine Born
-      </h2>
-      <div className="cosmic-entities">
-        {divineBornCategories.map((divineBorn, index) => (
-          <div
-            key={index}
-            className="cosmic-entity cosmic-name"
-            onMouseEnter={() =>
-              onHover(divineBorn.affix, divineBorn.description)
-            }
-            onMouseLeave={onLeave}
-          >
-            {divineBorn.affix}
-          </div>
-        ))}
-      </div>
     </section>
   );
 };

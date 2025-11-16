@@ -7,7 +7,6 @@ import {
   BiologicalLineage,
   CosmicDynamism,
   CosmicFondation,
-  ScripturgicBeings,
   IsfetianOrder,
 } from "../../../data/cosmologicalAspects";
 import { useState } from "react";

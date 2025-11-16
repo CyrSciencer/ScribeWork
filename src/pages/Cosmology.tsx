@@ -1,11 +1,11 @@
 import CosmologicalBeings from "../components/CosmologyComponents/cosmologicalBeings/CosmologicalBeings";
 import "../components/CosmologyComponents/Cosmology.css";
 import { useState } from "react";
-import { CosmologicalEntities } from "../components/CosmologyComponents/cosmologicalEntities/CosmologicalEntities";
 import { PureGlyphs } from "../components/CosmologyComponents/pureGlyphs/PureGlyphs";
 import { Conjurates } from "../components/CosmologyComponents/conjurates/Conjurates";
-import { CosmicGlyphs } from "../components/CosmologyComponents/cosmicGlyphs/CosmicGlyphs";
 import { DivineBorn } from "../components/CosmologyComponents/divineBorn/DivineBorn";
+import { Angels } from "../components/CosmologyComponents/angel/Angels";
+import { Demons } from "../components/CosmologyComponents/demon/Demons";
 export const Cosmology = () => {
   const [page, setPage] = useState(1);
   return (
@@ -24,13 +24,11 @@ export const Cosmology = () => {
         )}
       </div>
       <div className="page-content">{page === 1 && <CosmologicalBeings />}</div>
-      <div className="page-content">
-        {page === 2 && <CosmologicalEntities />}
-      </div>
-      <div className="page-content">{page === 3 && <PureGlyphs />}</div>
-      <div className="page-content">{page === 4 && <Conjurates />}</div>
-      <div className="page-content">{page === 5 && <DivineBorn />}</div>
-      <div className="page-content">{page === 6 && <CosmicGlyphs />}</div>
+      <div className="page-content">{page === 2 && <PureGlyphs />}</div>
+      <div className="page-content">{page === 3 && <Conjurates />}</div>
+      <div className="page-content">{page === 4 && <DivineBorn />}</div>
+      <div className="page-content">{page === 5 && <Angels />}</div>
+      <div className="page-content">{page === 6 && <Demons />}</div>
     </div>
   );
 };

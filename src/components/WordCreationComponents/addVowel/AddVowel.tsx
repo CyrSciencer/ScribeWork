@@ -208,8 +208,8 @@ export const AddVowel = () => {
               const originalIndex = vowels.indexOf(vowel);
               const firstVowel = vowelSet[vowelSetIndex][vowelSlotIndex - 1];
               return (
-                <div>
-                  <div key={index}>
+                <div key={`${vowel}-${index}`}>
+                  <div>
                     {vowelSlotIndex === 1 ? (
                       <p>
                         /
@@ -226,11 +226,14 @@ export const AddVowel = () => {
                       <p>/{vowelsIPA[originalIndex]}/</p>
                     )}
                     <button
-                      key={index}
                       className="keyboard-key"
                       style={{ paddingLeft: "10px" }}
                       onMouseEnter={() => setCurrentVowel(vowel)}
                       onMouseLeave={() => setCurrentVowel(null)}
+                      onFocus={() => setCurrentVowel(vowel)}
+                      onBlur={() => setCurrentVowel(null)}
+                      onTouchStart={() => setCurrentVowel(vowel)}
+                      onTouchEnd={() => setCurrentVowel(null)}
                       onClick={() => {
                         setVowelSet((prev) => {
                           const currentVowels = [...prev[vowelSetIndex]];

@@ -15,7 +15,6 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { WordCreation } from "./pages/WordCreation";
 import { Cosmology } from "./pages/Cosmology";
-import { ScripturgicInscription } from "./pages/ScripturgicInscription";
 import { setCookie, getCookie, areCookiesAvailable } from "./utils/cookies";
 // Define the root word type
 interface RootWord {
@@ -315,10 +314,6 @@ function App() {
                   />
                   <Route path="/wordCreation" element={<WordCreation />} />
                   <Route path="/cosmology" element={<Cosmology />} />
-                  <Route
-                    path="/scripturgicInscription"
-                    element={<ScripturgicInscription />}
-                  />
                 </Routes>
               </main>
             </div>

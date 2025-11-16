@@ -81,7 +81,7 @@ export const ScribeConsonants = {
 
   m: "life, healing, care, nurturing, growth, vitality", //
 
-  n: "calm, tranquility, sleep, rest, meditation, stillness", //
+  n: "calm, tranquility, sleep, rest, meditation", //
 
   p: "force, thrust, creation, generation, propulsion, impetus", //
 

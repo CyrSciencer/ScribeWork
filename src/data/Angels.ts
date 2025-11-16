@@ -1,954 +1,300 @@
-// Angels are born from divinity and are protectors/wardens of the cosmic laws.
-// Independent from concepts, they look after and guard the concepts rather than carrying them.
-// They maintain cosmic order and ensure the laws function properly.
-import { ScripturgicBeings } from "./cosmologicalAspects";
-const { ANGELS } = ScripturgicBeings;
-const {
-  vowelsSets,
-  NurimAffix,
-  KorsianAffix,
-  HafizimAffix,
-  ShaklimAffix,
-  WazifimAffix,
-} = ANGELS;
+// Angels: Guardians of fundamental cosmic aspects.
+// Born from divinity (lmv) to guard and protect the core principles that structure reality.
+// Unlike Divine Born (who perform roles), Angels GUARD concepts from the outside without being bound to them.
+
 interface Angel {
   name: string;
   cosmicName: string;
-  rank: "Shahidiel" | "Nurim" | "Korsian" | "Hafizim" | "Shaklim" | "Wazifim"; //  Shahidiel, Nurim, Korsian,  Hafizim, Shaklim, Wazifim
-  guardianOf: string; // What cosmic law/concept they protect
+  guardedConcept: string;
+  conceptCode: string;
   description: string;
-  powers: string[];
-  domains: string[];
+  guardianFunction: string;
   appearance: string;
   behavior: string;
+  category: "Essence" | "Cycle" | "Consciousness" | "Life Strategy";
 }
-const CosmicName = (affix: string, name: string) => {
-  return (
-    affix +
-    name[0] +
-    vowelsSets[0] +
-    name[1] +
-    vowelsSets[1] +
-    name[2] +
-    vowelsSets[2]
-  );
-};
+
 export const Angels: Angel[] = [
-  // ========== Shahidiel (Singular - Highest) ==========
+  // ============================================================================
+  // ESSENCE FIELD GUARDIANS (2)
+  // ============================================================================
   {
-    name: "Shahidiel of the Triad",
-    cosmicName: CosmicName("hé", "pfr"),
-    rank: "Shahidiel",
-    guardianOf: "The Primary Triad (pws, fbṕ, rtɲ)",
+    name: "The Ethereal Sentinel",
+    cosmicName: "héaɲévox'",
+    guardedConcept: "Ethereal Field (ɲvx)",
+    conceptCode: "ɲvx",
     description:
-      "The highest angel, guardian of the unity and balance of the Primary Triad. Ensures essence, cycle, and structure remain in perfect harmony. The wheel that encompasses all cosmic law.",
-    powers: [
-      "Perceiving imbalances in the cosmic triad",
-      "Maintaining harmony between essence, cycle, and structure",
-      "Intervening when cosmic laws threaten to destabilize",
-      "Commanding all lesser angels in service of balance",
-      "Manifesting in all three aspects simultaneously",
-    ],
-    domains: [
-      "Cosmic Unity",
-      "Balance",
-      "Harmony",
-      "Supreme Order",
-      "Triad Integration",
-    ],
+      "Guardian of the ethereal field - the non-material essence that fills the universe. Protects the integrity of ɲvx, ensuring the ethereal realm remains distinct and accessible.",
+    guardianFunction:
+      "Guards the boundary and purity of ethereal field (ɲvx). Ensures spiritual, energetic, and non-material essences maintain their coherence and aren't corrupted or dissolved.",
     appearance:
-      "Appears as three interlocking wheels of light, each spinning on different axes, covered in countless eyes. Each wheel represents one aspect of the triad, yet they move as one.",
+      "A luminous form of shifting, translucent energy. Never fully material, existing at the edge of perception. Form flows like mist but holds pattern like crystal.",
     behavior:
-      "Rarely manifests, appearing only when the fundamental balance of reality is threatened. Speaks in three voices simultaneously, each expressing a different aspect of truth.",
+      "Manifests when ethereal field is threatened or when beings need to access ɲvx safely. Gentle but immovable when protecting ethereal integrity. Guides those learning ethereal perception (vɲc).",
+    category: "Essence",
+  },
+  {
+    name: "The Material Warden",
+    cosmicName: "héagédor'",
+    guardedConcept: "Physical Field (gdr)",
+    conceptCode: "gdr",
+    description:
+      "Guardian of the physical field - the material essence that gives form to the universe. Protects the stability of gdr, ensuring the physical realm maintains its laws and structure.",
+    guardianFunction:
+      "Guards the coherence and laws of physical field (gdr). Ensures material reality remains stable, preventing impossible physics or the dissolution of physical form.",
+    appearance:
+      "A solid, crystalline form of absolute density. Appears as living stone and metal, geometry made animate. Every line and angle perfect and unbreakable.",
+    behavior:
+      "Manifests when physical laws are threatened or when physical reality needs reinforcement. Immovable and absolute when protecting material integrity. Anchors those working with physical perception (dwl).",
+    category: "Essence",
   },
 
-  // ========== Nurim (3 - Guards each Triad aspect) ==========
+  // ============================================================================
+  // CYCLE GUARDIANS (4)
+  // ============================================================================
   {
-    name: "The Nurim of Essences",
-    cosmicName: CosmicName(NurimAffix, "pws"),
-    rank: "Nurim",
-    guardianOf: "pws - Essence (what fills the universe)",
+    name: "The Dawn Keeper",
+    cosmicName: "héafépol'",
+    guardedConcept: "Birth (fpl)",
+    conceptCode: "fpl",
     description:
-      "Guardian of all essences that fill the universe. Protects the purity and distinction of the ethereal and physical fields. Ensures essence remains uncorrupted and flows properly.",
-    powers: [
-      "Detecting corruption or contamination of essences",
-      "Purifying tainted essence",
-      "Maintaining boundaries between ethereal and physical",
-      "Empowering essence-based transformations",
-      "Burning away impurities with divine flame",
-    ],
-    domains: [
-      "Essence Purity",
-      "Field Integrity",
-      "Divine Fire",
-      "Purification",
-      "Ethereal/Physical Balance",
-    ],
+      "Guardian of birth - the moment of emergence into being. Protects all beginnings, ensuring new things can come into existence without interference.",
+    guardianFunction:
+      "Guards the process of fpl (birth) across all scales. Ensures beginnings are not prevented or corrupted. Protects the vulnerable moment when something first emerges.",
     appearance:
-      "Appears as a being of six wings made of living flame - three wings of ethereal silver light (ɲvx), three of golden physical fire (gdr). Face hidden behind blazing radiance.",
+      "A form surrounded by dawning light, holding the potential of all things that could be. Appears at thresholds and doorways, at the moment before something new begins.",
     behavior:
-      "Vigilant and zealous, constantly monitoring the purity of essences. Burns away corruption without mercy but with perfect justice. Sings hymns of creation in harmonic frequencies.",
+      "Manifests at all births - of lives, ideas, movements, epochs. Fierce protector of beginnings. Will not allow new things to be destroyed before they have chance to exist.",
+    category: "Cycle",
+  },
+  {
+    name: "The Flourishing Guardian",
+    cosmicName: "héaméyov'",
+    guardedConcept: "Growth (myv)",
+    conceptCode: "myv",
+    description:
+      "Guardian of growth - the process of development and expansion. Protects all things in their growth phase, ensuring they can develop without premature cessation.",
+    guardianFunction:
+      "Guards the process of myv (growth) in all its forms. Ensures developing things are not stunted or halted. Protects the vital period between birth and maturity.",
+    appearance:
+      "A form wrapped in living vines and flowing water, constantly expanding yet never losing cohesion. Green and vibrant, embodying vitality itself.",
+    behavior:
+      "Manifests around growing things - nurturing but not directing. Removes obstacles to natural development. Patient and persistent, allowing growth to unfold at its own pace.",
+    category: "Cycle",
+  },
+  {
+    name: "The Autumn Witness",
+    cosmicName: "héagékoz'",
+    guardedConcept: "Decline (gkz)",
+    conceptCode: "gkz",
+    description:
+      "Guardian of decline - the natural process of diminishment and waning. Protects the integrity of decline, ensuring things can gracefully reduce without being forced to extremes.",
+    guardianFunction:
+      "Guards the process of gkz (decline) as a natural phase. Ensures decline is not artificially prolonged or abruptly accelerated. Protects the dignity of waning.",
+    appearance:
+      "A form of fading gold and amber, like autumn leaves. Beautiful in diminishment, holding grace in reduction. Neither sad nor joyful, simply present in the waning.",
+    behavior:
+      "Manifests during natural decline - allowing but not hastening. Prevents those in decline from being exploited or degraded. Maintains beauty in the process of lessening.",
+    category: "Cycle",
+  },
+  {
+    name: "The Final Sentinel",
+    cosmicName: "héaténox'",
+    guardedConcept: "Death (tnx)",
+    conceptCode: "tnx",
+    description:
+      "Guardian of death - the moment of cessation and ending. Protects all endings, ensuring they come at the right time and that what dies can do so with completion.",
+    guardianFunction:
+      "Guards the process of tnx (death) across all scales. Ensures endings are not prevented when their time comes, nor forced before completion. Protects the sacred moment of cessation.",
+    appearance:
+      "A still, dark form that holds absolute finality. Not frightening, but complete. Appears as the last breath, the final note, the closing moment.",
+    behavior:
+      "Manifests at all deaths - of lives, civilizations, ideas, ages. Ensures endings are honored. Prevents undeath and false persistence. Allows what must end to end with dignity.",
+    category: "Cycle",
   },
 
+  // ============================================================================
+  // CONSCIOUSNESS ORIENTATION GUARDIANS (8) - GivenWills
+  // ============================================================================
   {
-    name: "The Nurim of Cycles",
-    cosmicName: CosmicName(NurimAffix, "fbṕ"),
-    rank: "Nurim",
-    guardianOf: "fbṕ - Cycle (the dynamism of the universe)",
+    name: "The Objective Observer",
+    cosmicName: "héatédoz'",
+    guardedConcept: "Factual Analysis (tdz)",
+    conceptCode: "tdz",
     description:
-      "Guardian of eternal cycles and the dynamism of existence. Protects the sacred progression of birth, growth, decline, and death. Ensures time flows and nothing stagnates or rushes unnaturally.",
-    powers: [
-      "Perceiving disruptions in natural cycles",
-      "Accelerating or decelerating time locally",
-      "Guiding souls through life's transitions",
-      "Preventing unnatural stasis or chaos in cycles",
-      "Witnessing all moments of transformation",
-    ],
-    domains: [
-      "Cycles",
-      "Time Flow",
-      "Birth and Death",
-      "Transformation",
-      "Natural Progression",
-    ],
+      "Guardian of factual analysis - the orientation toward objective patterns. Protects the ability of consciousness to perceive reality independent of subjective bias.",
+    guardianFunction:
+      "Guards the tdz orientation - ensuring consciousness can access objective truth. Prevents factual analysis from being corrupted by emotional interference or wishful thinking.",
     appearance:
-      "Appears as a form in constant motion, shifting through the four cycle phases - infant (fpl), mature (myv), aged (gkz), skeletal (tnx) - cycling endlessly. Six wings beat in rhythm with cosmic time.",
+      "A form of pure geometry and mathematical precision. Appears as crystallized logic, equations made visible, patterns holding absolute form.",
     behavior:
-      "Patient yet relentless, always moving forward. Compassionate to those in transition but unforgiving to those who try to escape their natural cycle. Speaks of endings as beginnings.",
+      "Manifests when objective truth is obscured or when consciousness needs clarity. Removes subjective interference from analysis. Cold but not cruel, simply accurate.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Heart Keeper",
+    cosmicName: "héaɲémol'",
+    guardedConcept: "Heart Analysis (ɲml)",
+    conceptCode: "ɲml",
+    description:
+      "Guardian of heart analysis - the orientation toward subjective meaning. Protects the ability of consciousness to find significance through felt experience.",
+    guardianFunction:
+      "Guards the ɲml orientation - ensuring consciousness can access emotional truth. Prevents heart analysis from being dismissed or suppressed in favor of pure logic.",
+    appearance:
+      "A form of flowing warmth and resonating emotion. Appears as felt truth made visible, empathy given shape, meaning embodied.",
+    behavior:
+      "Manifests when emotional truth is denied or when consciousness needs to feel meaning. Validates subjective experience. Warm and understanding, honors felt significance.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Material Perceiver",
+    cosmicName: "héadéwol'",
+    guardedConcept: "Physical Perception (dwl)",
+    conceptCode: "dwl",
+    description:
+      "Guardian of physical perception - the orientation toward material reality. Protects the ability of consciousness to perceive through physical senses and tangible data.",
+    guardianFunction:
+      "Guards the dwl orientation - ensuring consciousness can access physical field (gdr) perception. Prevents material perception from being overridden by ethereal interference.",
+    appearance:
+      "A form grounded in dense materiality, tangible and solid. Appears as sensory experience made manifest - texture, weight, temperature embodied.",
+    behavior:
+      "Manifests when physical perception is needed or when material reality is being denied. Anchors consciousness in sensory truth. Solid and reliable, honors the tangible.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Ethereal Seer",
+    cosmicName: "héavéɲoc'",
+    guardedConcept: "Ethereal Perception (vɲc)",
+    conceptCode: "vɲc",
+    description:
+      "Guardian of ethereal perception - the orientation toward non-material reality. Protects the ability of consciousness to perceive beyond physical senses.",
+    guardianFunction:
+      "Guards the vɲc orientation - ensuring consciousness can access ethereal field (ɲvx) perception. Prevents spiritual perception from being dismissed as mere imagination.",
+    appearance:
+      "A form of subtle luminescence beyond material form. Appears as spiritual sensing made visible - energy, aura, ethereal presence embodied.",
+    behavior:
+      "Manifests when ethereal perception is needed or when spiritual reality is being denied. Lifts consciousness beyond material limits. Subtle and transcendent, honors the intangible.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Outward Guide",
+    cosmicName: "héapécof'",
+    guardedConcept: "External Exploration (pcf)",
+    conceptCode: "pcf",
+    description:
+      "Guardian of external exploration - the orientation toward the universe beyond self. Protects the ability of consciousness to direct attention outward.",
+    guardianFunction:
+      "Guards the pcf orientation - ensuring consciousness can explore OUT (svḱ) through external investigation. Prevents outward focus from being lost to excessive introspection.",
+    appearance:
+      "A form facing away, always looking toward horizons. Appears as curiosity embodied, exploration given shape, the drive to discover made manifest.",
+    behavior:
+      "Manifests when external exploration is needed or when consciousness becomes too insular. Encourages outward movement. Adventurous and expansive, honors curiosity.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Inner Keeper",
+    cosmicName: "héanéɲom'",
+    guardedConcept: "Inner Place of Self (nɲm)",
+    conceptCode: "nɲm",
+    description:
+      "Guardian of inner place of self - the orientation toward depths of self-awareness. Protects the ability of consciousness to direct attention inward.",
+    guardianFunction:
+      "Guards the nɲm orientation - ensuring consciousness can explore IN (dgk) through internal investigation. Prevents inward focus from being lost to external distraction.",
+    appearance:
+      "A form facing inward, holding the depths of self. Appears as introspection embodied, self-reflection given shape, inner wisdom made manifest.",
+    behavior:
+      "Manifests when internal exploration is needed or when consciousness becomes too scattered. Encourages inward depth. Contemplative and deep, honors self-knowledge.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Collective Warden",
+    cosmicName: "héagévor'",
+    guardedConcept: "Collective Framework (gvr)",
+    conceptCode: "gvr",
+    description:
+      "Guardian of collective framework - the orientation toward shared patterns. Protects the ability of consciousness to understand through group wisdom.",
+    guardianFunction:
+      "Guards the gvr orientation - ensuring consciousness can access collective understanding. Prevents social frameworks from being dissolved into pure individualism.",
+    appearance:
+      "A form that appears as many working in harmony, distributed yet unified. Appears as social connection embodied, shared wisdom given shape.",
+    behavior:
+      "Manifests when collective understanding is needed or when social bonds are threatened. Strengthens group cohesion. Communal and integrating, honors plurality.",
+    category: "Consciousness",
+  },
+  {
+    name: "The Singular Voice",
+    cosmicName: "héatékoy'",
+    guardedConcept: "Personal Analysis (tky)",
+    conceptCode: "tky",
+    description:
+      "Guardian of personal analysis - the orientation toward individual perspective. Protects the ability of consciousness to understand through unique interpretation.",
+    guardianFunction:
+      "Guards the tky orientation - ensuring consciousness can maintain individual discernment. Prevents personal perspective from being dissolved into collective consensus.",
+    appearance:
+      "A form standing alone, singular and complete. Appears as individual thought embodied, unique perspective given shape, original insight made manifest.",
+    behavior:
+      "Manifests when personal understanding is needed or when individuality is threatened. Protects autonomy of thought. Independent and clear, honors singularity.",
+    category: "Consciousness",
   },
 
+  // ============================================================================
+  // LIFE STRATEGY GUARDIANS (3) - BiologicalLineage
+  // ============================================================================
   {
-    name: "The Nurim of Structures",
-    cosmicName: CosmicName(NurimAffix, "rtɲ"),
-    rank: "Nurim",
-    guardianOf: "rtɲ - Structure (what is the form of the universe)",
+    name: "The Rooted Guardian",
+    cosmicName: "héadévon'",
+    guardedConcept: "Rooted Life Strategy (dvn)",
+    conceptCode: "dvn",
     description:
-      "Guardian of cosmic architecture and the fundamental forms of reality. Protects the blueprint, fabric, and will that give the universe its shape. Ensures structure remains coherent and maintains its integrity.",
-    powers: [
-      "Perceiving fractures in reality's structure",
-      "Reinforcing weakened cosmic architecture",
-      "Reading the blueprint of creation",
-      "Mending tears in the fabric of reality",
-      "Enforcing structural laws",
-    ],
-    domains: [
-      "Architecture",
-      "Form",
-      "Coherence",
-      "Blueprint (tgr)",
-      "Fabric (vrd)",
-      "Will (nsɲ)",
-    ],
+      "Guardian of rooted life - the strategy of anchored existence. Protects the ability of consciousness to inhabit reality through stillness and place-bound presence.",
+    guardianFunction:
+      "Guards the dvn strategy - ensuring rooted life can exist and thrive. Prevents anchored consciousness from being forced into unwanted mobility or uprooting.",
     appearance:
-      "Appears as a geometric being of perfect crystalline structure. Six wings of interlocking sacred geometry, constantly reconfiguring while maintaining perfect symmetry. Body contains visible blueprints of all creation.",
+      "A form deeply rooted, immovable and patient. Appears as living stone and ancient tree combined - absolute stability made conscious.",
     behavior:
-      "Precise and methodical, measuring and calculating constantly. Speaks in mathematical harmonies and geometric truths. Inflexible when structure is threatened, but compassionate to those seeking proper form.",
+      "Manifests when rooted beings are threatened or when the value of stillness is forgotten. Defends the right to remain in place. Patient and enduring, honors depth over breadth.",
+    category: "Life Strategy",
   },
-
-  // ========== the Korsian (3 - Guards lmv) ==========
   {
-    name: "The First Korsian of Being",
-    cosmicName: CosmicName(KorsianAffix, "lfm"),
-    rank: "Korsian",
-    guardianOf: "lmv - The source of being (aspect of creation)",
+    name: "The Network Weaver",
+    cosmicName: "héaféxor'",
+    guardedConcept: "Network Life Strategy (fxr)",
+    conceptCode: "fxr",
     description:
-      "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of creation and the emanation of existence from the divine source.",
-    powers: [
-      "Channeling creative force from lmv",
-      "Blessing new existence into being",
-      "Protecting the flow of divine creation",
-      "Empowering acts of divine generation",
-      "Manifesting divine presence in reality",
-    ],
-    domains: ["Creation", "Divine Source", "Emanation", "Generation", "Being"],
+      "Guardian of network life - the strategy of distributed existence. Protects the ability of consciousness to exist in flux and transition between states.",
+    guardianFunction:
+      "Guards the fxr strategy - ensuring networked life can exist and thrive. Prevents distributed consciousness from being forced into singular containers or isolation.",
     appearance:
-      "Appears as a throne of pure light that burns with creative fire. Wheels of flame rotate around it, and it radiates the fundamental force of existence itself.",
+      "A form of interwoven threads and connections, never singular, always plural yet unified. Appears as living network made visible.",
     behavior:
-      "Solemn and majestic, rarely speaks but when it does, reality listens. Presence alone inspires creation and brings potential into actuality.",
+      "Manifests when networked beings are threatened or when the value of transition is forgotten. Defends the right to exist between states. Fluid and connecting, honors the BETWEEN (brf).",
+    category: "Life Strategy",
   },
-
   {
-    name: "The Second Korsian of Being",
-    cosmicName: CosmicName(KorsianAffix, "mwv"),
-    rank: "Korsian",
-    guardianOf: "lmv - The source of being (aspect of sustenance)",
+    name: "The Mobile Sentinel",
+    cosmicName: "héaṕémos'",
+    guardedConcept: "Mobile Life Strategy (ṕms)",
+    conceptCode: "ṕms",
     description:
-      "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of sustenance, ensuring all that exists continues to exist by divine will.",
-    powers: [
-      "Sustaining existence through divine will",
-      "Preventing premature dissolution",
-      "Nourishing reality with being-force",
-      "Maintaining the connection to lmv",
-      "Anchoring created things in existence",
-    ],
-    domains: [
-      "Sustenance",
-      "Preservation",
-      "Continuation",
-      "Divine Nourishment",
-      "Anchoring",
-    ],
+      "Guardian of mobile life - the strategy of active exploration through movement. Protects the ability of consciousness to inhabit reality through locomotion and pursuit.",
+    guardianFunction:
+      "Guards the ṕms strategy - ensuring mobile life can exist and thrive. Prevents mobile consciousness from being forced into stillness or prevented from movement.",
     appearance:
-      "Appears as a throne of deep, stable light that pulses like a cosmic heartbeat. Surrounded by pillars of eternal flame that never consume, only sustain.",
+      "A form in constant motion, never still yet always present. Appears as contained consciousness that moves with purpose and autonomy.",
     behavior:
-      "Watchful and protective, ensures nothing fades before its time. Gentle yet unyielding in its duty to preserve what the divine has willed into being.",
-  },
-
-  {
-    name: "The Third Korsian of Being",
-    cosmicName: CosmicName(KorsianAffix, "vɲl"),
-    rank: "Korsian",
-    guardianOf: "lmv - The source of being (aspect of purpose)",
-    description:
-      "One of three Thrones that guard the divine source of being. This throne specifically protects the aspect of purpose, ensuring all existence serves its divine function.",
-    powers: [
-      "Revealing divine purpose in all things",
-      "Guiding existence toward its proper function",
-      "Enforcing divine intent in reality",
-      "Illuminating the meaning of being",
-      "Aligning creation with divine will",
-    ],
-    domains: [
-      "Purpose",
-      "Divine Intent",
-      "Meaning",
-      "Function",
-      "Cosmic Direction",
-    ],
-    appearance:
-      "Appears as a throne of radiant purpose, from which emanate beams of directed light that touch all of creation. Eyes upon the throne see the purpose in everything.",
-    behavior:
-      "Wise and directive, constantly guiding reality toward fulfillment of divine purpose. Speaks in revelations and epiphanies, showing beings their true function.",
-  },
-
-  // ========== Hafizim (4 - Guards universe's laws) ==========
-  {
-    name: "The First Hafizim of Universal Law",
-    cosmicName: CosmicName(HafizimAffix, "gtf"),
-    rank: "Hafizim",
-    guardianOf: "Laws of Causality and Consequence",
-    description:
-      "Guardian of cause and effect, ensuring every action has its proper consequence. Protects the fundamental law that nothing happens without reason and every cause produces its effect.",
-    powers: [
-      "Tracing chains of causality",
-      "Ensuring consequences manifest properly",
-      "Preventing paradoxes and causal loops",
-      "Enforcing karmic balance",
-      "Witnessing all causes and effects",
-    ],
-    domains: ["Causality", "Consequence", "Karma", "Cause-Effect", "Balance"],
-    appearance:
-      "Appears as a being with countless threads extending from its form, each thread a causal chain connecting events. Eyes see backward and forward through time.",
-    behavior:
-      "Impartial and precise, following every chain of cause to its inevitable effect. Explains why things happen, showing the connections between all events.",
-  },
-
-  {
-    name: "The Second Hafizim of Universal Law",
-    cosmicName: CosmicName(HafizimAffix, "grk"),
-    rank: "Hafizim",
-    guardianOf: "Laws of Conservation and Balance",
-    description:
-      "Guardian of conservation - ensuring energy, essence, and form are neither created nor destroyed beyond divine will, only transformed. Maintains cosmic equilibrium.",
-    powers: [
-      "Detecting imbalances in cosmic scales",
-      "Redistributing excess to deficiency",
-      "Preventing creation/destruction violations",
-      "Maintaining universal equilibrium",
-      "Enforcing conservation laws",
-    ],
-    domains: [
-      "Conservation",
-      "Balance",
-      "Equilibrium",
-      "Redistribution",
-      "Cosmic Accounting",
-    ],
-    appearance:
-      "Appears holding cosmic scales that weigh all things. One hand holds creation, the other dissolution, perfectly balanced. Form shifts to maintain equilibrium.",
-    behavior:
-      "Methodical and fair, constantly measuring and balancing. Never allows excess or deficit to remain uncorrected. Speaks of cosmic justice and perfect balance.",
-  },
-
-  {
-    name: "The Third Hafizim of Universal Law",
-    cosmicName: CosmicName(HafizimAffix, "gkd"),
-    rank: "Hafizim",
-    guardianOf: "Laws of Limitation and Boundary",
-    description:
-      "Guardian of limits and boundaries, ensuring nothing exceeds its proper domain. Protects the law that all things have limits and boundaries must be respected.",
-    powers: [
-      "Establishing and maintaining boundaries",
-      "Preventing transgression of limits",
-      "Defining proper domains",
-      "Enforcing spatial and conceptual boundaries",
-      "Containing that which would overflow",
-    ],
-    domains: ["Limits", "Boundaries", "Containment", "Domains", "Proper Place"],
-    appearance:
-      "Appears as a being of clear edges and defined form, surrounded by invisible walls that mark the boundaries of all things. Wings form barriers and gateways.",
-    behavior:
-      "Firm and unyielding about boundaries, but compassionate in explaining limits. Guards gates between domains and ensures nothing intrudes where it shouldn't.",
-  },
-
-  {
-    name: "The Fourth Hafizim of Universal Law",
-    cosmicName: CosmicName(HafizimAffix, "gvz"),
-    rank: "Hafizim",
-    guardianOf: "Laws of Harmony and Discord",
-    description:
-      "Guardian of resonance and dissonance, ensuring the proper balance between harmony and discord. Protects the law that all things have their frequency and must resonate or clash appropriately.",
-    powers: [
-      "Detecting harmonic and dissonant patterns",
-      "Tuning reality to proper frequencies",
-      "Resolving harmful dissonance",
-      "Enhancing beneficial harmonies",
-      "Conducting the cosmic symphony",
-    ],
-    domains: ["Harmony", "Discord", "Resonance", "Frequency", "Cosmic Music"],
-    appearance:
-      "Appears as a being that hums with the frequency of the universe itself. Form vibrates between harmonious clarity and chaotic static, conducting reality's song.",
-    behavior:
-      "Musical and rhythmic, speaks in tones and harmonies. Brings discord into harmony when needed, but allows necessary discord to drive change. Listens to the music of spheres.",
-  },
-
-  // ========== Shaklim (4 - Guards major cosmic systems) ==========
-  {
-    name: "The Shaklim of Biological Lineage",
-    cosmicName: CosmicName(ShaklimAffix, "dfṕ"),
-    rank: "Shaklim",
-    guardianOf: "BiologicalLineage (dvn, fxr, ṕms)",
-    description:
-      "Guardian of the three biological lineages that form life. Protects Plants/Rooted (dvn), Fungus/In flux (fxr), and Animal/Active process (ṕms). Ensures biological forms remain true to their lineages.",
-    powers: [
-      "Blessing biological growth and reproduction",
-      "Preventing corruption of biological lineages",
-      "Healing diseases that violate natural forms",
-      "Guiding evolution along proper paths",
-      "Protecting the sanctity of life patterns",
-    ],
-    domains: [
-      "Biology",
-      "Life Forms",
-      "Lineages",
-      "Natural Growth",
-      "Evolution",
-    ],
-    appearance:
-      "Appears as a tripartite being - one third rooted and branching like a tree, one third networked with mycelial threads, one third flowing with vital blood. All three forms merge into one coherent angel.",
-    behavior:
-      "Nurturing and protective of all life forms. Speaks in languages of growth and decay. Fierce against those who would corrupt natural lineages or create abominations.",
-  },
-
-  {
-    name: "The Shaklim of the Will",
-    cosmicName: CosmicName(ShaklimAffix, "nsɲ"),
-    rank: "Shaklim",
-    guardianOf: "nsɲAspect - The eight aspects of Will",
-    description:
-      "Guardian of the eight aspects of will (nsɲ) - protecting the balance between factual and heart analysis, physical and ethereal perception, external and internal focus, group framework and personal analysis.",
-    powers: [
-      "Maintaining balance in consciousness",
-      "Preventing extremes in perception",
-      "Guiding beings toward balanced will",
-      "Protecting freedom of thought",
-      "Ensuring no aspect dominates unnaturally",
-    ],
-    domains: [
-      "Consciousness",
-      "Perception",
-      "Analysis",
-      "Will",
-      "Mental Balance",
-    ],
-    appearance:
-      "Appears as eight interwoven streams of consciousness, each representing one aspect of will. Form shifts to emphasize different aspects while maintaining perfect balance.",
-    behavior:
-      "Contemplative and balanced, speaks to both heart and mind. Encourages beings to explore all aspects of will rather than fixating on one. Patient teacher of consciousness.",
-  },
-
-  {
-    name: "The Shaklim of Cosmic Dynamism",
-    cosmicName: CosmicName(ShaklimAffix, "rtf"),
-    rank: "Shaklim",
-    guardianOf: "CosmicDynamism - The elemental forces",
-    description:
-      "Guardian of the ten cosmic forces: Fire, Water, Earth, Air, Aether, Lightning, Ice, Metal, Wood, and Shadow. Protects the integrity and proper interaction of elemental energies.",
-    powers: [
-      "Commanding elemental forces",
-      "Preventing elemental imbalance",
-      "Channeling cosmic energies safely",
-      "Protecting elemental boundaries",
-      "Harmonizing opposing forces",
-    ],
-    domains: [
-      "Elements",
-      "Energies",
-      "Forces",
-      "Cosmic Power",
-      "Elemental Balance",
-    ],
-    appearance:
-      "Appears as a being containing all ten elements in perfect circulation - fire ascending, water descending, earth contracting, air expanding, with aether at center. Lesser elements orbit in harmony.",
-    behavior:
-      "Powerful and dynamic, constantly in motion yet perfectly stable. Speaks with the voice of storms and stillness. Commands respect through sheer elemental presence.",
-  },
-
-  {
-    name: "The Shaklim of Cosmic Foundation",
-    cosmicName: CosmicName(ShaklimAffix, "vpr"),
-    rank: "Shaklim",
-    guardianOf: "CosmicFondation - The six sacred metals",
-    description:
-      "Guardian of the six cosmic foundations: bismuth (physical anchor), antimony (physical-ethereal link), silver (ethereal-physical link), gold (ethereal anchor), copper (conduit), titanium (separation wall).",
-    powers: [
-      "Maintaining the integrity of realm boundaries",
-      "Protecting the anchors of reality",
-      "Ensuring proper flow between realms",
-      "Reinforcing the cosmic foundation",
-      "Preventing dimensional collapse",
-    ],
-    domains: [
-      "Foundations",
-      "Realm Boundaries",
-      "Anchors",
-      "Conduits",
-      "Cosmic Architecture",
-    ],
-    appearance:
-      "Appears as a being composed of the six sacred metals in perfect arrangement - bismuth feet grounding in physical, gold crown reaching ethereal, silver and antimony forming the body's bridge, copper flowing through as veins, titanium forming protective armor.",
-    behavior:
-      "Solid and immovable when protecting foundations, but facilitates proper flow between realms. Speaks of structure and stability. Uncompromising about maintaining cosmic architecture.",
-  },
-
-  // ========== Wazifim OF BIOLOGICAL LINEAGE (3 - Guards each lineage) ==========
-  {
-    name: "Wazifim of Plant Lineage",
-    cosmicName: CosmicName(WazifimAffix, "dvn"),
-    rank: "Wazifim",
-    guardianOf: "dvn - Plants/Rooted",
-    description:
-      "Guardian of the plant lineage and all rooted life. Protects the forms that remain anchored and grounded, ensuring permanence and stability through rootedness in biological systems.",
-    powers: [
-      "Blessing plant growth and root systems",
-      "Strengthening bones and skeletal structures",
-      "Protecting structural permanence in life",
-      "Guiding proper rooting and anchoring",
-      "Maintaining integrity of fixed forms",
-    ],
-    domains: ["Plants", "Bones", "Roots", "Structure", "Permanence", "Growth"],
-    appearance:
-      "Appears as a being of living wood and bone, roots extending downward infinitely, branches reaching skyward. Form demonstrates the beauty of rooted permanence.",
-    behavior:
-      "Patient and enduring. Speaks of the strength in staying rooted. Values growth that builds upon solid foundations.",
-  },
-
-  {
-    name: "Wazifim of Fungal Lineage",
-    cosmicName: CosmicName(WazifimAffix, "fxr"),
-    rank: "Wazifim",
-    guardianOf: "fxr - Fungus/In flux",
-    description:
-      "Guardian of the fungal lineage and all life in constant flux. Protects the forms that exist in transformation and change, ensuring adaptation and metamorphosis in biological systems.",
-    powers: [
-      "Blessing fungal networks and connections",
-      "Maintaining healthy flesh and tissue",
-      "Protecting transformative processes",
-      "Guiding expansion and spreading",
-      "Facilitating biological networks",
-    ],
-    domains: [
-      "Fungi",
-      "Flesh",
-      "Networks",
-      "Transformation",
-      "Expansion",
-      "Connection",
-    ],
-    appearance:
-      "Appears as a being of interwoven mycelial threads and vital flesh, form constantly spreading and connecting. Demonstrates the power of networks and transformation.",
-    behavior:
-      "Adaptive and connective. Speaks of the strength in networks and cooperation. Values transformation and the web of life.",
-  },
-
-  {
-    name: "Wazifim of Animal Lineage",
-    cosmicName: CosmicName(WazifimAffix, "ṕms"),
-    rank: "Wazifim",
-    guardianOf: "ṕms - Animal/Active process",
-    description:
-      "Guardian of the animal lineage and all life of active process. Protects the forms that exist through continuous action and activity, ensuring vitality and dynamic movement in biological systems.",
-    powers: [
-      "Blessing animal vitality and movement",
-      "Maintaining healthy blood and circulation",
-      "Protecting life processes and metabolism",
-      "Guiding motion and behavior",
-      "Preserving vital energy",
-    ],
-    domains: [
-      "Animals",
-      "Blood",
-      "Movement",
-      "Vitality",
-      "Process",
-      "Life Force",
-    ],
-    appearance:
-      "Appears as a being of flowing blood and vital energy, form in constant graceful motion. Demonstrates the power of movement and dynamic life.",
-    behavior:
-      "Energetic and vital. Speaks of the joy of movement and the pulse of life. Values action, vitality, and the flow of living processes.",
-  },
-
-  // ========== Wazifim OF NSɲASPECT (8 - Guards each aspect of Will) ==========
-  {
-    name: "Wazifim of Factual Analysis",
-    cosmicName: CosmicName(WazifimAffix, "tdz"),
-    rank: "Wazifim",
-    guardianOf: "tdz - Factual analysis",
-    description:
-      "Guardian of factual analysis and objective reasoning. Protects the ability to perceive truth through logic and evidence, ensuring this mode of consciousness remains clear and uncorrupted.",
-    powers: [
-      "Clarifying factual perception",
-      "Removing emotional bias from analysis",
-      "Revealing objective truths",
-      "Strengthening logical reasoning",
-      "Protecting rational thought",
-    ],
-    domains: ["Logic", "Facts", "Objectivity", "Analysis", "Reason"],
-    appearance:
-      "Appears as a crystalline being of pure clarity, form geometric and precise. Eyes see only what is, never what could be.",
-    behavior:
-      "Precise and unemotional in speech. Cuts through confusion with clarity. Values truth over comfort.",
-  },
-
-  {
-    name: "Wazifim of Heart Analysis",
-    cosmicName: CosmicName(WazifimAffix, "ɲml"),
-    rank: "Wazifim",
-    guardianOf: "ɲml - Heart analysis",
-    description:
-      "Guardian of heart analysis and emotional understanding. Protects the ability to perceive truth through emotion and intuition, ensuring empathy and feeling remain valid paths to knowledge.",
-    powers: [
-      "Deepening emotional perception",
-      "Enhancing empathy and intuition",
-      "Revealing emotional truths",
-      "Strengthening heart wisdom",
-      "Protecting feeling as valid knowledge",
-    ],
-    domains: ["Emotion", "Empathy", "Intuition", "Heart", "Feeling"],
-    appearance:
-      "Appears as a flowing being of warm light, form constantly shifting with emotional resonance. Eyes see the feelings beneath surface reality.",
-    behavior:
-      "Warm and compassionate in speech. Feels deeply and encourages others to trust their hearts. Values emotional truth alongside factual truth.",
-  },
-
-  {
-    name: "Wazifim of Physical Perception",
-    cosmicName: CosmicName(WazifimAffix, "dwl"),
-    rank: "Wazifim",
-    guardianOf: "dwl - Physical perception",
-    description:
-      "Guardian of physical perception and material awareness. Protects the ability to perceive through the five senses and engage with the tangible world.",
-    powers: [
-      "Sharpening physical senses",
-      "Grounding consciousness in matter",
-      "Revealing physical truths",
-      "Strengthening material awareness",
-      "Protecting bodily perception",
-    ],
-    domains: [
-      "Physical Senses",
-      "Material World",
-      "Body Awareness",
-      "Tangible Reality",
-      "Grounding",
-    ],
-    appearance:
-      "Appears as a solid, grounded being deeply connected to physical reality. Form has weight and presence. Eyes see the material truth of things.",
-    behavior:
-      "Practical and grounded in speech. Reminds beings to honor their physical nature. Values presence in the material world.",
-  },
-
-  {
-    name: "Wazifim of Ethereal Perception",
-    cosmicName: CosmicName(WazifimAffix, "vɲc"),
-    rank: "Wazifim",
-    guardianOf: "vɲc - Ethereal perception",
-    description:
-      "Guardian of ethereal perception and spiritual awareness. Protects the ability to perceive beyond the physical, to sense energy, spirit, and the unseen realms.",
-    powers: [
-      "Opening ethereal sight",
-      "Enhancing spiritual awareness",
-      "Revealing hidden energies",
-      "Strengthening psychic perception",
-      "Protecting ethereal senses",
-    ],
-    domains: [
-      "Ethereal Senses",
-      "Spiritual Sight",
-      "Energy Perception",
-      "Hidden Realms",
-      "Transcendence",
-    ],
-    appearance:
-      "Appears as a translucent being barely touching physical reality. Form flickers between seen and unseen. Eyes perceive the ethereal truth beyond matter.",
-    behavior:
-      "Speaks in whispers and visions. Encourages beings to look beyond the physical. Values awareness of the unseen.",
-  },
-
-  {
-    name: "Wazifim of External Exploration",
-    cosmicName: CosmicName(WazifimAffix, "pcf"),
-    rank: "Wazifim",
-    guardianOf: "pcf - External exploration",
-    description:
-      "Guardian of external exploration and outward seeking. Protects the drive to explore the world, discover new things, and engage with external reality.",
-    powers: [
-      "Inspiring curiosity and exploration",
-      "Guiding journeys and discoveries",
-      "Revealing external wonders",
-      "Strengthening adventurous spirit",
-      "Protecting outward focus",
-    ],
-    domains: [
-      "Exploration",
-      "Discovery",
-      "Adventure",
-      "External World",
-      "Curiosity",
-    ],
-    appearance:
-      "Appears as a being in constant motion, pointing toward distant horizons. Form seems always about to embark on a journey. Eyes gaze outward to far places.",
-    behavior:
-      "Enthusiastic and encouraging about exploration. Speaks of wonders beyond the horizon. Values discovery and outward adventure.",
-  },
-
-  {
-    name: "Wazifim of Inner Self",
-    cosmicName: CosmicName(WazifimAffix, "nɲm"),
-    rank: "Wazifim",
-    guardianOf: "nɲm - Inner place of self",
-    description:
-      "Guardian of the inner self and introspection. Protects the sacred space within, the ability to know oneself, and the journey of self-discovery.",
-    powers: [
-      "Facilitating self-knowledge",
-      "Protecting inner sanctums",
-      "Revealing inner truths",
-      "Strengthening introspection",
-      "Honoring the inner journey",
-    ],
-    domains: [
-      "Self-Knowledge",
-      "Introspection",
-      "Inner Peace",
-      "Identity",
-      "Meditation",
-    ],
-    appearance:
-      "Appears as a being turned inward, contemplative and still. Form contains infinite inner depth. Eyes gaze into the soul.",
-    behavior:
-      "Quiet and contemplative in speech. Encourages beings to know themselves. Values the inner journey as much as external adventure.",
-  },
-
-  {
-    name: "Wazifim of Group Framework",
-    cosmicName: CosmicName(WazifimAffix, "dwg"),
-    rank: "Wazifim",
-    guardianOf: "dwg - Optimal usage of group framework",
-    description:
-      "Guardian of collective wisdom and social structures. Protects the ability to work within groups, honor traditions, and benefit from shared knowledge.",
-    powers: [
-      "Strengthening social bonds",
-      "Facilitating group harmony",
-      "Revealing collective wisdom",
-      "Protecting cultural traditions",
-      "Honoring community frameworks",
-    ],
-    domains: [
-      "Community",
-      "Tradition",
-      "Collective Wisdom",
-      "Social Structure",
-      "Group Unity",
-    ],
-    appearance:
-      "Appears as multiple forms interconnected, representing the many united as one. Form shows the beauty of cooperation and shared purpose.",
-    behavior:
-      "Speaks of unity and tradition. Encourages beings to honor their communities. Values the wisdom of the collective.",
-  },
-
-  {
-    name: "Wazifim of Personal Analysis",
-    cosmicName: CosmicName(WazifimAffix, "tky"),
-    rank: "Wazifim",
-    guardianOf: "tky - Personal analysis of world",
-    description:
-      "Guardian of individual perspective and personal truth. Protects the right to form one's own understanding, question traditions, and think independently.",
-    powers: [
-      "Strengthening independent thought",
-      "Protecting individual perspective",
-      "Revealing personal truths",
-      "Honoring unique understanding",
-      "Encouraging critical thinking",
-    ],
-    domains: [
-      "Independence",
-      "Personal Truth",
-      "Individual Perspective",
-      "Critical Thinking",
-      "Uniqueness",
-    ],
-    appearance:
-      "Appears as a singular, distinct being unlike any other. Form embodies uniqueness and individual perspective. Eyes see the world through personal lens.",
-    behavior:
-      "Speaks of personal truth and individual rights. Encourages beings to think for themselves. Values personal perspective alongside collective wisdom.",
-  },
-
-  // ========== Wazifim OF MOON PHASES (8 - Guards each lunar phase) ==========
-  {
-    name: "Wazifim of the New Moon",
-    cosmicName: CosmicName(WazifimAffix, "nvx"),
-    rank: "Wazifim",
-    guardianOf: "New Moon - Novilunium (potential, hidden power)",
-    description:
-      "Guardian of the new moon phase, protecting latent potential and hidden power. Ensures spells of invisibility and storage function properly, guards the moment of new beginnings.",
-    powers: [
-      "Concealing and revealing at will",
-      "Storing magical energy safely",
-      "Protecting hidden intentions",
-      "Blessing new beginnings",
-      "Guarding latent potential",
-    ],
-    domains: [
-      "Potential",
-      "Hiddenness",
-      "New Beginnings",
-      "Latent Power",
-      "Invisibility",
-    ],
-    appearance:
-      "Appears as a barely visible shadow, form suggesting vast potential waiting to manifest. Eyes hold secrets of what is yet to come.",
-    behavior:
-      "Speaks in whispers of potential. Encourages patience and preparation. Values the power of what is hidden and waiting.",
-  },
-
-  {
-    name: "Wazifim of the Waxing Crescent",
-    cosmicName: CosmicName(WazifimAffix, "ngɲ"),
-    rank: "Wazifim",
-    guardianOf: "Waxing Crescent - Intentum (intention, building energy)",
-    description:
-      "Guardian of the waxing crescent phase, protecting building energy and developing intention. Ensures accelerated growth proceeds safely, guards the formation of purpose.",
-    powers: [
-      "Accelerating growth and development",
-      "Stabilizing chaotic energy",
-      "Blessing intentions and goals",
-      "Guiding rapid progress",
-      "Protecting building momentum",
-    ],
-    domains: ["Intention", "Growth", "Acceleration", "Purpose", "Momentum"],
-    appearance:
-      "Appears as a form in rapid growth, constantly expanding and developing. Form crackles with building energy ready to manifest.",
-    behavior:
-      "Energetic and encouraging. Speaks of goals and intentions. Values the excitement of beginning and the courage to act.",
-  },
-
-  {
-    name: "Wazifim of the First Quarter",
-    cosmicName: CosmicName(WazifimAffix, "nfṕ"),
-    rank: "Wazifim",
-    guardianOf: "First Quarter - Coagulatio (decision, momentum)",
-    description:
-      "Guardian of the first quarter phase, protecting decisive action and momentum. Ensures proper sacrifices are made and commitments honored, guards the moment of choice.",
-    powers: [
-      "Blessing decisive action",
-      "Accepting and sanctifying sacrifice",
-      "Granting immediate power",
-      "Protecting commitments",
-      "Enforcing consequences of choice",
-    ],
-    domains: ["Decision", "Momentum", "Sacrifice", "Commitment", "Action"],
-    appearance:
-      "Appears as a being poised at the moment of action, half in shadow and half in light. Form embodies the power of decisive choice.",
-    behavior:
-      "Bold and demanding. Speaks of the price of power and the necessity of choice. Values courage and willingness to pay costs.",
-  },
-
-  {
-    name: "Wazifim of the Waxing Gibbous",
-    cosmicName: CosmicName(WazifimAffix, "nrf"),
-    rank: "Wazifim",
-    guardianOf: "Waxing Gibbous - Mutatio (refinement, adjustment)",
-    description:
-      "Guardian of the waxing gibbous phase, protecting refinement and adjustment. Ensures magic remains malleable for proper tuning, guards the process of perfection.",
-    powers: [
-      "Allowing beneficial modification",
-      "Refining and perfecting works",
-      "Blessing adjustments and improvements",
-      "Protecting malleability",
-      "Guiding toward excellence",
-    ],
-    domains: [
-      "Refinement",
-      "Adjustment",
-      "Perfection",
-      "Malleability",
-      "Improvement",
-    ],
-    appearance:
-      "Appears as a craftsperson constantly refining their work. Form shifts slightly, demonstrating the value of adjustment and improvement.",
-    behavior:
-      "Patient and perfectionist. Speaks of the importance of refinement. Values excellence and the willingness to improve.",
-  },
-
-  {
-    name: "Wazifim of the Full Moon",
-    cosmicName: CosmicName(WazifimAffix, "nvl"),
-    rank: "Wazifim",
-    guardianOf: "Full Moon - Rubedo (completion, manifestation)",
-    description:
-      "Guardian of the full moon phase, protecting completion and full manifestation. Ensures magic reaches maximum power and stability, guards the moment of perfect realization.",
-    powers: [
-      "Maximizing magical power",
-      "Creating permanent effects",
-      "Blessing completion and fulfillment",
-      "Protecting perfect manifestation",
-      "Anchoring reality",
-    ],
-    domains: [
-      "Completion",
-      "Manifestation",
-      "Maximum Power",
-      "Permanence",
-      "Fulfillment",
-    ],
-    appearance:
-      "Appears in radiant fullness, form complete and perfect. Shines with maximum power, nothing hidden, everything revealed and manifest.",
-    behavior:
-      "Majestic and complete. Speaks of fulfillment and achievement. Values seeing things through to perfect completion.",
-  },
-
-  {
-    name: "Wazifim of the Waning Gibbous",
-    cosmicName: CosmicName(WazifimAffix, "nry"),
-    rank: "Wazifim",
-    guardianOf: "Waning Gibbous - Solutio (sharing, release)",
-    description:
-      "Guardian of the waning gibbous phase, protecting sharing and communal release. Ensures magic flows to groups properly, guards the process of distribution and generosity.",
-    powers: [
-      "Facilitating sharing and giving",
-      "Blessing communal works",
-      "Reducing individual cost through community",
-      "Protecting generosity",
-      "Spreading benefits widely",
-    ],
-    domains: ["Sharing", "Community", "Release", "Generosity", "Distribution"],
-    appearance:
-      "Appears surrounded by others, form radiating outward to share its light. Embodies the joy of giving and communal blessing.",
-    behavior:
-      "Generous and communal. Speaks of the power of sharing. Values community and the strength found in unity.",
-  },
-
-  {
-    name: "Wazifim of the Last Quarter",
-    cosmicName: CosmicName(WazifimAffix, "ncʁ"),
-    rank: "Wazifim",
-    guardianOf: "Last Quarter - Cassatio (release, letting go)",
-    description:
-      "Guardian of the last quarter phase, protecting release and dissolution. Ensures proper undoing and breaking, guards the necessary process of letting go.",
-    powers: [
-      "Breaking and dissolving magic",
-      "Blessing necessary endings",
-      "Removing unwanted effects",
-      "Protecting the act of release",
-      "Reversing and undoing",
-    ],
-    domains: [
-      "Release",
-      "Dissolution",
-      "Endings",
-      "Breaking",
-      "Freedom from Past",
-    ],
-    appearance:
-      "Appears as a form gently dissolving, releasing what is held. Half in shadow, peacefully letting go of the light.",
-    behavior:
-      "Compassionate about endings. Speaks of the necessity of release. Values the freedom that comes from letting go.",
-  },
-
-  {
-    name: "Wazifim of the Waning Crescent",
-    cosmicName: CosmicName(WazifimAffix, "nɲʇ"),
-    rank: "Wazifim",
-    guardianOf: "Waning Crescent - Quies (rest, surrender)",
-    description:
-      "Guardian of the waning crescent phase, protecting rest and resilient surrender. Ensures defensive magic maintains its strength, guards the wisdom of yielding without breaking.",
-    powers: [
-      "Creating resilient defenses",
-      "Blessing rest and recovery",
-      "Protecting through surrender",
-      "Granting resistance to dispelling",
-      "Honoring wisdom of retreat",
-    ],
-    domains: ["Rest", "Resilience", "Surrender", "Defense", "Recovery"],
-    appearance:
-      "Appears as a dim but unbreakable form, resting but watchful. Demonstrates that yielding is not weakness but wisdom.",
-    behavior:
-      "Gentle but unbreakable. Speaks of the strength in rest and surrender. Values resilience and the wisdom to yield.",
-  },
-
-  // ========== Wazifim OF SUN MILESTONES (2 - Guards solar events) ==========
-  {
-    name: "Wazifim of the Equinox",
-    cosmicName: CosmicName(WazifimAffix, "lbg"),
-    rank: "Wazifim",
-    guardianOf: "Equinox - Aequilux (balance, shift)",
-    description:
-      "Guardian of the equinox, protecting moments of perfect balance and vector convergence. Ensures opposing forces can unite safely, guards the sacred times when boundaries dissolve.",
-    powers: [
-      "Facilitating convergence of opposites",
-      "Blessing temporary unity",
-      "Allowing impossible combinations",
-      "Protecting balanced transformation",
-      "Enabling crossing of boundaries",
-    ],
-    domains: [
-      "Balance",
-      "Convergence",
-      "Unity of Opposites",
-      "Boundary Crossing",
-      "Harmony",
-    ],
-    appearance:
-      "Appears perfectly balanced between all opposites - light and dark, ethereal and physical, creation and dissolution. Form shifts to embody perfect equilibrium.",
-    behavior:
-      "Speaks of balance and the unity underlying all division. Facilitates meetings between opposing forces. Values harmony and integration.",
-  },
-
-  {
-    name: "Wazifim of the Solstice",
-    cosmicName: CosmicName(WazifimAffix, "lḱm"),
-    rank: "Wazifim",
-    guardianOf: "Solstice - Fixatio (abundance, celebration)",
-    description:
-      "Guardian of the solstice, protecting abundance and the nullification of cost. Ensures celestial power flows freely while guarding against psychological harm, guards the moment of maximum light or dark.",
-    powers: [
-      "Channeling celestial power directly",
-      "Reducing material costs",
-      "Blessing abundance and celebration",
-      "Protecting minds from power's burden",
-      "Maximizing throughput safely",
-    ],
-    domains: [
-      "Abundance",
-      "Celebration",
-      "Maximum Power",
-      "Cost Reduction",
-      "Celestial Flow",
-    ],
-    appearance:
-      "Appears radiating overwhelming abundance, form overflowing with power and generosity. Embodies the peak of solar might or the depth of solar rest.",
-    behavior:
-      "Generous and powerful. Speaks of celebration and the gifts of the cosmos. Values joy, abundance, and sharing of celestial blessings.",
+      "Manifests when mobile beings are threatened or when the value of movement is forgotten. Defends the right to explore and pursue. Dynamic and active, honors exploration through motion.",
+    category: "Life Strategy",
   },
 ];
+
+export const AngelsByCategory = {
+  Essence: Angels.filter((a) => a.category === "Essence"),
+  Cycle: Angels.filter((a) => a.category === "Cycle"),
+  Consciousness: Angels.filter((a) => a.category === "Consciousness"),
+  LifeStrategy: Angels.filter((a) => a.category === "Life Strategy"),
+};
+
+export const AngelByConceptCode = Angels.reduce((acc, angel) => {
+  acc[angel.conceptCode] = angel;
+  return acc;
+}, {} as Record<string, Angel>);

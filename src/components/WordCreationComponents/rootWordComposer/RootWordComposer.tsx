@@ -45,15 +45,18 @@ const ConsonantKeyboard = ({
       <div className="keyboard">
         {consonants.map((consonant: string, index: number) => {
           return (
-            <div>
-              <div key={index}>
+            <div key={`${consonant}-${index}`}>
+              <div>
                 <p>/{IPAConsonants[index]}/</p>
                 <button
-                  key={index}
                   className="keyboard-key"
                   onClick={() => setRootWord(rootWord + consonant + "'")}
                   onMouseEnter={() => setCurrentConsonent(consonant)}
                   onMouseLeave={() => setCurrentConsonent(null)}
+                  onFocus={() => setCurrentConsonent(consonant)}
+                  onBlur={() => setCurrentConsonent(null)}
+                  onTouchStart={() => setCurrentConsonent(consonant)}
+                  onTouchEnd={() => setCurrentConsonent(null)}
                   style={{ paddingLeft: "20px" }}
                 >
                   {consonant + "'"}
